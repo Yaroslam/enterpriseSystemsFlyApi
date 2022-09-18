@@ -15,6 +15,7 @@ use Laravel\Sanctum\HasApiTokens;
 class UserSession extends Model
 {
     protected $table = 'users_sessions';
+    public $timestamps = false;
 
     protected $fillable = ['sessionLogin', 'sessionLogout', 'sessionTime', 'Userid'];
 

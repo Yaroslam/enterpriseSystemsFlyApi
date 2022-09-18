@@ -42,7 +42,6 @@ class UserController extends Controller
             $codeStatus = 403;
             $response['date'] = inSystem::getUser($user->ID)[0]['loginTime'];
             $response['crashReasons'] = Crash::getCrashesNames();
-            inSystem::deleteUser($user->ID);
         } else {
             $monthSession = MonthSession::getSessionTime($user->ID);
             if (count($monthSession) === 0) {
@@ -71,19 +70,26 @@ class UserController extends Controller
 
     public function handleCrash(request $request){
         $user = User::getUserByEmail($request->input('email'));
-        $crashReason = $request->input('crashReason');
+        $crashReason = Crash::getCrashByName($request->input('crashReason'))[0]["ID"];
         $session = inSystem::getUser($user->ID);
-
-
-
+        UserSession::addSession($user->ID, $session[0]['loginTime'], date("Y-m-d H:i:s", time()), false, $reason=$crashReason);
+        inSystem::deleteUser($user->ID);
+        return Response(["error" => "no"], 200);
     }
 
-
-
     public function logout(request $request) {
+        $user = User::getUserByEmail(session('email'));
+        $logoutTime = time();
+        $sessionTime = $logoutTime - session('sessionStart');
+        $monthSessionTime = session('spendTime') + $sessionTime;
+        UserSession::addSession($user->ID, date("Y-m-d H:i:s", session('sessionStart')), date("Y-m-d H:i:s", $logoutTime), True);
+        MonthSession::updateUserSessionTime($user->ID, $monthSessionTime);
+        inSystem::deleteUser($user->ID);
+        session()->flush();
+    }
 
-
-
-
+    public function changeBlockUser(Request $request){
+        $user = User::where("Email", $request->input("email"))->firstOrFail();
+        User::changeBlockUser($user->ID, $user->Active);
     }
 }

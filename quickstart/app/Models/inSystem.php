@@ -14,6 +14,7 @@ use Laravel\Sanctum\HasApiTokens;
 class inSystem extends Model
 {
     protected $table = "in_system";
+    public $timestamps = false;
 
     protected $fillable = [
         'UserId',

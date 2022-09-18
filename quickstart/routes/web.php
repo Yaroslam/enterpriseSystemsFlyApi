@@ -20,3 +20,6 @@ Route::get('/', function () {
 
 Route::get('/user', [UserController::class, 'index']);
 Route::post('/login', [UserController::class, 'login']);
+Route::post('/logout', [UserController::class, 'logout']);
+Route::post('/changeBlockUser', [UserController::class, 'changeBlockUser']);
+Route::post('/crashHandler', [UserController::class, 'handleCrash']);

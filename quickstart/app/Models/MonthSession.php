@@ -14,6 +14,7 @@ use Laravel\Sanctum\HasApiTokens;
 class MonthSession extends Model
 {
     protected $table = "month_session_time";
+    public $timestamps = false;
 
 
     public static function getSessionTime($userId){
@@ -21,7 +22,7 @@ class MonthSession extends Model
     }
 
     public static function startSession($userId, $startDate){
-        self::insert(['UserId' => $userId, "sessionStart" => $startDate, 'spendTime' => 0, 'dropDate' => $startDate+30*24*60*60]);
+        self::insert(['UserId' => $userId, "sessionStart" => $startDate, 'spendTime' => 0, 'dropDate' => $startDate+(30*24*60*60)]);
     }
 
     public static function updateUserSessionPeriod($userId, $newDropDate){
@@ -29,7 +30,7 @@ class MonthSession extends Model
     }
 
     public static function updateUserSessionTime($userId, $addTime){
-        self::where('UserId', $userId)->update(["dropDate" => $addTime]);
+        self::where('UserId', $userId)->update(["spendTime" => $addTime]);
     }
 
     public static function updateUserSessionStart($userId, $sessionStart){

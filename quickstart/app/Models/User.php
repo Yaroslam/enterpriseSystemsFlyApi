@@ -24,8 +24,9 @@ class User extends Model
         'name',
         'email',
         'password',
+        'Active'
     ];
-
+    public $timestamps = false;
 
     public static function getUserByEmail(string $email)
     {
@@ -35,6 +36,10 @@ class User extends Model
     public function getUserRoleName()
     {
         return Role::getRoleNameById($this->ID);
+    }
+
+    public static function changeBlockUser($id, $active){
+        self::where("ID", $id)->update(['Active' => (int)!$active]);
     }
 
 

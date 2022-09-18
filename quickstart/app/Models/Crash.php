@@ -13,6 +13,7 @@ use Laravel\Sanctum\HasApiTokens;
 class Crash extends Model
 {
     protected  $table = 'crashes';
+    public $timestamps = false;
 
     public static function getCrashesNames()
     {
