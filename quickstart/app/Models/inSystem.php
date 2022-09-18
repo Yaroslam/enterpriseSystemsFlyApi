@@ -15,15 +15,20 @@ class inSystem extends Model
 {
     protected $table = "in_system";
 
+    protected $fillable = [
+        'UserId',
+        'loginTime',
+    ];
+
     public static function deleteUser($id){
-        inSystem::where('UserId', $id)->delete();
+        self::where('UserId', $id)->delete();
     }
 
-    public static function addUser($id){
-        inSystem::insert(['UserId' => $id]);
+    public static function addUser($id, $loginTime){
+        self::insert(['UserId' => $id, "loginTime" => $loginTime]);
     }
 
     public static function getUser($id){
-        return inSystem::where('UserId', $id)->get()->toArray();
+        return self::where('UserId', $id)->get()->toArray();
     }
 }

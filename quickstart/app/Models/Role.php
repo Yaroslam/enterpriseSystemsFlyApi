@@ -14,7 +14,7 @@ class Role extends Model
     protected  $table = 'roles';
 
     public static function getRoleNameById($id){
-        return Role::where("ID", $id)->get()->toArray()[0]['Title'];
+        return self::where("ID", $id)->get()->toArray()[0]['Title'];
     }
 
 

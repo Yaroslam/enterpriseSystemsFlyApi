@@ -29,7 +29,7 @@ class User extends Model
 
     public static function getUserByEmail(string $email)
     {
-        return User::where("Email", $email)->firstOrFail();
+        return self::where("Email", $email)->firstOrFail();
     }
 
     public function getUserRoleName()

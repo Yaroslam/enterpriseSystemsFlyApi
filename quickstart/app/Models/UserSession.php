@@ -18,15 +18,9 @@ class UserSession extends Model
 
     protected $fillable = ['sessionLogin', 'sessionLogout', 'sessionTime', 'Userid'];
 
-    public static function startSession($startTime, $userId){
-        UserSession::insert(['UserId' => $userId,
-                            'sessionLogin' => $startTime]);
-    }
-
-
     public static function getUserSessions($id){
         $result = [];
-        $userSessions = UserSession::where([['UserId', $id]])->get()->toArray();
+        $userSessions = self::where([['UserId', $id]])->get()->toArray();
 
         foreach ($userSessions as $session){
             $unsucces = DB::table('unsuccess_sessions')->where('sessionId', $session["ID"])->get()->toArray();
@@ -43,10 +37,24 @@ class UserSession extends Model
             ];
             array_push($result, $curSession);
         }
-
         return $result;
     }
 
-
+    public static function addSession($userId, $loginTime, $logoutTime, $success, $reason=-1) {
+        if($success){
+            self::insert(['UserId'       => $userId,
+                          'sessionLogin' => $loginTime,
+                          'sessionLogout' => $logoutTime,
+                          'sessionTime' => strtotime($logoutTime) - strtotime($loginTime),
+                          'success' => $success]);
+        } else {
+            $id = self::insertGetId(['UserId'       => $userId,
+                          'sessionLogin' => $loginTime,
+                          'sessionLogout' => $logoutTime,
+                          'sessionTime' => -1,
+                          'success' => $success]);
+            DB::table('unsuccess_sessions')->insert(['sessionId' => $id, 'crashId' => $reason]);
+        }
+    }
 
 }

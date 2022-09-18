@@ -25,6 +25,10 @@ class Crash extends Model
         return $names;
     }
 
+    public static function getCrashByName($crash){
+        return self::where('crash', $crash)->get()->toArray();
+    }
+
 
 
 
