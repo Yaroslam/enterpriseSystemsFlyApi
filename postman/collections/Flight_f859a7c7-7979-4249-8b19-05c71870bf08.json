@@ -1,0 +1,528 @@
+{
+	"info": {
+		"_postman_id": "9d08596a-442c-4953-9faa-a73d87709bc2",
+		"name": "Flight",
+		"description": "Buy or rent spacecrafts",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "login",
+			"id": "0de5151e-3750-4363-b459-135eb5245814",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"email\": \"j.doe@amonic.com\",\r\n\"password\": 123}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/login",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"login"
+					]
+				},
+				"description": "Принимает на вход JSON, в котором описаны email, password.\n\nВ случае успеха см \"login успех\". -1 в _sessionTime_ означает, что время этой сессии не учитывается и не требуется выводить _logoutTime и sessionTime._ None в reason означает, что сессия закончилась без ошибок и всю информацию можно выводить. _curSessionTime_ - время проведенное в системе за 30 дней в секундах.\n\n_\"login неверный пароль\"_ - ответ при неверно введенном пароле пользователя\n\n_\"login пользователь не найден\"_ - ответ при неверно написанном email\n\n_\"login пользователь в системе\"_ - ответ, если пользователь неверно завершил свою прошлую сессию, в этом случае необходимо отправить запрос на **crashHandler**\n\n\"login пользователь заблокирован\" - ответ, если пользователь заблокирован в системе"
+			},
+			"response": [
+				{
+					"id": "85d0e406-3da6-4a4a-b404-65380e7d19e7",
+					"name": "login успех",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"email\": \"j.doe@amonic.com\",\r\n\"password\": 123}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 20 Sep 2022 19:38:46 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 20 Sep 2022 19:38:46 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.10"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "laravel_session=eyJpdiI6Ik53bEplemxPWldsaFFrZ0dYVnpna1E9PSIsInZhbHVlIjoid0NFMEljMVlCSno1S2FtN1ZVcXlaWUpLblVWTWZUU2poeEhtNCtxWDB5QTJXV2lLbjZmRVIvWUFDanhzV1czdkQ0K3laV3d1N29obFFhTXRhSzIxWWtGbEV3dmR1aU9hTFdvYjhuSkNHYlNhTlRMTGFmcHBYTEJKc0F0dHVJZzYiLCJtYWMiOiI2YTU1NTI0YTY0MGY2OTMwYjk5ZmM2MDk3YjEyOTIxMDFkYWRkMTUyZDE0ZDIwZTMyNjAyYTQwZDk2NGE4YTQ4IiwidGFnIjoiIn0%3D; expires=Tue, 20 Sep 2022 21:38:46 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "{\n    \"role\": \"Administrator\",\n    \"userName\": \"John\",\n    \"numberOfCrashes\": 1,\n    \"curSessionTime\": 269,\n    \"sessions\": [\n        {\n            \"loginTime\": \"2022-09-18 17:39:01\",\n            \"logoutTime\": \"2022-09-18 17:41:36\",\n            \"sessionTime\": 155,\n            \"reason\": \"None\"\n        },\n        {\n            \"loginTime\": \"2022-09-18 17:42:03\",\n            \"logoutTime\": \"2022-09-18 17:42:33\",\n            \"sessionTime\": -1,\n            \"reason\": \"System crash\"\n        },\n        {\n            \"loginTime\": \"2022-09-18 17:42:43\",\n            \"logoutTime\": \"2022-09-18 17:44:24\",\n            \"sessionTime\": 101,\n            \"reason\": \"None\"\n        },\n        {\n            \"loginTime\": \"2022-09-18 17:44:30\",\n            \"logoutTime\": \"2022-09-18 17:44:43\",\n            \"sessionTime\": 13,\n            \"reason\": \"None\"\n        }\n    ]\n}"
+				},
+				{
+					"id": "f8b64f28-79fe-4157-8b55-b72acd66f8ef",
+					"name": "login неверный пароль",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"email\": \"j.doe@amonic.com\",\r\n\"password\": 122}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 20 Sep 2022 19:43:29 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 20 Sep 2022 19:43:29 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.10"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "laravel_session=eyJpdiI6IlhZMTNySU1PS053V080U3BqeTgvRlE9PSIsInZhbHVlIjoiRXBKREUvWjk4YzE3S1l1ZDZ4aDNTZjlheWw4d0ZWTndhRjd3bXFaRHo2Y3FLUG9VWGtQbk9KU0hzcmNoOE05TE5weWFYZmdqQm9wU3FUekxCVHVOUXJOV0hNcjh3dWVGS3IxZjkxVEdieVovNGZPMUtyZUZPZDZ3TFVHSHlSQksiLCJtYWMiOiI4N2YyMDFhNTBkN2VmYmJkNGQ0YmY5MjQyOTUyZDUxN2E3YTY1YThiN2ZlZjY0YTA0N2UxNjQ5YzhhMzFkMWViIiwidGFnIjoiIn0%3D; expires=Tue, 20 Sep 2022 21:43:29 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "{\n    \"error\": \"invalid password\"\n}"
+				},
+				{
+					"id": "5d01a667-7a88-4063-8c89-9dc4344ab6f3",
+					"name": "login пользователь не найден",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"email\": \".doe@amonic.com\",\r\n\"password\": 122}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 20 Sep 2022 19:47:04 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 20 Sep 2022 19:47:04 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.10"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "laravel_session=eyJpdiI6IlpjaTFJWGIyVEVUbS93c0JHSzRueWc9PSIsInZhbHVlIjoid0JmL2dxOC9QdGFhcUd6TzFkKzcxaE83c1EzRHpYTEZTVzdpSk5uN1hVNTR2Z2tiNGZkZzRIdzNUZnpDRTBYVmpFcThuY3lCQU5YbHVMNkY2QWhkUDgvSzd1aWI5U1VIaGZFT2Y2Y0NHV0Q1ZWRXWm9WdWdTQzJzblAvSnBrdWoiLCJtYWMiOiI3OTZmZjMyYjViNzUzNmE0ZDdkNGMxNDcwODlhYmE1YjA4MjMwZTk5ZWZkZGU3NzJlM2ZhNGE1OTI3Nzg1MzM3IiwidGFnIjoiIn0%3D; expires=Tue, 20 Sep 2022 21:47:04 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "{\n    \"message\": \"No query results for model [App\\\\Models\\\\User].\",\n    \"exception\": \"Symfony\\\\Component\\\\HttpKernel\\\\Exception\\\\NotFoundHttpException\",\n    \"file\": \"C:\\\\Users\\\\Yaroslam\\\\PhpstormProjects\\\\enterpriseSystemsFlyApi\\\\quickstart\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Exceptions\\\\Handler.php\",\n    \"line\": 380,\n    \"trace\": [\n        {\n            \"file\": \"C:\\\\Users\\\\Yaroslam\\\\PhpstormProjects\\\\enterpriseSystemsFlyApi\\\\quickstart\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Exceptions\\\\Handler.php\",\n            \"line\": 356,\n            \"function\": \"prepareException\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Exceptions\\\\Handler\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\Users\\\\Yaroslam\\\\PhpstormProjects\\\\enterpriseSystemsFlyApi\\\\quickstart\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\Pipeline.php\",\n            \"line\": 51,\n            \"function\": \"render\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Exceptions\\\\Handler\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\Users\\\\Yaroslam\\\\PhpstormProjects\\\\enterpriseSystemsFlyApi\\\\quickstart\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 143,\n            \"function\": \"handleException\",\n            \"class\": \"Illuminate\\\\Routing\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\Users\\\\Yaroslam\\\\PhpstormProjects\\\\enterpriseSystemsFlyApi\\\\quickstart\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\Middleware\\\\SubstituteBindings.php\",\n            \"line\": 50,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\Users\\\\Yaroslam\\\\PhpstormProjects\\\\enterpriseSystemsFlyApi\\\\quickstart\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 180,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Routing\\\\Middleware\\\\SubstituteBindings\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\Users\\\\Yaroslam\\\\PhpstormProjects\\\\enterpriseSystemsFlyApi\\\\quickstart\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\View\\\\Middleware\\\\ShareErrorsFromSession.php\",\n            \"line\": 49,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\Users\\\\Yaroslam\\\\PhpstormProjects\\\\enterpriseSystemsFlyApi\\\\quickstart\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 180,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\View\\\\Middleware\\\\ShareErrorsFromSession\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\Users\\\\Yaroslam\\\\PhpstormProjects\\\\enterpriseSystemsFlyApi\\\\quickstart\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Session\\\\Middleware\\\\StartSession.php\",\n            \"line\": 121,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\Users\\\\Yaroslam\\\\PhpstormProjects\\\\enterpriseSystemsFlyApi\\\\quickstart\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Session\\\\Middleware\\\\StartSession.php\",\n            \"line\": 64,\n            \"function\": \"handleStatefulRequest\",\n            \"class\": \"Illuminate\\\\Session\\\\Middleware\\\\StartSession\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\Users\\\\Yaroslam\\\\PhpstormProjects\\\\enterpriseSystemsFlyApi\\\\quickstart\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 180,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Session\\\\Middleware\\\\StartSession\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\Users\\\\Yaroslam\\\\PhpstormProjects\\\\enterpriseSystemsFlyApi\\\\quickstart\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Cookie\\\\Middleware\\\\AddQueuedCookiesToResponse.php\",\n            \"line\": 37,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\Users\\\\Yaroslam\\\\PhpstormProjects\\\\enterpriseSystemsFlyApi\\\\quickstart\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 180,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Cookie\\\\Middleware\\\\AddQueuedCookiesToResponse\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\Users\\\\Yaroslam\\\\PhpstormProjects\\\\enterpriseSystemsFlyApi\\\\quickstart\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Cookie\\\\Middleware\\\\EncryptCookies.php\",\n            \"line\": 67,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\Users\\\\Yaroslam\\\\PhpstormProjects\\\\enterpriseSystemsFlyApi\\\\quickstart\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 180,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Cookie\\\\Middleware\\\\EncryptCookies\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\Users\\\\Yaroslam\\\\PhpstormProjects\\\\enterpriseSystemsFlyApi\\\\quickstart\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 116,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\Users\\\\Yaroslam\\\\PhpstormProjects\\\\enterpriseSystemsFlyApi\\\\quickstart\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\Router.php\",\n            \"line\": 726,\n            \"function\": \"then\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\Users\\\\Yaroslam\\\\PhpstormProjects\\\\enterpriseSystemsFlyApi\\\\quickstart\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\Router.php\",\n            \"line\": 703,\n            \"function\": \"runRouteWithinStack\",\n            \"class\": \"Illuminate\\\\Routing\\\\Router\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\Users\\\\Yaroslam\\\\PhpstormProjects\\\\enterpriseSystemsFlyApi\\\\quickstart\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\Router.php\",\n            \"line\": 667,\n            \"function\": \"runRoute\",\n            \"class\": \"Illuminate\\\\Routing\\\\Router\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\Users\\\\Yaroslam\\\\PhpstormProjects\\\\enterpriseSystemsFlyApi\\\\quickstart\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\Router.php\",\n            \"line\": 656,\n            \"function\": \"dispatchToRoute\",\n            \"class\": \"Illuminate\\\\Routing\\\\Router\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\Users\\\\Yaroslam\\\\PhpstormProjects\\\\enterpriseSystemsFlyApi\\\\quickstart\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Http\\\\Kernel.php\",\n            \"line\": 189,\n            \"function\": \"dispatch\",\n            \"class\": \"Illuminate\\\\Routing\\\\Router\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\Users\\\\Yaroslam\\\\PhpstormProjects\\\\enterpriseSystemsFlyApi\\\\quickstart\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 141,\n            \"function\": \"Illuminate\\\\Foundation\\\\Http\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Kernel\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\Users\\\\Yaroslam\\\\PhpstormProjects\\\\enterpriseSystemsFlyApi\\\\quickstart\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\TransformsRequest.php\",\n            \"line\": 21,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\Users\\\\Yaroslam\\\\PhpstormProjects\\\\enterpriseSystemsFlyApi\\\\quickstart\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\ConvertEmptyStringsToNull.php\",\n            \"line\": 31,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\TransformsRequest\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\Users\\\\Yaroslam\\\\PhpstormProjects\\\\enterpriseSystemsFlyApi\\\\quickstart\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 180,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\ConvertEmptyStringsToNull\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\Users\\\\Yaroslam\\\\PhpstormProjects\\\\enterpriseSystemsFlyApi\\\\quickstart\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\TransformsRequest.php\",\n            \"line\": 21,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\Users\\\\Yaroslam\\\\PhpstormProjects\\\\enterpriseSystemsFlyApi\\\\quickstart\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\TrimStrings.php\",\n            \"line\": 40,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\TransformsRequest\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\Users\\\\Yaroslam\\\\PhpstormProjects\\\\enterpriseSystemsFlyApi\\\\quickstart\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 180,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\TrimStrings\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\Users\\\\Yaroslam\\\\PhpstormProjects\\\\enterpriseSystemsFlyApi\\\\quickstart\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\ValidatePostSize.php\",\n            \"line\": 27,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\Users\\\\Yaroslam\\\\PhpstormProjects\\\\enterpriseSystemsFlyApi\\\\quickstart\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 180,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\ValidatePostSize\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\Users\\\\Yaroslam\\\\PhpstormProjects\\\\enterpriseSystemsFlyApi\\\\quickstart\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\PreventRequestsDuringMaintenance.php\",\n            \"line\": 86,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\Users\\\\Yaroslam\\\\PhpstormProjects\\\\enterpriseSystemsFlyApi\\\\quickstart\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 180,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\PreventRequestsDuringMaintenance\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\Users\\\\Yaroslam\\\\PhpstormProjects\\\\enterpriseSystemsFlyApi\\\\quickstart\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Http\\\\Middleware\\\\HandleCors.php\",\n            \"line\": 49,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\Users\\\\Yaroslam\\\\PhpstormProjects\\\\enterpriseSystemsFlyApi\\\\quickstart\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 180,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Http\\\\Middleware\\\\HandleCors\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\Users\\\\Yaroslam\\\\PhpstormProjects\\\\enterpriseSystemsFlyApi\\\\quickstart\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Http\\\\Middleware\\\\TrustProxies.php\",\n            \"line\": 39,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\Users\\\\Yaroslam\\\\PhpstormProjects\\\\enterpriseSystemsFlyApi\\\\quickstart\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 180,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Http\\\\Middleware\\\\TrustProxies\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\Users\\\\Yaroslam\\\\PhpstormProjects\\\\enterpriseSystemsFlyApi\\\\quickstart\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 116,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\Users\\\\Yaroslam\\\\PhpstormProjects\\\\enterpriseSystemsFlyApi\\\\quickstart\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Http\\\\Kernel.php\",\n            \"line\": 164,\n            \"function\": \"then\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\Users\\\\Yaroslam\\\\PhpstormProjects\\\\enterpriseSystemsFlyApi\\\\quickstart\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Http\\\\Kernel.php\",\n            \"line\": 133,\n            \"function\": \"sendRequestThroughRouter\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Kernel\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\Users\\\\Yaroslam\\\\PhpstormProjects\\\\enterpriseSystemsFlyApi\\\\quickstart\\\\public\\\\index.php\",\n            \"line\": 52,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Kernel\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"C:\\\\Users\\\\Yaroslam\\\\PhpstormProjects\\\\enterpriseSystemsFlyApi\\\\quickstart\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\resources\\\\server.php\",\n            \"line\": 16,\n            \"function\": \"require_once\"\n        }\n    ]\n}"
+				},
+				{
+					"id": "ac252dbc-d95a-4bae-aa98-2ac0504cd851",
+					"name": "login пользователь в системе",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"email\": \"j.doe@amonic.com\",\r\n\"password\": 123}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"status": "Forbidden",
+					"code": 403,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 20 Sep 2022 19:48:53 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 20 Sep 2022 19:48:53 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.10"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "laravel_session=eyJpdiI6IktVd2YyMWNmei9iSENxU1JvODM1MVE9PSIsInZhbHVlIjoiVTVCck1RRlVzOGlaVms0YldXQlI2TGg1UDRRc2FDSDdxeXBueklUNjFDd0NPZmgrVHVOcDZIVlhLWHozdmtMRk4rOFN6eUtzeVJqVTh5TkZtWng3dlgrRUF5N0R2QkxZaHdBNDFxTGJmYzR3ejFJL1JPd2NRTkY0amw1d1A3QlgiLCJtYWMiOiJmZWVjODJhMDljYzE4OTBhNTA0OGI2ZWMwMGViMzkzZjc2MTM4MzcxMjQxMWFlOWFjNzcyNzAyODlmOTliYzc0IiwidGFnIjoiIn0%3D; expires=Tue, 20 Sep 2022 21:48:53 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "{\n    \"date\": \"2022-09-20 19:38:43\",\n    \"crashReasons\": [\n        \"System crash\",\n        \"Wrong app close\",\n        \"App crash\"\n    ]\n}"
+				},
+				{
+					"id": "6aec54e7-a235-4288-adf1-8d86b43c0baf",
+					"name": "login пользователь заблокирован",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"email\": \"m.osteen@amonic.com\",\r\n\"password\": 9800}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"status": "Locked",
+					"code": 423,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 20 Sep 2022 19:53:06 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 20 Sep 2022 19:53:06 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.10"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "laravel_session=eyJpdiI6IlhXaXVTaFBod3hHREgvSVBXelVwRFE9PSIsInZhbHVlIjoiajlrd21BZnhjYkczNFVKRGRIUnc5bnAzam5peEpSQk5MV05udm04NnV2V1NTL3NRcFRrMWI3SURVb013ZVlwbkpKdHE5bnNZVUJDWEdHLzg2VjNrbkJ4SS9GZFZaTEYySWluWUQwK1YyMmNlODdYeUhLRk1mTlQwQ21vK0toVngiLCJtYWMiOiIwMjA0ZmIyNzE3N2YxMmZmNzgxMzdjMTFiZWYwM2M4OTEzNTJkNWVmYzJmM2M2YWI1MTk4MDc3ZGRhZTIyYjg2IiwidGFnIjoiIn0%3D; expires=Tue, 20 Sep 2022 21:53:06 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "{\n    \"error\": \"user blocked\"\n}"
+				}
+			]
+		},
+		{
+			"name": "logout",
+			"id": "40727a29-83d7-4c69-ad16-5dc5a9c8e157",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "changeBlockUser",
+			"id": "c282ab12-ee37-4a35-bfae-cb3e46a2a866",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "crashHandler",
+			"id": "55e2c36a-0292-4534-8a20-cef47ddf6967",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "addUser",
+			"id": "d2276aa5-7ab2-4ea2-95e2-427279eeac97",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "changeUserRole",
+			"id": "73077f5c-8e2c-4682-ae55-b288fcd33cb8",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "getUsersByOffice",
+			"id": "2fe8dab6-c3fe-4957-b3ea-748a55ecbe8f",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "getAllRoles",
+			"id": "a47613ae-f8bd-442b-9fa9-c6bd7050195e",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "getOffices",
+			"id": "ba6272eb-737a-4e02-aa9f-6d0c3a1ab1d3",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "9fbe49cc-df86-4d01-ae31-c8f92255a2c7",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "c2818f97-4455-4bb0-bd07-3f03bc68809b",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "90f96fa6-09b1-4a68-87b7-7da54df9e5f7",
+			"key": "baseUrl",
+			"value": "http://127.0.0.1:8000",
+			"type": "string"
+		}
+	]
+}
