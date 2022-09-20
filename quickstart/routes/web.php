@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\OfficeController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,3 +25,10 @@ Route::post('/login', [UserController::class, 'login']);
 Route::post('/logout', [UserController::class, 'logout']);
 Route::post('/changeBlockUser', [UserController::class, 'changeBlockUser']);
 Route::post('/crashHandler', [UserController::class, 'handleCrash']);
+Route::post('/addUser', [UserController::class, 'addUser']);
+Route::post('/changeUserRole', [UserController::class, 'changeUserRole']);
+Route::get('/getUsersByOffice', [UserController::class, 'getUsersByOffice']);
+
+Route::get('/getOffices', [OfficeController::class, 'getOffices']);
+
+Route::get('/getAllRoles', [RoleController::class, 'getAllRoles']);

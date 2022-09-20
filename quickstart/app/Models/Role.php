@@ -18,6 +18,18 @@ class Role extends Model
         return self::where("ID", $id)->get()->toArray()[0]['Title'];
     }
 
+    public static function getRoleByName($name){
+        return self::where("Title", $name)->get()->toArray();
+    }
+
+    public static function getAllRoles(){
+        return self::all()->toArray();
+    }
+
+
+
+
+
 
 
 }

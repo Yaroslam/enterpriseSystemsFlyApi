@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AddUserRequest;
 use App\Models\Crash;
 use App\Models\inSystem;
 use App\Models\MonthSession;
+use App\Models\Office;
 use App\Models\User;
 use App\Models\Role;
 use App\Models\UserSession;
@@ -14,12 +16,6 @@ use Illuminate\Http\Response;
 
 class UserController extends Controller
 {
-//  TODO
-//      1) получить список всех офисов
-//      2) получить пользователей по id офсиса и получить офис по его названию
-//      3) добавлнеие нового пользователя
-//      4) смена роли пользователя
-//      5) расчитать возраст пользователя
 
     public function login(Request $request)
     {
@@ -88,5 +84,36 @@ class UserController extends Controller
     public function changeBlockUser(Request $request){
         $user = User::where("Email", $request->input("email"))->firstOrFail();
         User::changeBlockUser($user->ID, $user->Active);
+    }
+
+    public function getUsersByOffice(Request $request){
+        $officeName = $request['offices'];
+        if($officeName == "all"){
+            $response = userDataForAdmin(User::getAllUsers());
+
+        } else {
+            $officeId = Office::getOfficeByName($officeName)['ID'];
+            $response = userDataForAdmin(User::getUsersByOffice($officeId));
+        }
+        return $response;
+    }
+
+    public function addUser(AddUserRequest $request){
+        $errors = $request->validated();
+        $response = refactorAddUserData([
+            "Email" => $request->input('Email'),
+            "Password" => $request->input('Password'),
+            "FirstName" => $request->input('FirstName'),
+            "LastName" => $request->input('LastName'),
+            "OfficeID" => $request->input('OfficeID'),
+            "Birthdate" => $request->input('Birthdate'),
+        ]);
+        User::addUser($response);
+        return Response($errors, 200);
+    }
+
+    public function changeUserRole(Request $request){
+        User::changeUserRole($request->input('role'), $request->input('email'));
+        return Request([],200);
     }
 }

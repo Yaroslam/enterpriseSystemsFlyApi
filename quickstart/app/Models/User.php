@@ -24,7 +24,8 @@ class User extends Model
         'name',
         'email',
         'password',
-        'Active'
+        'Active',
+        'RoleID'
     ];
     public $timestamps = false;
 
@@ -38,10 +39,39 @@ class User extends Model
         return Role::getRoleNameById($this->ID);
     }
 
+    public static function getStaticUserRoleName($id)
+    {
+        return Role::getRoleNameById($id);
+    }
+
     public static function changeBlockUser($id, $active){
         self::where("ID", $id)->update(['Active' => (int)!$active]);
     }
 
+    public static function changeUserRole($roleName, $userEmail){
+        $roleId = Role::getRoleByName($roleName)[0]['ID'];
+        self::where("Email", $userEmail)->update(['RoleID' => $roleId]);
+    }
 
+    public static function getAllUsers(){
+        return self::all()->toArray();
+    }
+
+    public static function getUsersByOffice($officeId){
+        return self::where('OfficeID', $officeId)->get()->toArray();
+    }
+
+    public static function addUser($userData){
+        self::insert([
+            "RoleID" => 2,
+            "Email" => $userData['Email'],
+            "Password" => $userData['Password'],
+            "FirstName" => $userData['FirstName'],
+            "LastName" => $userData['LastName'],
+            "OfficeID" => $userData['OfficeID'],
+            "Birthdate" => $userData['Birthdate'],
+            "Active" => 1,
+        ]);
+    }
 
 }
