@@ -24,7 +24,6 @@ class UserController extends Controller
         $response = [];
         $codeStatus = 200;
         $user = User::getUserByEmail($request->input('email'));
-
         if($user->Active === 0){
             $response['error'] = 'user blocked';
             $codeStatus = 423;
