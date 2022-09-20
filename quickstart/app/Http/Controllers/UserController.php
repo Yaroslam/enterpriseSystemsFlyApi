@@ -14,15 +14,12 @@ use Illuminate\Http\Response;
 
 class UserController extends Controller
 {
-    public function index(): void
-    {
-        $users = new User();
-        $u = $users->GetById(12);
-        foreach($u as $us){
-            var_dump($us->ID);
-        }
-    }
-
+//  TODO
+//      1) получить список всех офисов
+//      2) получить пользователей по id офсиса и получить офис по его названию
+//      3) добавлнеие нового пользователя
+//      4) смена роли пользователя
+//      5) расчитать возраст пользователя
 
     public function login(Request $request)
     {
