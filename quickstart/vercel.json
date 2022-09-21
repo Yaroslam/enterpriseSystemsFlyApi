@@ -24,14 +24,8 @@
         "CACHE_DRIVER": "array",
         "LOG_CHANNEL": "stderr",
         "SESSION_DRIVER": "cookie",
+        "VIEW_COMPILED_PATH": "/tmp/views",
         "SSR_TEMP_PATH": "/tmp/ssr",
-        "NODE_PATH": "node",
-        "APP_KEY":"base64:ZR1Hjq0++lH6ShHjm2kZXC9qa3V3PJS2Y/Kk2bZP5l8=",
-        "DB_CONNECTION":"mysql",
-        "DB_HOST":"4.tcp.eu.ngrok.io",
-        "DB_PORT":"15918",
-        "DB_DATABASE":"session_xx",
-        "DB_USERNAME":"root",
-        "DB_PASSWORD":"vpbest322"
+        "NODE_PATH": "node"
     }
 }
