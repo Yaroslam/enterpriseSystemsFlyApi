@@ -6,11 +6,10 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
-        "guzzlehttp/guzzle": "^7.2",
+        "guzzlehttp/guzzle": "^7.5",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
-        "laravel/tinker": "^2.7",
-        "ext-http": "*"
+        "laravel/tinker": "^2.7"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
@@ -31,7 +30,8 @@
             "app/Servisec/UserServisec.php",
             "app/Servisec/SessionServisec.php",
             "app/Servisec/RoleServices.php",
-            "app/Servisec/OfficeHandler.php"
+            "app/Servisec/OfficeHandler.php",
+            "app/Servisec/ScheduleService.php"
         ]
     },
     "autoload-dev": {

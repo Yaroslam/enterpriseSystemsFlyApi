@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\OfficeController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,3 +33,12 @@ Route::get('/getUsersByOffice', [UserController::class, 'getUsersByOffice']);
 Route::get('/getOffices', [OfficeController::class, 'getOffices']);
 
 Route::get('/getAllRoles', [RoleController::class, 'getAllRoles']);
+
+
+Route::get('/getSchedule', [ScheduleController::class, 'getSchedule']);
+Route::get('/changeFlightConfirm', [ScheduleController::class, 'changeFlightConfirm']);
+Route::post('/updateFlight', [ScheduleController::class, 'updateFlight']);
+Route::post('/update', [ScheduleController::class, 'update']);
+Route::post('/validateLine', [ScheduleController::class, 'validateLine']);
+
+

@@ -17,5 +17,13 @@ class Airport extends Model
     public static function getAirportCode($id){
         return self::where("ID", $id)->get()->toArray()[0]['IATACode'];
     }
+
+    public static function getAirportByCode($code){
+        return self::where("IATACode", $code)->get()->toArray()[0];
+    }
+
+    public static function getAirportById($id){
+        return self::where("ID", $id)->get()->toArray()[0];
+    }
 }
 
