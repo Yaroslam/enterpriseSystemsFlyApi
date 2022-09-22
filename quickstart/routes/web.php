@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AirportController;
 use App\Http\Controllers\OfficeController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ScheduleController;
@@ -34,11 +35,11 @@ Route::get('/getOffices', [OfficeController::class, 'getOffices']);
 
 Route::get('/getAllRoles', [RoleController::class, 'getAllRoles']);
 
+Route::get('/getAirportsCodes', [AirportController::class, 'getAirportsCodes']);
+
 
 Route::get('/getSchedule', [ScheduleController::class, 'getSchedule']);
-Route::get('/changeFlightConfirm', [ScheduleController::class, 'changeFlightConfirm']);
+Route::post('/changeFlightConfirm', [ScheduleController::class, 'changeFlightConfirm']);
 Route::post('/updateFlight', [ScheduleController::class, 'updateFlight']);
-Route::post('/update', [ScheduleController::class, 'update']);
-Route::post('/validateLine', [ScheduleController::class, 'validateLine']);
 
 
