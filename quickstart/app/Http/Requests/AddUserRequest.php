@@ -15,7 +15,6 @@ class AddUserRequest extends FormRequest
     {
         return true;
     }
-
     /**
      * Get the validation rules that apply to the request.
      *
@@ -24,7 +23,7 @@ class AddUserRequest extends FormRequest
     public function rules()
     {
         return [
-            "Email" => 'email|unique:users'
+            "Email" => 'required|email|unique:users'
         ];
     }
 }

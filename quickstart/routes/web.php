@@ -22,24 +22,24 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/user', [UserController::class, 'index']);
-Route::post('/login', [UserController::class, 'login']);
-Route::post('/logout', [UserController::class, 'logout']);
-Route::post('/changeBlockUser', [UserController::class, 'changeBlockUser']);
-Route::post('/crashHandler', [UserController::class, 'handleCrash']);
-Route::post('/addUser', [UserController::class, 'addUser']);
-Route::post('/changeUserRole', [UserController::class, 'changeUserRole']);
-Route::get('/getUsersByOffice', [UserController::class, 'getUsersByOffice']);
+//Route::get('/user', [UserController::class, 'index']);
+//Route::post('/login', [UserController::class, 'login']);
+//Route::post('/logout', [UserController::class, 'logout']);
+//Route::post('/changeBlockUser', [UserController::class, 'changeBlockUser']);
+//Route::post('/crashHandler', [UserController::class, 'handleCrash']);
+//Route::post('/addUser', [UserController::class, 'addUser']);
+//Route::post('/changeUserRole', [UserController::class, 'changeUserRole']);
+//Route::get('/getUsersByOffice', [UserController::class, 'getUsersByOffice']);
 
-Route::get('/getOffices', [OfficeController::class, 'getOffices']);
+//Route::get('/getOffices', [OfficeController::class, 'getOffices']);
 
-Route::get('/getAllRoles', [RoleController::class, 'getAllRoles']);
+//Route::get('/getAllRoles', [RoleController::class, 'getAllRoles']);
 
-Route::get('/getAirportsCodes', [AirportController::class, 'getAirportsCodes']);
+//Route::get('/getAirportsCodes', [AirportController::class, 'getAirportsCodes']);
 
 
-Route::get('/getSchedule', [ScheduleController::class, 'getSchedule']);
-Route::post('/changeFlightConfirm', [ScheduleController::class, 'changeFlightConfirm']);
+//Route::get('/getSchedule', [ScheduleController::class, 'getSchedule']);
+//Route::post('/changeFlightConfirm', [ScheduleController::class, 'changeFlightConfirm']);
 Route::post('/updateFlight', [ScheduleController::class, 'updateFlight']);
 
 

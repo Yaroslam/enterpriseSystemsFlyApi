@@ -91,14 +91,14 @@ class UserController extends Controller
             $response = userDataForAdmin(User::getAllUsers());
 
         } else {
-            $officeId = Office::getOfficeByName($officeName)['ID'];
+            $officeId = Office::getOfficeByName($officeName)[0]['ID'];
             $response = userDataForAdmin(User::getUsersByOffice($officeId));
         }
         return $response;
     }
 
     public function addUser(AddUserRequest $request){
-        $errors = $request->validated();
+        $request->validated();
         $response = refactorAddUserData([
             "Email" => $request->input('Email'),
             "Password" => $request->input('Password'),
@@ -108,7 +108,7 @@ class UserController extends Controller
             "Birthdate" => $request->input('Birthdate'),
         ]);
         User::addUser($response);
-        return Response($errors, 200);
+        return Response(["ok"], 200);
     }
 
     public function changeUserRole(Request $request){

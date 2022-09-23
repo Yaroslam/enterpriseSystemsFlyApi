@@ -24,7 +24,7 @@ class Schedule extends Model
             $schedule = $schedule->where("RouteID", $route["ID"]);
         }
         if($outbound){
-            $schedule = $schedule->where("Date", $from);
+            $schedule = $schedule->where("Date", $outbound);
         }
         if($flight){
             $schedule = $schedule->where("FlightNumber", $flight);
