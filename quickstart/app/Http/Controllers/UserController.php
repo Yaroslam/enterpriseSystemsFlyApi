@@ -13,6 +13,7 @@ use App\Models\Role;
 use App\Models\UserSession;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -20,6 +21,14 @@ class UserController extends Controller
     public function login(Request $request)
     {
         $todayDate = time();
+
+        $validator = Validator::make($request->all(), [
+            "Email" => 'required|email|unique:users'
+        ]);
+
+        if ($validator->fails()) {
+            return  Response($validator->errors(), 400);
+        }
 
         $response = [];
         $codeStatus = 200;

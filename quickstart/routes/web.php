@@ -41,5 +41,6 @@ Route::get('/getAirportsCodes', [AirportController::class, 'getAirportsCodes']);
 Route::get('/getSchedule', [ScheduleController::class, 'getSchedule']);
 Route::post('/changeFlightConfirm', [ScheduleController::class, 'changeFlightConfirm']);
 Route::post('/updateFlight', [ScheduleController::class, 'updateFlight']);
+Route::post('/loadFromFile', [ScheduleController::class, 'loadFromFile']);
 
 

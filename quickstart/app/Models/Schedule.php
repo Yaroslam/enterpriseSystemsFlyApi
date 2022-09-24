@@ -56,34 +56,36 @@ class Schedule extends Model
     }
 
     public static function UpdateFromFile($data){
-        self::where("Date", $data[1])->where("FlightNumber", $data[3])->findOrFail();
-        $arrival = Airport::getAirportByCode($data[5]);
-        $departure = Airport::getAirportByCode($data[4]);
-        self::where("Date", $data[1])->where("FlightNumber", $data[3])->update([
-            "Date" => $data[1],
-            "Time" => $data[2],
-            "FlightNumber" => $data[3],
-            "AircraftID" => $data[6],
-            "EconomyPrice" => $data[7],
-            "Confirmed" => (int)($data[8] === "OK"),
+        if(count(self::where("Date", $data["date"])->where("FlightNumber", $data["flight"])->get()->toArray()) == 0){
+            return -1;
+        }
+        $arrival = Airport::getAirportByCode($data["to"]);
+        $departure = Airport::getAirportByCode($data["from"]);
+        self::where("Date", $data["date"])->where("FlightNumber", $data["flight"])->update([
+            "Date" => $data["date"],
+            "Time" => $data['time'],
+            "FlightNumber" => $data["flight"],
+            "AircraftID" => $data['aircraft'],
+            "EconomyPrice" => $data['price'],
+            "Confirmed" => (int)($data['status'] === "OK"),
             "RouteID" => Route::getRouteByArrivalAndDeparture($arrival, $departure)["ID"]
         ]);
         return 1;
     }
 
     public static function loadFromFile($data){
-        if(count(self::where("Date", $data[1])->where("FlightNumber", $data[3])->toArray()) > 0){
+        if(count(self::where("Date", $data["date"])->where("FlightNumber", $data["flight"])->get()->toArray()) > 0){
             return 0;
         }
-        $arrival = Airport::getAirportByCode($data[5]);
-        $departure = Airport::getAirportByCode($data[4]);
+        $arrival = Airport::getAirportByCode($data["to"]);
+        $departure = Airport::getAirportByCode($data["from"]);
         self::insert([
-            "Date" => $data[1],
-            "Time" => $data[2],
-            "FlightNumber" => $data[3],
-            "AircraftID" => $data[6],
-            "EconomyPrice" => $data[7],
-            "Confirmed" => (int)($data[8] === "OK"),
+            "Date" => $data["date"],
+            "Time" => $data['time'],
+            "FlightNumber" => $data["flight"],
+            "AircraftID" => $data['aircraft'],
+            "EconomyPrice" => $data['price'],
+            "Confirmed" => (int)($data['status'] === "OK"),
             "RouteID" => Route::getRouteByArrivalAndDeparture($arrival, $departure)["ID"]
         ]);
         return 1;

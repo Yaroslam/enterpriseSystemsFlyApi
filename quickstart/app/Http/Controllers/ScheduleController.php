@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\loadStringRequest;
 use App\Models\Aircraft;
 use App\Models\Airport;
 use App\Models\Route;
@@ -30,17 +31,30 @@ class ScheduleController extends Controller
         return $res;
     }
 
-//    public function loadSchedule(){}
 
-    public function update(Request $request)
+    public function loadFromFile(Request $request)
     {
-        $path = $request->file('avatar')->store('avatars');
-        var_dump($path);
-        $path = storage_path() . "/app/${path}";
-        $a = kama_parse_csv_file($path);
-        foreach ($a as $data) {
+        $content = $request->getContent();
+        $json = json_decode($content);
+        $validator = Validator::make($request->all(), ["action" => 'required|string|in:ADD,EDIT',
+            "date" => 'required|date|date_format:Y-m-d',
+            "time" => 'required|date_format:H:i',
+            'flight' => 'required|integer',
+            "from" => "required|string|exists:airports,IATACode",
+            "to" => "required|string|exists:airports,IATACode",
+            'aircraft' => 'required|integer|exists:aircrafts,ID',
+            'price' => 'required|integer',
+            'status' => 'required|string|in:OK,CANCELED']);
+
+        if ($validator->fails()) {
+            return  Response($validator->errors(), 400);
         }
-        return 1;
+        if($request['action'] == "ADD"){
+            $responseData = Schedule::loadFromFile($request->all());
+        } else if($request['action'] == "EDIT"){
+            $responseData = Schedule::UpdateFromFile($request->all());
+        }
+        return  Response($responseData, 200);
     }
 
     public function changeFlightConfirm(Request $request){
