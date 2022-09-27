@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Middleware\TrustHosts;
 use App\Models\Aircraft;
 use App\Models\Airport;
 use App\Models\Schedule;
@@ -37,25 +38,24 @@ class BookingController extends Controller
                         $firstClassTickets+=1;
                     }
                 }
-//                var_dump(["tick" => $buisnessTickets, "seats"=>$aircraft["BusinessSeats"]]);
                 if ($cabinType == 'Economy'){
                     if($aircraft["EconomySeats"] - $economyTickets < $request->input('passengers')){
-                        $response[] = ['tickets out' => $flight[0]['FlightNumber'], "date" => $flight[0]["Date"]];
+                        $response[] = ['tickets' => false, "date" => $flight[0]["Date"], 'flightNumber' => $flight[0]['FlightNumber']];
                     } else {
-                        $response[] = ['tickets in' => $flight[0]['FlightNumber'], "date" => $flight[0]["Date"]];
+                        $response[] = ['tickets' => True, "date" => $flight[0]["Date"], 'flightNumber' => $flight[0]['FlightNumber']];
                     }
                 } else if ($cabinType == 'Business'){
                     if ($aircraft["BusinessSeats"] - $buisnessTickets < $request->input('passengers')){
-                        $response[] = ['tickets out' => $flight[0]['FlightNumber'], "date" => $flight[0]["Date"]];
+                        $response[] = ['tickets' => false, "date" => $flight[0]["Date"], 'flightNumber' => $flight[0]['FlightNumber']];
                     } else {
-                        $response[] = ['tickets in' => $flight[0]['FlightNumber'], "date" => $flight[0]["Date"]];
+                        $response[] = ['tickets' => True, "date" => $flight[0]["Date"], 'flightNumber' => $flight[0]['FlightNumber']];
                     }
                 } else if ($cabinType == 'First Class'){
                     $firstClassSeats = $aircraft['TotalSeats'] - $aircraft['EconomySeats'] - $aircraft['BusinessSeats'];
                     if ($firstClassSeats - $firstClassTickets < $request->input('passengers')){
-                        $response[] = ['tickets out' => $flight[0]['FlightNumber'], "date" => $flight[0]["Date"]];
+                        $response[] = ['tickets' => false, "date" => $flight[0]["Date"], 'flightNumber' => $flight[0]['FlightNumber']];
                     } else {
-                        $response[] = ['tickets in' => $flight[0]['FlightNumber'], "date" => $flight[0]["Date"]];
+                        $response[] = ['tickets' => True, "date" => $flight[0]["Date"], 'flightNumber' => $flight[0]['FlightNumber']];
                     }
                 }
             }
