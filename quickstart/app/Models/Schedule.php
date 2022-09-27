@@ -32,8 +32,7 @@ class Schedule extends Model
         if($sort){
             $schedule = sortSchedule($schedule, $sort);
         } else{
-            $schedule = sortSchedule($schedule, "Date");
-            $schedule = sortSchedule($schedule, "Time");
+            $schedule->orderBy('Date')->orderBy('Time')->get();
         }
         return $schedule->toArray();
     }
@@ -71,6 +70,40 @@ class Schedule extends Model
             "RouteID" => Route::getRouteByArrivalAndDeparture($arrival, $departure)["ID"]
         ]);
         return 1;
+    }
+
+
+    public static function getFlightsBetweenDates($outbound){
+        $outbound = strtotime($outbound);
+        $date1 = date("Y-m-d", $outbound + 3*24*60*60);
+        $date2 = date("Y-m-d", $outbound - 3*24*60*60);
+        return self::orderBy('Date')->orderBy('Time')->whereBetween('Date', [$date2, $date1])->get()->toArray();
+    }
+
+    public static function getFlightsForBooking($from, $to, $outbound, $advanced){
+        $schedule = self::orderBy('Date')->orderBy('Time')->get();
+        if($from){
+            $aiport = Airport::getAirportByCode($from);
+            $route = Route::getRouteByDeparture($aiport["ID"]);
+            $schedule = $schedule->where("RouteID", $route["ID"]);
+        }
+        if($to){
+            $aiport = Airport::getAirportByCode($to);
+            $route = Route::getRouteByArrival($aiport["ID"]);
+            $schedule = $schedule->where("RouteID", $route["ID"]);
+        }
+        if($advanced){
+            $outbound = strtotime($outbound);
+            $date1 = date("Y-m-d", $outbound + 3*24*60*60);
+            $date2 = date("Y-m-d", $outbound - 3*24*60*60);
+            $schedule = $schedule->whereBetween('Date', [$date2, $date1]);
+        } else {
+            if($outbound){
+                $schedule = $schedule->where("Date", $outbound);
+                }
+        }
+
+        return $schedule->toArray();
     }
 
     public static function getScheduleByDateAndFlightNumber($flightNumber, $date){

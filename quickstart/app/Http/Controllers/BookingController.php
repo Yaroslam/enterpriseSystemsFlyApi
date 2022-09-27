@@ -6,14 +6,39 @@ use App\Http\Controllers\Controller;
 use App\Http\Middleware\TrustHosts;
 use App\Models\Aircraft;
 use App\Models\Airport;
+use App\Models\Route;
 use App\Models\Schedule;
 use App\Models\Ticket;
+use App\Servisec\Classes\Graph;
 use Illuminate\Http\Request;
 
 class BookingController extends Controller
 {
-    public function getFlightsForBooking(Request $request){
 
+    private function makeGraph($nodes){
+        $graph = new Graph(count($nodes));
+        foreach (array_keys($nodes) as $k){ //$k = $i
+            foreach ($nodes[$k] as $e){
+                $graph->addEdgr($k, $e);
+            }
+        }
+        return $graph;
+    }
+
+    public function getFlightsForBooking(Request $request){
+        return 1;
+//        $schedule = Schedule::getFlightsBetweenDates($request['date']);
+//        $varRoutes = [];
+//        foreach ($schedule as $s){
+//            $r = Route::getRouteById($s["RouteID"]);
+//            $varRoutes[] = [Airport::getAirportCode($r["DepartureAirportID"]), Airport::getAirportCode($r["ArrivalAirportID"])];
+//        }
+//        return createGraph($varRoutes);
+//        $graph = $this->makeGraph(createGraph($varRoutes));
+//        $s = "AUH";
+//        $d = "ADE";
+//        $graph->printAllPathsInGrapg($s, $d);
+//        return $graph->pathes;
     }
 
     public function checkBooking(Request $request){
