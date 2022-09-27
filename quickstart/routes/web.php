@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AirportController;
+use App\Http\Controllers\BookingController;
+use App\Http\Controllers\CabinTypesController;
 use App\Http\Controllers\OfficeController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ScheduleController;
@@ -37,10 +39,13 @@ Route::get('/getAllRoles', [RoleController::class, 'getAllRoles']);
 
 Route::get('/getAirportsCodes', [AirportController::class, 'getAirportsCodes']);
 
-
 Route::get('/getSchedule', [ScheduleController::class, 'getSchedule']);
 Route::post('/changeFlightConfirm', [ScheduleController::class, 'changeFlightConfirm']);
 Route::post('/updateFlight', [ScheduleController::class, 'updateFlight']);
 Route::post('/loadFromFile', [ScheduleController::class, 'loadFromFile']);
+
+Route::get('/getCabinTypes', [CabinTypesController::class, 'getCabinTypes']);
+
+Route::post('/checkBooking', [BookingController::class, 'checkBooking']);
 
 

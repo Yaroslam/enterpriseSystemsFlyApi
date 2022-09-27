@@ -73,6 +73,10 @@ class Schedule extends Model
         return 1;
     }
 
+    public static function getScheduleByDateAndFlightNumber($flightNumber, $date){
+        return self::where("Date", $date)->where("FlightNumber", $flightNumber)->get()->toArray();
+    }
+
     public static function loadFromFile($data){
         if(count(self::where("Date", $data["date"])->where("FlightNumber", $data["flight"])->get()->toArray()) > 0){
             return 0;
