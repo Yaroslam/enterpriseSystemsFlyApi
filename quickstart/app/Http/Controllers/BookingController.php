@@ -26,14 +26,13 @@ class BookingController extends Controller
     }
 
     public function getFlightsForBooking(Request $request){
-        return 1;
-//        $schedule = Schedule::getFlightsBetweenDates($request['date']);
-//        $varRoutes = [];
-//        foreach ($schedule as $s){
-//            $r = Route::getRouteById($s["RouteID"]);
-//            $varRoutes[] = [Airport::getAirportCode($r["DepartureAirportID"]), Airport::getAirportCode($r["ArrivalAirportID"])];
-//        }
-//        return createGraph($varRoutes);
+        $schedule = Schedule::getFlightsBetweenDates($request['date']);
+        $varRoutes = [];
+        foreach ($schedule as $s){
+            $r = Route::getRouteById($s["RouteID"]);
+            $varRoutes[] = [Airport::getAirportCode($r["DepartureAirportID"]), Airport::getAirportCode($r["ArrivalAirportID"])];
+        }
+        return createGraph($varRoutes);
 //        $graph = $this->makeGraph(createGraph($varRoutes));
 //        $s = "AUH";
 //        $d = "ADE";
