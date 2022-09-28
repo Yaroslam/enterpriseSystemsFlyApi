@@ -132,7 +132,7 @@ class BookingController extends Controller
         foreach ($flights as $flight){
             foreach ($passengers as $passenger){
 //                session("email")
-                $price += (int)(Ticket::createTicket("j.doe@amonic.com", $flight, $request['cabinType'], $passenger) * $cabins[$request['cabinType']]);
+                $price += (int)(Ticket::createTicket(session("email"), $flight, $request['cabinType'], $passenger) * $cabins[$request['cabinType']]);
             }
         }
         return $price;
