@@ -406,9 +406,81 @@
 			},
 			"request": {
 				"method": "POST",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/logout",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"logout"
+					]
+				},
+				"description": "В данном случае ничего указывать не надо, все нужные данные берутся из сессии пользователя на сервере"
 			},
-			"response": []
+			"response": [
+				{
+					"id": "94f97c64-aef6-43ff-82fc-6b79c3d965e9",
+					"name": "logout успех",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://0ec3-188-66-38-95.eu.ngrok.io/logout",
+							"protocol": "https",
+							"host": [
+								"0ec3-188-66-38-95",
+								"eu",
+								"ngrok",
+								"io"
+							],
+							"path": [
+								"logout"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 20 Sep 2022 20:04:13 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 20 Sep 2022 20:04:13 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.10"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html; charset=UTF-8"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "laravel_session=eyJpdiI6InpBOGJJWjhmaURuOFRYNzl2YzdOSVE9PSIsInZhbHVlIjoiZkhTcFRqM2hhOGlFV3hjR1dRTTRUZGszMnAvTmNmZ3I1Y2cxWnRYZFZIeUZwZHFDM3RsN2tlZnRSR2M1UkR0Wmluek0xTmI2Sjdnei82SDcrUlB6dUZvMHByd2tIZzZobmlIaTJTY3FjYkVTcHdDYlFLNUx5NlZRaUlBVVJnWHQiLCJtYWMiOiJlNmFjNDkwNDY1MzU4MTFiYTU0MmNmMzYwNmEyNWY5NzdkYzJjYmFlNTdhNzcyMDdmZGViMTgwMDY4M2M3M2RhIiwidGFnIjoiIn0%3D; expires=Tue, 20 Sep 2022 22:04:13 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": null
+				}
+			]
 		},
 		{
 			"name": "changeBlockUser",
@@ -418,9 +490,95 @@
 			},
 			"request": {
 				"method": "POST",
-				"header": []
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"email\": \"k.omar@amonic.com\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/changeBlockUser",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"changeBlockUser"
+					]
+				},
+				"description": "Меняет статус блокировки пользователя на противоположный (разблокирует заблокированного и заблокирует разблокированного)"
 			},
-			"response": []
+			"response": [
+				{
+					"id": "10afcffd-48e1-4a31-aa04-96fff9ffa30f",
+					"name": "changeBlockUser успех",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"email\": \"k.omar@amonic.com\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/changeBlockUser",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"changeBlockUser"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 20 Sep 2022 20:09:06 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 20 Sep 2022 20:09:06 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.10"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html; charset=UTF-8"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "laravel_session=eyJpdiI6Im5CZHpvR3U2OVFWb0xySVZFdmFpRHc9PSIsInZhbHVlIjoiamE3N1pCbzJnYWtpSitRWGhWL0xGOExWMGRGcjFHdlFpSFBHK2tDNkJkK3FOV0thdTNvb21YOFlWRTEwcS9GQnI4SUFQNUFRRE1JMnF3cmVMOHV5YUxiUS9HcEc2NGUxNys0cDVhZ3NLUnRPRldKQ2p4NUV3MkpJZnllSWptaWIiLCJtYWMiOiI0M2FlM2Q1OTcwMzBkNTQ5MTkzNWZmMmYxNzk2ZDVkMDU3MDkwNjA0ZDE2MTczOTkyNWRjMmI2OWEzODRlNjEwIiwidGFnIjoiIn0%3D; expires=Tue, 20 Sep 2022 22:09:06 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": null
+				}
+			]
 		},
 		{
 			"name": "crashHandler",
@@ -430,21 +588,300 @@
 			},
 			"request": {
 				"method": "POST",
-				"header": []
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"email\": \"j.doe@amonic.com\",\r\n\"crashReason\": \"System crash\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/crashHandler",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"crashHandler"
+					]
+				},
+				"description": "Обрабатывает ошибки неверного выхода из системы. После того как ошибка была обработана, необходимо еще раз отправить запрос на **login** с теми же самыми параметрами, которые были отправлены при попытке входа."
 			},
-			"response": []
+			"response": [
+				{
+					"id": "349d50f6-51e2-43b0-a6df-28616ca1695d",
+					"name": "crashHandler",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"email\": \"j.doe@amonic.com\",\r\n\"crashReason\": \"System crash\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/crashHandler",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"crashHandler"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 23 Sep 2022 00:03:00 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 23 Sep 2022 00:03:00 GMT"
+						},
+						{
+							"key": "Host",
+							"value": "0ec3-188-66-38-95.eu.ngrok.io"
+						},
+						{
+							"key": "Ngrok-Trace-Id",
+							"value": "cdc65d8d9528bffd6b48b1357cc85c83"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "laravel_session=eyJpdiI6IlhuM2ZvTC9RSHJCVXdSUXpxUDJhVmc9PSIsInZhbHVlIjoiQ0ZtSWFGT2w3K2dnVWYvOGlsNVh5TUhFYnI1clBPMU4xdHFITXN1LzhxZXlYV25hL2dRbisyR0l4YXcyNWwwZHUxSkdTQVE2ZDlITnJpS0lySU1wRUpvVHBIYjM0MHJaMDd2Y1Z0ZXo3N3BLTU95Zjl0UXZ3RG9NTmoyMW4rbm4iLCJtYWMiOiJjYjdkMWI5MWUyZTZlMTY0NTAyODZiODgyYWExMzUyMTMyNTA2YTRjMmM5YTc1NmJhNWQyMDZmMmEzZDU0YmRlIiwidGFnIjoiIn0%3D; expires=Sat, 01 Oct 2022 08:03:00 GMT; Max-Age=720000; path=/; httponly; samesite=lax"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.10"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "{\n    \"error\": \"no\"\n}"
+				}
+			]
 		},
 		{
 			"name": "addUser",
 			"id": "d2276aa5-7ab2-4ea2-95e2-427279eeac97",
 			"protocolProfileBehavior": {
-				"disableBodyPruning": true
+				"disableBodyPruning": true,
+				"disabledSystemHeaders": {
+					"content-type": true,
+					"accept": true
+				}
 			},
 			"request": {
 				"method": "POST",
-				"header": []
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Email\":\"someEmail@dot.com\",\r\n    \"Password\": \"Password\",\r\n    \"FirstName\": \"name\",\r\n    \"LastName\": \"lasrname\",\r\n    \"OfficeID\":\"Cairo\",\r\n    \"Birthdate\": \"1983-01-13\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/addUser",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"addUser"
+					]
+				},
+				"description": "Добавляет нового пользователя. Обрати внимание на хедеры, так же в поле **\"OfficeID\" указывается НАЗВАНИЕ офиса а не ID**"
 			},
-			"response": []
+			"response": [
+				{
+					"id": "ed118fcb-dc41-4445-88f0-5b9114a3f5bd",
+					"name": "addUser успех",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Email\":\"someEmail@dot.com\",\r\n    \"Password\": \"Password\",\r\n    \"FirstName\": \"name\",\r\n    \"LastName\": \"lasrname\",\r\n    \"OfficeID\":\"Cairo\",\r\n    \"Birthdate\": \"1983-01-13\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/addUser",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"addUser"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:1000"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 23 Sep 2022 00:31:39 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 23 Sep 2022 00:31:39 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.10"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "laravel_session=eyJpdiI6InJQc01VOXl1R1M4b2JOYXJOMGQ5T0E9PSIsInZhbHVlIjoibnRmcnEvdHB1TVBEdHFNZWw3b0lQNjlVVFdVa2dJL0Jnc2RMWEdlTFZvMElQMXV3Z0tTSkc5a2FGZXZiYlZ3VXRJbFFMUVU2QSs5cUhYSktiQXpVb1k5c2FkcVhMOHNuNmFYRm4zaElndi8rTlUrVjBrVkFvU1VFSVZrLzVmMi8iLCJtYWMiOiI1MTBhOWY3MzU1YzQ4MzYxN2MzODkzNTRlMjViNTBlYTdkZWQ0MjkwMWRmYjU2NjkyM2ZmODgwZjQ4YzM5ZmI3IiwidGFnIjoiIn0%3D; expires=Sat, 01 Oct 2022 08:31:39 GMT; Max-Age=720000; path=/; httponly; samesite=lax"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "[\n    \"ok\"\n]"
+				},
+				{
+					"id": "2fc91dae-5dd3-4b89-8999-e8aab0123591",
+					"name": "addUser неудача",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Email\":\"someEmail@dot.com\",\r\n    \"Password\": \"Password\",\r\n    \"FirstName\": \"name\",\r\n    \"LastName\": \"lasrname\",\r\n    \"OfficeID\":\"Cairo\",\r\n    \"Birthdate\": \"1983-01-13\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/addUser",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"addUser"
+							]
+						}
+					},
+					"status": "Unprocessable Content",
+					"code": 422,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:1000"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 23 Sep 2022 00:32:18 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 23 Sep 2022 00:32:18 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.10"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "laravel_session=eyJpdiI6Im53RkFkL3FFTUlJRkg4bldTbmRoUHc9PSIsInZhbHVlIjoiTFNBZmlYcU5jSW5tZXk0UEQ2WngvU2ljMVI1ZExRaGkrRDBYaGwrYzBzTGtkQ0YxNmVjYW9CWExmRXo4Ynpja2VrVUNST1pncng0clRGb0tiUm9meUF4VWljdGdIelhXS3BEcUt1VWN1Wnl2a3dKcG1YVURBa1RjdU5tYWxoQzMiLCJtYWMiOiI4Zjc0ZTI2MTVjOGUzYzljNTk3NDYyNDgxMTY0Y2MyNzI2MGNkNGZhZTRlYzgzM2NlZmEwYTVhOTkxN2FiMmI1IiwidGFnIjoiIn0%3D; expires=Sat, 01 Oct 2022 08:32:18 GMT; Max-Age=720000; path=/; httponly; samesite=lax"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "{\n    \"message\": \"The email has already been taken.\",\n    \"errors\": {\n        \"Email\": [\n            \"The email has already been taken.\"\n        ]\n    }\n}"
+				}
+			]
 		},
 		{
 			"name": "changeUserRole",
@@ -454,9 +891,111 @@
 			},
 			"request": {
 				"method": "POST",
-				"header": []
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "m.osteen@amonic.com",
+							"type": "text"
+						},
+						{
+							"key": "role",
+							"value": "User",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/changeUserRole",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"changeUserRole"
+					]
+				},
+				"description": "Меняет заданному пользователю роль на переданную в запросе"
 			},
-			"response": []
+			"response": [
+				{
+					"id": "b20b0f5c-c190-409d-9f9b-9d27222e7875",
+					"name": "changeUserRole успех",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "m.osteen@amonic.com",
+									"type": "text"
+								},
+								{
+									"key": "role",
+									"value": "User",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/changeUserRole",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"changeUserRole"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 23 Sep 2022 00:36:04 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 23 Sep 2022 00:36:04 GMT"
+						},
+						{
+							"key": "Host",
+							"value": "0ec3-188-66-38-95.eu.ngrok.io"
+						},
+						{
+							"key": "Ngrok-Trace-Id",
+							"value": "76325ae9456bee1ecc199b125d77730e"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "laravel_session=eyJpdiI6IkppMFpIMUI1ODQyU2Z1d0ZaUytDeUE9PSIsInZhbHVlIjoiaWV5NnJCUVE5QnI0OHR6Nm5yVDk4ZXVHZnBidTZWKzZOaEJYNjJadC9WTDFEOWZZWGhuaEtldnVxbXhWNVF1Q1pGL2Y1ZVRZaG9yMkRLSjIvY2cvRG5nanhNN01mYms5ODNLWXVRSU80aXR1VGVTN3hIQUUyK1BaWktNejVKLzYiLCJtYWMiOiI4MGYzZGI0YzRlODhhZTFhMjMxMDM5NzAwNzhhODdjYjlhZTNkMjdiZTEzMmFjYTZjMTFjMzFmOTExZmU5YmYzIiwidGFnIjoiIn0%3D; expires=Sat, 01 Oct 2022 08:36:04 GMT; Max-Age=720000; path=/; httponly; samesite=lax"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.10"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "[]"
+				}
+			]
 		},
 		{
 			"name": "getUsersByOffice",
@@ -466,9 +1005,157 @@
 			},
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/getUsersByOffice?offices=Cairo",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"getUsersByOffice"
+					],
+					"query": [
+						{
+							"key": "offices",
+							"value": "Cairo"
+						}
+					]
+				},
+				"description": "Получить данные пользователей, принадлежащих определенному офису, для того что бы получить всех пользователей передать all"
 			},
-			"response": []
+			"response": [
+				{
+					"id": "7c3144c1-0777-4509-8de0-71ec0947f72c",
+					"name": "getUsersByOffice для всех пользователей",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/getUsersByOffice?offices=all",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"getUsersByOffice"
+							],
+							"query": [
+								{
+									"key": "offices",
+									"value": "all",
+									"type": "text"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 23 Sep 2022 00:36:59 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 23 Sep 2022 00:36:59 GMT"
+						},
+						{
+							"key": "Host",
+							"value": "0ec3-188-66-38-95.eu.ngrok.io"
+						},
+						{
+							"key": "Ngrok-Trace-Id",
+							"value": "97b91f094097e568f2e1e7c04a1b31fe"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "laravel_session=eyJpdiI6ImYxRVkwVUo1YzNIdjlXaitDcWZManc9PSIsInZhbHVlIjoicVlDZTBpdDMwSGdpWU8ydVJJSHd4bHhxZ2ZEL09XeW5IeHhvR2xldDYzWUhNMlo1SzJWZDQ0NzlvelVYYzNWTUNtUmFXL1hoSjlkM0lBOVFTaG1kVmRNcXZnVDRmV01iY2pWQW4xajZNL1ZXWnJZNk5rc2gzaU9Pc281MzdncXQiLCJtYWMiOiIzMzEyMGFkZmU1MGFjNjgwZjY1ZDJmMGVmMTgyNWI0NTBhOTNiMjhkZTE4MjRlNTAyNzNkMmJlOWJlMzM2NzIyIiwidGFnIjoiIn0%3D; expires=Sat, 01 Oct 2022 08:36:59 GMT; Max-Age=720000; path=/; httponly; samesite=lax"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.10"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "[\n    {\n        \"name\": \"John\",\n        \"lastName\": \"Doe\",\n        \"age\": 39,\n        \"role\": \"Administrator\",\n        \"email\": \"j.doe@amonic.com\",\n        \"office\": \"Abu dhabi\",\n        \"active\": 1\n    },\n    {\n        \"name\": \"Karim\",\n        \"lastName\": \"Omar\",\n        \"age\": 42,\n        \"role\": \"User\",\n        \"email\": \"k.omar@amonic.com\",\n        \"office\": \"Abu dhabi\",\n        \"active\": 0\n    },\n    {\n        \"name\": \"Hannan\",\n        \"lastName\": \"Saeed\",\n        \"age\": 32,\n        \"role\": \"User\",\n        \"email\": \"h.saeed@amonic.com\",\n        \"office\": \"Cairo\",\n        \"active\": 1\n    },\n    {\n        \"name\": \"Andrew\",\n        \"lastName\": \"Hobart\",\n        \"age\": 32,\n        \"role\": \"User\",\n        \"email\": \"a.hobart@amonic.com\",\n        \"office\": \"Riyadh\",\n        \"active\": 1\n    },\n    {\n        \"name\": \"Katrin\",\n        \"lastName\": \"Anderson\",\n        \"age\": 29,\n        \"role\": \"User\",\n        \"email\": \"k.anderson@amonic.com\",\n        \"office\": \"Doha\",\n        \"active\": 1\n    },\n    {\n        \"name\": \"Hava\",\n        \"lastName\": \"Wyrick\",\n        \"age\": 34,\n        \"role\": \"User\",\n        \"email\": \"h.wyrick@amonic.com\",\n        \"office\": \"Abu dhabi\",\n        \"active\": 1\n    },\n    {\n        \"name\": \"Marie\",\n        \"lastName\": \"Horn\",\n        \"age\": 41,\n        \"role\": \"User\",\n        \"email\": \"marie.horn@amonic.com\",\n        \"office\": \"Bahrain\",\n        \"active\": 1\n    },\n    {\n        \"name\": \"Milagros\",\n        \"lastName\": \"Osteen\",\n        \"age\": 31,\n        \"role\": \"User\",\n        \"email\": \"m.osteen@amonic.com\",\n        \"office\": \"Abu dhabi\",\n        \"active\": 0\n    },\n    {\n        \"name\": \"FirlstName\",\n        \"lastName\": \"LastName\",\n        \"age\": 39,\n        \"role\": \"User\",\n        \"email\": \"myemail@dot.com\",\n        \"office\": \"Abu dhabi\",\n        \"active\": 1\n    },\n    {\n        \"name\": \"FirlstName\",\n        \"lastName\": \"LastName\",\n        \"age\": 39,\n        \"role\": \"User\",\n        \"email\": \"myemil@dot.com\",\n        \"office\": \"Abu dhabi\",\n        \"active\": 1\n    },\n    {\n        \"name\": \"FirlstName\",\n        \"lastName\": \"LastName\",\n        \"age\": 39,\n        \"role\": \"User\",\n        \"email\": \"mywemil@dot.com\",\n        \"office\": \"Abu dhabi\",\n        \"active\": 1\n    },\n    {\n        \"name\": \"FirlstName\",\n        \"lastName\": \"LastName\",\n        \"age\": 39,\n        \"role\": \"User\",\n        \"email\": \"mywemil@dot.comw\",\n        \"office\": \"Abu dhabi\",\n        \"active\": 1\n    },\n    {\n        \"name\": \"FirlstName\",\n        \"lastName\": \"LastName\",\n        \"age\": 39,\n        \"role\": \"User\",\n        \"email\": \"mywemqwil@dot.comw\",\n        \"office\": \"Abu dhabi\",\n        \"active\": 1\n    },\n    {\n        \"name\": \"name\",\n        \"lastName\": \"lasrname\",\n        \"age\": 39,\n        \"role\": \"User\",\n        \"email\": \"someEmail@dot.com\",\n        \"office\": \"Cairo\",\n        \"active\": 1\n    }\n]"
+				},
+				{
+					"id": "8b222c6a-3b4a-4fc1-9c38-52039143df5d",
+					"name": "getUsersByOffice определенный офис",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/getUsersByOffice?offices=Cairo",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"getUsersByOffice"
+							],
+							"query": [
+								{
+									"key": "offices",
+									"value": "Cairo"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:1000"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 23 Sep 2022 00:38:30 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 23 Sep 2022 00:38:30 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.10"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "laravel_session=eyJpdiI6Ik1tbmY1c2t2VTFZVTFOUHliS2QrMUE9PSIsInZhbHVlIjoiTjdJeUxiTkUzSkZVT0NLN216dmRwR3lySnhobVd0eGZ4ZFh2RFhZeWRQYmdrc056NUpTWjhSVE4zSWtuRU94cmpHRmhEZjA4NFdPY2lVa3lQYjRhSkpha2orZXBPcExCUnJwd29RYjkyTVREVEMvOFp0US9UUHF0UFl6SVVCbU4iLCJtYWMiOiJiOTBmYjNhNTk4YjY5NWY0ZDkwZjk5MDdkYWJjNzNhZDRkNDM3OGNhNzg3NjU3YzUyZmY3NDg1OTIwNDNhNWIwIiwidGFnIjoiIn0%3D; expires=Sat, 01 Oct 2022 08:38:30 GMT; Max-Age=720000; path=/; httponly; samesite=lax"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "[\n    {\n        \"name\": \"Hannan\",\n        \"lastName\": \"Saeed\",\n        \"age\": 32,\n        \"role\": \"User\",\n        \"email\": \"h.saeed@amonic.com\",\n        \"office\": \"Cairo\",\n        \"active\": 1\n    },\n    {\n        \"name\": \"name\",\n        \"lastName\": \"lasrname\",\n        \"age\": 39,\n        \"role\": \"User\",\n        \"email\": \"someEmail@dot.com\",\n        \"office\": \"Cairo\",\n        \"active\": 1\n    }\n]"
+				}
+			]
 		},
 		{
 			"name": "getAllRoles",
@@ -478,13 +1165,1553 @@
 			},
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/getAllRoles",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"getAllRoles"
+					]
+				},
+				"description": "Получение названий всех ролей"
 			},
-			"response": []
+			"response": [
+				{
+					"id": "834e616a-66a1-4b02-86f4-c104bdc0c95c",
+					"name": "getAllRoles",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/getAllRoles",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"getAllRoles"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 23 Sep 2022 00:26:56 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 23 Sep 2022 00:26:56 GMT"
+						},
+						{
+							"key": "Host",
+							"value": "0ec3-188-66-38-95.eu.ngrok.io"
+						},
+						{
+							"key": "Ngrok-Trace-Id",
+							"value": "9128e19d555373f7369bbb4bacbfe8a7"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "laravel_session=eyJpdiI6InFFdk1vcTNRTUxxay9iVHZhWTdBM0E9PSIsInZhbHVlIjoiRUd6dEdVMExhdkNQNWVTaVV5K09TemVValhJVlIxTzNQUzJGMlhwcEFhMTl4QnRpRHlyd1dJbi9RTjA3OEFXWGI0ZmRkQThuSkNtUHAyN2IyNjBvLzM5dDhjSUZyN2RzclpaamNDOUdlUUZFUi9MMm8vTldmckF5aGN4Vnd3QWEiLCJtYWMiOiJhNDZiZTkxOWM1M2MxOWI5ZmU2ZTNkNjdiZDFmZmI2MTRhZDdkODM0NTgxOTM5ZWRhYmZhNTdjMTBhNjRjNTgzIiwidGFnIjoiIn0%3D; expires=Sat, 01 Oct 2022 08:26:56 GMT; Max-Age=720000; path=/; httponly; samesite=lax"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.10"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "[\n    \"Administrator\",\n    \"User\"\n]"
+				}
+			]
 		},
 		{
 			"name": "getOffices",
 			"id": "ba6272eb-737a-4e02-aa9f-6d0c3a1ab1d3",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/getOffices",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"getOffices"
+					]
+				},
+				"description": "Получение названий всех офисов"
+			},
+			"response": [
+				{
+					"id": "d6a2f38d-2960-4550-83d5-21d1a4b4da93",
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/getOffices",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"getOffices"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 23 Sep 2022 00:26:51 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 23 Sep 2022 00:26:51 GMT"
+						},
+						{
+							"key": "Host",
+							"value": "0ec3-188-66-38-95.eu.ngrok.io"
+						},
+						{
+							"key": "Ngrok-Trace-Id",
+							"value": "6e7c3e8d5dae9e495ce99b6ad9af0464"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "laravel_session=eyJpdiI6IkplMi9Da3N5dSt1bUxFYkhDVHRBL0E9PSIsInZhbHVlIjoiSDNRNkdlZGtHVWw5NjhpaFU4V25pcVB1MUZ6NEJ3Z1hnbWZWRnByemk5UzhzL0hIY0VmbjJLYkMyRzFwUXNHOGRmYW1sSWFrQUYralhPTTNKbDhJR1gwYmk5QUpQQ1lLVWRJbTl2aEpyZTJWOE15Ni8wdmgyNGdzUmVTQkRSKzEiLCJtYWMiOiIwNTUyNDM4YWY2ZWUwZTFlNjc1ZGYwMzY4YzllYTdhMWRmM2JjOTY5Y2IxOWEzNjg5YTQwODFiMWQzZDBjZTY3IiwidGFnIjoiIn0%3D; expires=Sat, 01 Oct 2022 08:26:51 GMT; Max-Age=720000; path=/; httponly; samesite=lax"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.10"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "[\n    \"Abu dhabi\",\n    \"Cairo\",\n    \"Bahrain\",\n    \"Doha\",\n    \"Riyadh\"\n]"
+				}
+			]
+		},
+		{
+			"name": "getAirportsCodes",
+			"id": "f2da53a2-c798-467f-9057-15b37d107962",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "avatar",
+							"type": "file",
+							"value": null,
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/getAirportsCodes",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"getAirportsCodes"
+					]
+				},
+				"description": "Получение всех кодов аэропортов"
+			},
+			"response": [
+				{
+					"id": "17d9d0f0-10bd-4b24-a1a0-4748edd507f4",
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": "/C:/Users/Yaroslam/Downloads/Schedules_V12.csv"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/getAirportsCodes",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"getAirportsCodes"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 23 Sep 2022 00:40:27 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 23 Sep 2022 00:40:27 GMT"
+						},
+						{
+							"key": "Host",
+							"value": "0ec3-188-66-38-95.eu.ngrok.io"
+						},
+						{
+							"key": "Ngrok-Trace-Id",
+							"value": "25d3041fccd9ba8d4b1ef0d6726213e0"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "laravel_session=eyJpdiI6IlprMzBTbmQ3dmJpZ244MU9FSjZGUEE9PSIsInZhbHVlIjoiN0Z2WlZXTWpZMmhpZXVYMkFidWpzMFZjWmRVTm5DS0RBVlRWSUJMOTg5NHNleW4vOU1sWXhsMkxKZmJIREtUU1lDVXZZaWNzVldRMTUyemxzRmlHdzhralNIMWd2SUNKM01IWGloR01nUitNdzZnUjVDWnc3MFhxYjJ5MjRGa2EiLCJtYWMiOiJjNzZhMzEwNTlmZjhiNDhmOTc1ZmY4YzZjODk3YTZkYTI5Y2Y0NzNjODA2YTRjZGNiNDc5OWIyNDg2MDU1MWM5IiwidGFnIjoiIn0%3D; expires=Sat, 01 Oct 2022 08:40:27 GMT; Max-Age=720000; path=/; httponly; samesite=lax"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.10"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "[\n    \"AUH\",\n    \"CAI\",\n    \"BAH\",\n    \"ADE\",\n    \"DOH\",\n    \"RUH\"\n]"
+				}
+			]
+		},
+		{
+			"name": "getSchedule",
+			"id": "58d7b943-d14a-48ad-9508-985105488384",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/getSchedule?from=AUH&to=BAH&outbound=&flight=&sort=Confirmed",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"getSchedule"
+					],
+					"query": [
+						{
+							"key": "from",
+							"value": "AUH"
+						},
+						{
+							"key": "to",
+							"value": "BAH"
+						},
+						{
+							"key": "outbound",
+							"value": ""
+						},
+						{
+							"key": "flight",
+							"value": ""
+						},
+						{
+							"key": "sort",
+							"value": "Confirmed"
+						}
+					]
+				},
+				"description": "Принимает на вход параметры _'from' 'to' \"outbound\" 'flight' 'sort'._ Все они необязательны, и в случае если ни один параметр не указан, то в ответе будут все рейсы, отсортированные по дате и времени. Параметры from (откуда) и to (куда) - трехбуквенные коды аэропортов, Outbound - дата отбытия (см пример с указанием параметров). Sort - параметр сортировки, может принимать несколько значений.\n\nНе указан или пустой - сортировка по дате и времени\n\nConfirmed - сортировка по отмененным и неотмененным рейсам\n\nEconomyPrice - сортировка по цене билета"
+			},
+			"response": [
+				{
+					"id": "6b40a032-5d2f-4883-adca-f28650ad1d2a",
+					"name": "с указанием параметров",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/getSchedule?from=AUH&to=BAH&outbound=2010-10-04&flight=&sort=",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"getSchedule"
+							],
+							"query": [
+								{
+									"key": "from",
+									"value": "AUH"
+								},
+								{
+									"key": "to",
+									"value": "BAH"
+								},
+								{
+									"key": "outbound",
+									"value": "2010-10-04"
+								},
+								{
+									"key": "flight",
+									"value": ""
+								},
+								{
+									"key": "sort",
+									"value": ""
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:1000"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 23 Sep 2022 00:45:41 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 23 Sep 2022 00:45:41 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.10"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "laravel_session=eyJpdiI6IlUzUTFIaEZYc0EyYzFFYnVPYm5hSFE9PSIsInZhbHVlIjoiMElqay9HS084dHdFZWlvRnpZVWxncVBYRzhxTFEzVllaUHloUTFUQ3R1WkRnYThFdzV3S2E3cENHUVdMUGxKb0gvSjUzcTN4Z21WOU9KUDFBK2x6NkVydkZWeUhYUm1tMGZNVzl0eHVkVGpEL2d6MmpNNnNBQ0hVWGN6dFMrUWciLCJtYWMiOiJkMGRhMTE0YjcwZjdlYmY2OGNhMmZiMzQ2MWUwNTA5YTk5OGJkODk5ZGQyYzQwZDA1YTg1ODUwYmM5MDRiYjFmIiwidGFnIjoiIn0%3D; expires=Sat, 01 Oct 2022 08:45:41 GMT; Max-Age=720000; path=/; httponly; samesite=lax"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "[\n    {\n        \"ID\": 1,\n        \"Date\": \"2010-10-04\",\n        \"Time\": \"17:00:00\",\n        \"AircraftID\": 1,\n        \"RouteID\": 1,\n        \"EconomyPrice\": 620,\n        \"Confirmed\": 1,\n        \"FlightNumber\": \"49\",\n        \"aircraft\": \"Boeing 738\",\n        \"to\": \"BAH\",\n        \"from\": \"AUH\",\n        \"businessClass\": 837,\n        \"firstClass\": 806\n    }\n]"
+				},
+				{
+					"id": "fec809c8-e54b-4f25-89ef-94306b3906ea",
+					"name": "с сортировкой",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/getSchedule?from=AUH&to=BAH&outbound=&flight=&sort=EconomyPrice",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"getSchedule"
+							],
+							"query": [
+								{
+									"key": "from",
+									"value": "AUH"
+								},
+								{
+									"key": "to",
+									"value": "BAH"
+								},
+								{
+									"key": "outbound",
+									"value": ""
+								},
+								{
+									"key": "flight",
+									"value": ""
+								},
+								{
+									"key": "sort",
+									"value": "EconomyPrice"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:1000"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 23 Sep 2022 00:47:39 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 23 Sep 2022 00:47:39 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.10"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "laravel_session=eyJpdiI6InB3ZjZmU3Y1d1dVYnhkdld5QVAzUlE9PSIsInZhbHVlIjoiQll4Qmc1bk9iU1N1KzlFZmpoVTloSkJJakFrVnBWakVvZ2FtY2NVczFsU3RpYXovZFNtQk10dE05M0V5ZGx3MlVKWTQ3bU5ZUyt2dmViVGRhaWtXSjhKMFpsZDdlbWY2QkhZeXg5MEtKQTdoVWVHVFZERUh0WlMwS1p3cmViblMiLCJtYWMiOiJhYWE4ZmJiMmE1MGVhN2RhYWFlYTRhY2I1YzU3M2RkMjcyZGIyMTgyYzJjZTY0YWFiYTVmN2I1ODE2OTlkN2M5IiwidGFnIjoiIn0%3D; expires=Sat, 01 Oct 2022 08:47:39 GMT; Max-Age=720000; path=/; httponly; samesite=lax"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "[\n    {\n        \"ID\": 47,\n        \"Date\": \"2017-10-27\",\n        \"Time\": \"17:00:00\",\n        \"AircraftID\": 1,\n        \"RouteID\": 1,\n        \"EconomyPrice\": 406,\n        \"Confirmed\": 1,\n        \"FlightNumber\": \"49\",\n        \"aircraft\": \"Boeing 738\",\n        \"to\": \"BAH\",\n        \"from\": \"AUH\",\n        \"businessClass\": 548,\n        \"firstClass\": 527\n    },\n    {\n        \"ID\": 25,\n        \"Date\": \"2017-10-16\",\n        \"Time\": \"17:00:00\",\n        \"AircraftID\": 1,\n        \"RouteID\": 1,\n        \"EconomyPrice\": 417,\n        \"Confirmed\": 1,\n        \"FlightNumber\": \"49\",\n        \"aircraft\": \"Boeing 738\",\n        \"to\": \"BAH\",\n        \"from\": \"AUH\",\n        \"businessClass\": 562,\n        \"firstClass\": 542\n    },\n    {\n        \"ID\": 15,\n        \"Date\": \"2017-10-11\",\n        \"Time\": \"17:00:00\",\n        \"AircraftID\": 1,\n        \"RouteID\": 1,\n        \"EconomyPrice\": 421,\n        \"Confirmed\": 1,\n        \"FlightNumber\": \"49\",\n        \"aircraft\": \"Boeing 738\",\n        \"to\": \"BAH\",\n        \"from\": \"AUH\",\n        \"businessClass\": 568,\n        \"firstClass\": 547\n    },\n    {\n        \"ID\": 21,\n        \"Date\": \"2017-10-14\",\n        \"Time\": \"17:00:00\",\n        \"AircraftID\": 1,\n        \"RouteID\": 1,\n        \"EconomyPrice\": 437,\n        \"Confirmed\": 1,\n        \"FlightNumber\": \"49\",\n        \"aircraft\": \"Boeing 738\",\n        \"to\": \"BAH\",\n        \"from\": \"AUH\",\n        \"businessClass\": 589,\n        \"firstClass\": 568\n    },\n    {\n        \"ID\": 3,\n        \"Date\": \"2017-10-05\",\n        \"Time\": \"17:00:00\",\n        \"AircraftID\": 1,\n        \"RouteID\": 1,\n        \"EconomyPrice\": 448,\n        \"Confirmed\": 1,\n        \"FlightNumber\": \"49\",\n        \"aircraft\": \"Boeing 738\",\n        \"to\": \"BAH\",\n        \"from\": \"AUH\",\n        \"businessClass\": 604,\n        \"firstClass\": 582\n    },\n    {\n        \"ID\": 7,\n        \"Date\": \"2017-10-07\",\n        \"Time\": \"17:00:00\",\n        \"AircraftID\": 1,\n        \"RouteID\": 1,\n        \"EconomyPrice\": 449,\n        \"Confirmed\": 1,\n        \"FlightNumber\": \"49\",\n        \"aircraft\": \"Boeing 738\",\n        \"to\": \"BAH\",\n        \"from\": \"AUH\",\n        \"businessClass\": 606,\n        \"firstClass\": 583\n    },\n    {\n        \"ID\": 37,\n        \"Date\": \"2017-10-22\",\n        \"Time\": \"17:00:00\",\n        \"AircraftID\": 1,\n        \"RouteID\": 1,\n        \"EconomyPrice\": 453,\n        \"Confirmed\": 1,\n        \"FlightNumber\": \"49\",\n        \"aircraft\": \"Boeing 738\",\n        \"to\": \"BAH\",\n        \"from\": \"AUH\",\n        \"businessClass\": 611,\n        \"firstClass\": 588\n    },\n    {\n        \"ID\": 27,\n        \"Date\": \"2017-10-17\",\n        \"Time\": \"17:00:00\",\n        \"AircraftID\": 1,\n        \"RouteID\": 1,\n        \"EconomyPrice\": 458,\n        \"Confirmed\": 1,\n        \"FlightNumber\": \"49\",\n        \"aircraft\": \"Boeing 738\",\n        \"to\": \"BAH\",\n        \"from\": \"AUH\",\n        \"businessClass\": 618,\n        \"firstClass\": 595\n    },\n    {\n        \"ID\": 19,\n        \"Date\": \"2017-10-13\",\n        \"Time\": \"17:00:00\",\n        \"AircraftID\": 1,\n        \"RouteID\": 1,\n        \"EconomyPrice\": 464,\n        \"Confirmed\": 1,\n        \"FlightNumber\": \"49\",\n        \"aircraft\": \"Boeing 738\",\n        \"to\": \"BAH\",\n        \"from\": \"AUH\",\n        \"businessClass\": 626,\n        \"firstClass\": 603\n    },\n    {\n        \"ID\": 35,\n        \"Date\": \"2017-10-21\",\n        \"Time\": \"17:00:00\",\n        \"AircraftID\": 1,\n        \"RouteID\": 1,\n        \"EconomyPrice\": 480,\n        \"Confirmed\": 1,\n        \"FlightNumber\": \"49\",\n        \"aircraft\": \"Boeing 738\",\n        \"to\": \"BAH\",\n        \"from\": \"AUH\",\n        \"businessClass\": 648,\n        \"firstClass\": 624\n    },\n    {\n        \"ID\": 31,\n        \"Date\": \"2017-10-19\",\n        \"Time\": \"17:00:00\",\n        \"AircraftID\": 1,\n        \"RouteID\": 1,\n        \"EconomyPrice\": 482,\n        \"Confirmed\": 1,\n        \"FlightNumber\": \"49\",\n        \"aircraft\": \"Boeing 738\",\n        \"to\": \"BAH\",\n        \"from\": \"AUH\",\n        \"businessClass\": 650,\n        \"firstClass\": 626\n    },\n    {\n        \"ID\": 17,\n        \"Date\": \"2017-10-12\",\n        \"Time\": \"17:00:00\",\n        \"AircraftID\": 1,\n        \"RouteID\": 1,\n        \"EconomyPrice\": 484,\n        \"Confirmed\": 1,\n        \"FlightNumber\": \"49\",\n        \"aircraft\": \"Boeing 738\",\n        \"to\": \"BAH\",\n        \"from\": \"AUH\",\n        \"businessClass\": 653,\n        \"firstClass\": 629\n    },\n    {\n        \"ID\": 9,\n        \"Date\": \"2017-10-08\",\n        \"Time\": \"17:00:00\",\n        \"AircraftID\": 1,\n        \"RouteID\": 1,\n        \"EconomyPrice\": 494,\n        \"Confirmed\": 1,\n        \"FlightNumber\": \"49\",\n        \"aircraft\": \"Boeing 738\",\n        \"to\": \"BAH\",\n        \"from\": \"AUH\",\n        \"businessClass\": 666,\n        \"firstClass\": 642\n    },\n    {\n        \"ID\": 45,\n        \"Date\": \"2017-10-26\",\n        \"Time\": \"17:00:00\",\n        \"AircraftID\": 1,\n        \"RouteID\": 1,\n        \"EconomyPrice\": 494,\n        \"Confirmed\": 1,\n        \"FlightNumber\": \"49\",\n        \"aircraft\": \"Boeing 738\",\n        \"to\": \"BAH\",\n        \"from\": \"AUH\",\n        \"businessClass\": 666,\n        \"firstClass\": 642\n    },\n    {\n        \"ID\": 39,\n        \"Date\": \"2017-10-23\",\n        \"Time\": \"17:00:00\",\n        \"AircraftID\": 1,\n        \"RouteID\": 1,\n        \"EconomyPrice\": 537,\n        \"Confirmed\": 1,\n        \"FlightNumber\": \"49\",\n        \"aircraft\": \"Boeing 738\",\n        \"to\": \"BAH\",\n        \"from\": \"AUH\",\n        \"businessClass\": 724,\n        \"firstClass\": 698\n    },\n    {\n        \"ID\": 49,\n        \"Date\": \"2017-10-28\",\n        \"Time\": \"17:00:00\",\n        \"AircraftID\": 1,\n        \"RouteID\": 1,\n        \"EconomyPrice\": 537,\n        \"Confirmed\": 1,\n        \"FlightNumber\": \"49\",\n        \"aircraft\": \"Boeing 738\",\n        \"to\": \"BAH\",\n        \"from\": \"AUH\",\n        \"businessClass\": 724,\n        \"firstClass\": 698\n    },\n    {\n        \"ID\": 43,\n        \"Date\": \"2017-10-25\",\n        \"Time\": \"17:00:00\",\n        \"AircraftID\": 1,\n        \"RouteID\": 1,\n        \"EconomyPrice\": 544,\n        \"Confirmed\": 1,\n        \"FlightNumber\": \"49\",\n        \"aircraft\": \"Boeing 738\",\n        \"to\": \"BAH\",\n        \"from\": \"AUH\",\n        \"businessClass\": 734,\n        \"firstClass\": 707\n    },\n    {\n        \"ID\": 41,\n        \"Date\": \"2017-10-24\",\n        \"Time\": \"17:00:00\",\n        \"AircraftID\": 1,\n        \"RouteID\": 1,\n        \"EconomyPrice\": 571,\n        \"Confirmed\": 1,\n        \"FlightNumber\": \"49\",\n        \"aircraft\": \"Boeing 738\",\n        \"to\": \"BAH\",\n        \"from\": \"AUH\",\n        \"businessClass\": 770,\n        \"firstClass\": 742\n    },\n    {\n        \"ID\": 1,\n        \"Date\": \"2010-10-04\",\n        \"Time\": \"17:00:00\",\n        \"AircraftID\": 1,\n        \"RouteID\": 1,\n        \"EconomyPrice\": 620,\n        \"Confirmed\": 1,\n        \"FlightNumber\": \"49\",\n        \"aircraft\": \"Boeing 738\",\n        \"to\": \"BAH\",\n        \"from\": \"AUH\",\n        \"businessClass\": 837,\n        \"firstClass\": 806\n    },\n    {\n        \"ID\": 33,\n        \"Date\": \"2017-10-20\",\n        \"Time\": \"17:00:00\",\n        \"AircraftID\": 1,\n        \"RouteID\": 1,\n        \"EconomyPrice\": 620,\n        \"Confirmed\": 1,\n        \"FlightNumber\": \"49\",\n        \"aircraft\": \"Boeing 738\",\n        \"to\": \"BAH\",\n        \"from\": \"AUH\",\n        \"businessClass\": 837,\n        \"firstClass\": 806\n    },\n    {\n        \"ID\": 11,\n        \"Date\": \"2017-10-09\",\n        \"Time\": \"17:00:00\",\n        \"AircraftID\": 1,\n        \"RouteID\": 1,\n        \"EconomyPrice\": 627,\n        \"Confirmed\": 1,\n        \"FlightNumber\": \"49\",\n        \"aircraft\": \"Boeing 738\",\n        \"to\": \"BAH\",\n        \"from\": \"AUH\",\n        \"businessClass\": 846,\n        \"firstClass\": 815\n    },\n    {\n        \"ID\": 13,\n        \"Date\": \"2017-10-10\",\n        \"Time\": \"17:00:00\",\n        \"AircraftID\": 1,\n        \"RouteID\": 1,\n        \"EconomyPrice\": 637,\n        \"Confirmed\": 1,\n        \"FlightNumber\": \"49\",\n        \"aircraft\": \"Boeing 738\",\n        \"to\": \"BAH\",\n        \"from\": \"AUH\",\n        \"businessClass\": 859,\n        \"firstClass\": 828\n    },\n    {\n        \"ID\": 29,\n        \"Date\": \"2017-10-18\",\n        \"Time\": \"17:00:00\",\n        \"AircraftID\": 1,\n        \"RouteID\": 1,\n        \"EconomyPrice\": 686,\n        \"Confirmed\": 1,\n        \"FlightNumber\": \"49\",\n        \"aircraft\": \"Boeing 738\",\n        \"to\": \"BAH\",\n        \"from\": \"AUH\",\n        \"businessClass\": 926,\n        \"firstClass\": 891\n    },\n    {\n        \"ID\": 5,\n        \"Date\": \"2017-10-06\",\n        \"Time\": \"17:00:00\",\n        \"AircraftID\": 1,\n        \"RouteID\": 1,\n        \"EconomyPrice\": 697,\n        \"Confirmed\": 1,\n        \"FlightNumber\": \"49\",\n        \"aircraft\": \"Boeing 738\",\n        \"to\": \"BAH\",\n        \"from\": \"AUH\",\n        \"businessClass\": 940,\n        \"firstClass\": 906\n    },\n    {\n        \"ID\": 23,\n        \"Date\": \"2017-10-15\",\n        \"Time\": \"17:00:00\",\n        \"AircraftID\": 1,\n        \"RouteID\": 1,\n        \"EconomyPrice\": 699,\n        \"Confirmed\": 1,\n        \"FlightNumber\": \"49\",\n        \"aircraft\": \"Boeing 738\",\n        \"to\": \"BAH\",\n        \"from\": \"AUH\",\n        \"businessClass\": 943,\n        \"firstClass\": 908\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "changeFlightConfirm",
+			"id": "7c08bdc4-d4ae-4892-9c64-8fccad216648",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/changeFlightConfirm",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"changeFlightConfirm"
+					]
+				},
+				"description": "Меняет статус подтверждения полета на противоположный"
+			},
+			"response": [
+				{
+					"id": "e06d4c69-6ea5-488f-8748-cb9b9c2bd39d",
+					"name": "changeFlightConfirm",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/changeFlightConfirm",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"changeFlightConfirm"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html; charset=UTF-8"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 23 Sep 2022 00:59:57 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 23 Sep 2022 00:59:57 GMT"
+						},
+						{
+							"key": "Host",
+							"value": "0ec3-188-66-38-95.eu.ngrok.io"
+						},
+						{
+							"key": "Ngrok-Trace-Id",
+							"value": "fbcd9f2d331f694474baa3274cec4237"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "laravel_session=eyJpdiI6IjNObXJwUkVJM01GMVNGbGN3Tk1CSFE9PSIsInZhbHVlIjoiaWE0aHQ3ODNrbUJnTEw3cGFTVURLejJ4UGxObzV1WGdPZFBhN2o3OHRZRVh6QkRVR3Y1Tzh3bVdvSk9hMHZIbFFLcjVlMVAyY1JoSnZIbEdya1lHTnpES0czenZyNFFJczArWkNjK29YbGdNL1lhb2lHMXppWWprTUwxOFdUSHkiLCJtYWMiOiJiYWY5NGI2NjdkNDZmZmJjYmI2ODU3M2JhNTQzODYxMWVlMmE0NTQxYjhjOTQzNDE0YjI4NTExYTUwOGU4NzU3IiwidGFnIjoiIn0%3D; expires=Sat, 01 Oct 2022 08:59:57 GMT; Max-Age=720000; path=/; httponly; samesite=lax"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.10"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "updateFlight",
+			"id": "841d2efb-0961-4526-af2d-e1e932599d95",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "date",
+							"value": "1983-01-18",
+							"type": "text"
+						},
+						{
+							"key": "time",
+							"value": "12:00",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "1488",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/updateFlight",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"updateFlight"
+					]
+				},
+				"description": "Обновляет данные о полете"
+			},
+			"response": [
+				{
+					"id": "49261865-8e96-46c8-8765-d8240ea55fae",
+					"name": "updateFlight",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "date",
+									"value": "1983-01-13",
+									"type": "text"
+								},
+								{
+									"key": "time",
+									"value": "12:00",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "1488",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/updateFlight",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"updateFlight"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 23 Sep 2022 01:02:42 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 23 Sep 2022 01:02:42 GMT"
+						},
+						{
+							"key": "Host",
+							"value": "0ec3-188-66-38-95.eu.ngrok.io"
+						},
+						{
+							"key": "Ngrok-Trace-Id",
+							"value": "f2c2dfd503d1744368ef5226eb0c7be1"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "laravel_session=eyJpdiI6IkwrbUl1WVJvNDNEZXltZytFelI3ZHc9PSIsInZhbHVlIjoiTHlKRENadEFkaSt3cW1oODVaZi9Zd0J5ZWxRTFVVUFpEYVpUOC9YQW5RaC9YQVFYbFlvVC9RaG1hYXYrRW5wcnNud3JiZ29INk9ZNnp4dmxLaExQd0E4T2puaGExOUNxMWQ1YmRYd2NvM01FenNSd21mODhsY080dWR3TUlkZk4iLCJtYWMiOiJlNzQwZGY5ODRjYzQ2MzhmNzA3N2JhNjcwM2E3ODYzMjcwOTk2M2MyNDgzYmFhZjA0NWU0NzQ0ODllYTY3Zjc2IiwidGFnIjoiIn0%3D; expires=Sat, 01 Oct 2022 09:02:42 GMT; Max-Age=720000; path=/; httponly; samesite=lax"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.10"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "[\n    {\n        \"ID\": 1,\n        \"Date\": \"1983-01-13\",\n        \"Time\": \"12:00:00\",\n        \"AircraftID\": 1,\n        \"RouteID\": 1,\n        \"EconomyPrice\": 1488,\n        \"Confirmed\": 0,\n        \"FlightNumber\": \"49\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "loadFromFile",
+			"id": "c916d653-7cc1-4261-ae80-b0796ad8483b",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"action\": \"ADD\",\r\n    \"date\": \"2017-10-04\",\r\n    \"time\": \"6:25\",\r\n    \"flight\": 75,\r\n    \"from\": \"AUH\",\r\n    \"to\": \"RUH\",\r\n    \"aircraft\":1,\r\n    \"price\": 983,\r\n    \"status\": \"CANCELED\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/loadFromFile",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"loadFromFile"
+					]
+				},
+				"description": "Добавление/редактирование записей полетов с помощью файла. Файл парсишь на своей стороне, мне отсылаешь строки из файла. При удачном обновлении/добавлении - 200 код и 1. При неудачном добавлении - 200 код и 0. При неудачном обновлении - код 200 и -1. Во всех остальных случаях - код 400 и сообщение об ошибке.\n\n**При парсинге обрати внимание, что столбец с ценой имеет записи вида 280.00, 329.00 и т.д. необходимо откидывать три последних знака(точку и два нуля) и делать преобразование к типу int.**"
+			},
+			"response": [
+				{
+					"id": "4ada51bd-8af6-4bc3-bbe7-510f3db7d421",
+					"name": "loadFromFile удачное обновление",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"action\": \"EDIT\",\r\n    \"date\": \"2017-10-04\",\r\n    \"time\": \"06:25\",\r\n    \"flight\": 75,\r\n    \"from\": \"AUH\",\r\n    \"to\": \"RUH\",\r\n    \"aircraft\":1,\r\n    \"price\": 123131321321,\r\n    \"status\": \"CANCELED\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/loadFromFile",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"loadFromFile"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 24 Sep 2022 19:23:37 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 24 Sep 2022 19:23:37 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.10"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html; charset=UTF-8"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "laravel_session=eyJpdiI6IlUyaTJRRThYeFBBYlhEcklmL3E2SFE9PSIsInZhbHVlIjoiRDdPMUJndmY1WlBwZ01VbFRlSXZTNzg1bG9hRWxlN2EvYjFzTnBrRm5FdDg1SHVoYTJ3aUVjbVVVdVR6RS9QdHZBdFMyL3d3Nlo3L09yQjVabjBhTDYwMFUvRkdiaGRldEllZFhJeWtqWno4Q2lEMXd2NGZORkxOeXlnQU10a2MiLCJtYWMiOiIxNDBhMGUyY2IzNDVkOWJkMTAyN2E3NWFmNjQ3MDg0MGY4NDVhMTFhOWVmZjQ4YzU4OGY3YWMyZWZjYmIzZTQyIiwidGFnIjoiIn0%3D; expires=Mon, 03 Oct 2022 03:23:37 GMT; Max-Age=720000; path=/; httponly; samesite=lax"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "1"
+				},
+				{
+					"id": "3bca6be5-3388-4842-ab55-19168083b5cd",
+					"name": "loadFromFile удачное добавление",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"action\": \"ADD\",\r\n    \"date\": \"2017-10-04\",\r\n    \"time\": \"06:25\",\r\n    \"flight\": 75334,\r\n    \"from\": \"AUH\",\r\n    \"to\": \"RUH\",\r\n    \"aircraft\":1,\r\n    \"price\": 123131321321,\r\n    \"status\": \"CANCELED\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/loadFromFile",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"loadFromFile"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 24 Sep 2022 19:25:52 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 24 Sep 2022 19:25:52 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.10"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html; charset=UTF-8"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "laravel_session=eyJpdiI6ImpOZmtPNmpNNGJDL2hnN3RvNTBhS2c9PSIsInZhbHVlIjoidG93Q1E0VkFKZVp3N3BMcU9XbXJ3YXYvZUhUN2Y4ZGdtc1FTcTZzaWpYZ05GK0dOR202VTQ5ZisrU3VWS0x4VjJiNlY3Z0hDWHc1YThrOHc0cXFDNk96N0VNTXA2alZ6bTN5eEVlRGlxUWZlY0hyYWpYZCsrYmFCT3poME5mQ2wiLCJtYWMiOiI3YTE5YjQ5ZWJlMjkwYzkzODQ4ZmM5NWE4NDBmNGFhZjU5ZmQyZTM4MjlhZTE1NTRhMGQ4NTFlZjg5OTQ0OTM4IiwidGFnIjoiIn0%3D; expires=Mon, 03 Oct 2022 03:25:52 GMT; Max-Age=720000; path=/; httponly; samesite=lax"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "1"
+				},
+				{
+					"id": "9396e308-a985-4286-a32d-2f6069d0dc01",
+					"name": "loadFromFile неудачное добавление",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"action\": \"ADD\",\r\n    \"date\": \"2017-10-04\",\r\n    \"time\": \"06:25\",\r\n    \"flight\": 75334,\r\n    \"from\": \"AUH\",\r\n    \"to\": \"RUH\",\r\n    \"aircraft\":1,\r\n    \"price\": 123131321321,\r\n    \"status\": \"CANCELED\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/loadFromFile",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"loadFromFile"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 24 Sep 2022 19:26:11 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 24 Sep 2022 19:26:11 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.10"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html; charset=UTF-8"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "laravel_session=eyJpdiI6IktVdzdQMEZjdnBkT3oydVRORDFWckE9PSIsInZhbHVlIjoicGhsS2pFV3ZSa0dyY09sek5rYVhLdEwwT3JHZlRveHZpTjNLZkd6ZDVpL2JCRXhqdnplUnczS01qeXpOeWo2cFBoM0hwY0NqbGRUYUY3Ti9lWVpaSFErS09mZXdhOE05ZXVsem8yUnp1NGgwRkhJT0hybGlYL1hyZU1tU0JRV2siLCJtYWMiOiI4ZmVhZTdhMjg1Y2ExYzFlNGRjNTVmZTEwZDczYWVjZGQ3OGIwMjc0ZGYzZWEwMmQxNjhmOTVhZmZlOWZlOWIwIiwidGFnIjoiIn0%3D; expires=Mon, 03 Oct 2022 03:26:11 GMT; Max-Age=720000; path=/; httponly; samesite=lax"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "0"
+				},
+				{
+					"id": "e87247e5-3ad5-4381-ba17-1fc61f595769",
+					"name": "loadFromFile неудачное обновление",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"action\": \"EDIT\",\r\n    \"date\": \"2017-10-04\",\r\n    \"time\": \"06:25\",\r\n    \"flight\": 7533224,\r\n    \"from\": \"AUH\",\r\n    \"to\": \"RUH\",\r\n    \"aircraft\":1,\r\n    \"price\": 123131321321,\r\n    \"status\": \"CANCELED\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/loadFromFile",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"loadFromFile"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 24 Sep 2022 19:27:55 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 24 Sep 2022 19:27:55 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.10"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html; charset=UTF-8"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "laravel_session=eyJpdiI6ImtIb2kxU2swRkV2OVIvUEdSaEN5WWc9PSIsInZhbHVlIjoib1NjdlhwOFBwRy9Pb3lFenJvVWFiOEoybi9EK01Rd0svOERrSUx6YzVHRjV2WWVraXAwajF1K3hIbjlzaS9MdWR3MmJVSDZyV1ZjL09lV0VYREV6VlJ4SHdGTlJBUmNhOFRRbHRNSTRmSTdwRFlLNzVWaUp2T0FuSm1nQzRUaUkiLCJtYWMiOiJjMjYxOWU1MzFmYWFlNTliZDdkYjNjNDgwODkyMzZmNTEwMjNiMTg2NzY5YzYyNGJmNzc3OGE4MTM2MmNiNDUyIiwidGFnIjoiIn0%3D; expires=Mon, 03 Oct 2022 03:27:55 GMT; Max-Age=720000; path=/; httponly; samesite=lax"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "0"
+				}
+			]
+		},
+		{
+			"name": "getCabinTypes",
+			"id": "6ba2fdb8-b44a-481a-9313-7f3e3f64f348",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"description": "Получение всех типов посадок"
+			},
+			"response": [
+				{
+					"id": "775f7cc7-3186-4489-855c-9b67f7ef1e60",
+					"name": "getCabinTypes",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/getCabinTypes",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"getCabinTypes"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 27 Sep 2022 16:26:05 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 27 Sep 2022 16:26:05 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.10"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "laravel_session=eyJpdiI6InVKNWpJRVU3cC90R2R3NUl3clJDK2c9PSIsInZhbHVlIjoibFVaT2QvUmF0THBtZWdFZitRWTNhZy9ld09GMWJlQmVVamVyYW5CTDFXMXFsc0Z5WFYwUTFMMlJuQmdBNXh1RmpWYnlPc2JwUXNlV21UdTlHdnRKdXZBMTcvYTlQVnBTV1hyTTJaYW96enpWMld0eXNmY2p5MnZ5cytPVWlTR2UiLCJtYWMiOiI5MzVhZDRjZWI5MjE3ZmY4YWM0ZTgyMTExYzIzY2VlZGZjYzg5YWI0YTlkZDk4MmExNjA0Y2RjY2JlMjJjYzI5IiwidGFnIjoiIn0%3D; expires=Thu, 06 Oct 2022 00:26:05 GMT; Max-Age=720000; path=/; httponly; samesite=lax"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "[\n    \"Economy\",\n    \"Business\",\n    \"First Class\"\n]"
+				}
+			]
+		},
+		{
+			"name": "Checkbooking",
+			"id": "745a1cbb-d956-43c2-b1ae-86e3bd955861",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"flights\": [{\"flightNumber\":49, \"date\": \"2017-10-17\"}, {\"flightNumber\": 50, \"date\": \"2017-10-17\"}, {\"flightNumber\":49 , \"date\": \"2017-10-18\"}],\r\n    \"cabinType\": \"First Class\",\r\n    \"passengers\": 1\r\n\r\n\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/checkBooking",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"checkBooking"
+					]
+				},
+				"description": "Проверяет, возможна ли покупка определенного числа билетов (passengers) определенного типа (cabinType) на выбранные рейсы (массив flights).\n\nВ ответе поле tickets указывает, возможна ли покупка, поля date и flightNumber нужны для определения рейса\n\nCabinType - принимает только значения, которые можно получить через **getCabinTypes**"
+			},
+			"response": [
+				{
+					"id": "a91c917f-e228-47c9-9f15-59012a75c2d8",
+					"name": "ChechBooking",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"flights\": [{\"flightNumber\":49, \"date\": \"2017-10-17\"}, {\"flightNumber\": 50, \"date\": \"2017-10-17\"}, {\"flightNumber\":49 , \"date\": \"2017-10-18\"}],\r\n    \"cabinType\": \"First Class\",\r\n    \"passengers\": 1\r\n\r\n\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/checkBooking",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"checkBooking"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "localhost:8000"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 27 Sep 2022 17:43:18 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 27 Sep 2022 17:43:18 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.10"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "laravel_session=eyJpdiI6Ik9adjhwSEFKRkpmNG5ubWpaWUFtb2c9PSIsInZhbHVlIjoiTnhGbDhuOE81N1IycU1yZ2x2U1NXc1pqZzNHb0gyc0hwK245cVdueHBtUlhROUZDbFhsbEVnUEdwOFFFMWo2cW1pcDNJZFl4NjM0b2NXbVdGS2J2SzdESFVHU3Y2dTlFenFSZ2FMS3V0ZDBaQ3VqdGw2UENJK3ZQYWxCNmEyanIiLCJtYWMiOiIyMjU0OTdkZmMwODIwNjA1ZGE2ZjA1ODM1MjhkZDg5MWVlZTk2ODljOTRjYWI0OGFkN2E4NzliZWQ5YzhiMDRhIiwidGFnIjoiIn0%3D; expires=Thu, 06 Oct 2022 01:43:18 GMT; Max-Age=720000; path=/; httponly; samesite=lax"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "[\n    {\n        \"tickets\": true,\n        \"date\": \"2017-10-17\",\n        \"flightNumber\": \"49\"\n    },\n    {\n        \"tickets\": true,\n        \"date\": \"2017-10-17\",\n        \"flightNumber\": \"50\"\n    },\n    {\n        \"tickets\": false,\n        \"date\": \"2017-10-18\",\n        \"flightNumber\": \"49\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "getFlightsForBooking",
+			"id": "259c78ba-50fb-40c5-a9fd-ca2022faff27",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/getFlightsForBooking?date=2017-10-06&from=AUH&to=CAI&advanced=&cabinType=Economy",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"getFlightsForBooking"
+					],
+					"query": [
+						{
+							"key": "date",
+							"value": "2017-10-06"
+						},
+						{
+							"key": "from",
+							"value": "AUH",
+							"type": "text"
+						},
+						{
+							"key": "to",
+							"value": "CAI",
+							"type": "text"
+						},
+						{
+							"key": "advanced",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "cabinType",
+							"value": "Economy",
+							"type": "text"
+						}
+					]
+				},
+				"description": "Получает на вход параметры date - дату вылета, from - код аэропорта отбытия, to - код аэропорта прибытия, advanced - если параметр равен true, то происходит расширенная выборка на три дня раньше и позже указанной даты, cabinType - тип посадочного места (см **getCabinTypes**)\n\nВозвращает массив объектов - найденные рейсы, массив flightNumbers - массив номеров рейсов, если номеров больше 1, то значит будет пересадка."
+			},
+			"response": [
+				{
+					"id": "38a4c420-ed9e-4188-b303-607c122616b3",
+					"name": "c advanced",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/getFlightsForBooking?date=2017-10-09&from=AUH&to=CAI&advanced=True&cabinType=Economy",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"getFlightsForBooking"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2017-10-09"
+								},
+								{
+									"key": "from",
+									"value": "AUH",
+									"type": "text"
+								},
+								{
+									"key": "to",
+									"value": "CAI",
+									"type": "text"
+								},
+								{
+									"key": "advanced",
+									"value": "True",
+									"type": "text"
+								},
+								{
+									"key": "cabinType",
+									"value": "Economy",
+									"type": "text"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "localhost:8000"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 28 Sep 2022 09:47:48 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 28 Sep 2022 09:47:48 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.10"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "laravel_session=eyJpdiI6ImtrMDF6L2N1aFJOVkRBSFJzWU5jNmc9PSIsInZhbHVlIjoiMjVSdHB3N1hIeW1Ra2duZ3ZsSnNhaEpabXRRaFJvL1N0WFRvM3VlRmRZUGova3lMbXdvNHVMenZ5ano4UmlGR1RneWY1WDd3V3gvc3dLSGxJS2lBUzBYNTU3dk9kbFEweS9lWVhYWmJZcXUvZGU1S2tNVFdUWnlHd1pmN0U5TzMiLCJtYWMiOiI5YWFmZjk5NGFmOGRlNTIzNzU3ODg2NDYxMmRjY2FlYjcxOWRlNDQ2NTA2MzBiNmVjZGE2MGVhNjNiMzQ2Njg0IiwidGFnIjoiIn0%3D; expires=Thu, 06 Oct 2022 17:47:48 GMT; Max-Age=720000; path=/; httponly; samesite=lax"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "[\n    {\n        \"from\": \"AUH\",\n        \"to\": \"CAI\",\n        \"Date\": \"2017-10-06\",\n        \"Time\": \"15:00:00\",\n        \"FlightNumbers\": [\n            [\n                \"115\"\n            ]\n        ],\n        \"Price\": 2513,\n        \"Stops\": 0\n    },\n    {\n        \"from\": \"AUH\",\n        \"to\": \"CAI\",\n        \"Date\": \"2017-10-11\",\n        \"Time\": \"04:55:00\",\n        \"FlightNumbers\": [\n            [\n                \"89\"\n            ],\n            [\n                \"90\"\n            ]\n        ],\n        \"Price\": 2602,\n        \"Stops\": 1\n    }\n]"
+				},
+				{
+					"id": "faf3aebf-dbf8-4c02-933e-8dc1819afcd4",
+					"name": "без advanced",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/getFlightsForBooking?date=2017-10-06&from=AUH&to=CAI&advanced=&cabinType=Economy",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"getFlightsForBooking"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2017-10-06"
+								},
+								{
+									"key": "from",
+									"value": "AUH"
+								},
+								{
+									"key": "to",
+									"value": "CAI"
+								},
+								{
+									"key": "advanced",
+									"value": ""
+								},
+								{
+									"key": "cabinType",
+									"value": "Economy"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "localhost:8000"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 28 Sep 2022 09:55:07 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 28 Sep 2022 09:55:07 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.10"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "laravel_session=eyJpdiI6InpDQVViTlZSM1ZqL2k5NWRPNTEwMFE9PSIsInZhbHVlIjoiaVdzdlo4dlZhdFE2aTE5Q3YydUMwcGQ5UGN1TWZYdXJid1d6L3dhOGVKOWwwR0tTNktQZDVOdFR0RjZHSUdPZzVhaEZWTlFKc21BSy9DbWNvbTMvK0dDb2dUWXlta0ZiN0RkWFFLV0FYR081RVZCeVdUaUxiZHg4S0cvajVhcVAiLCJtYWMiOiJkZWQ4YTAyMzE4MTJjZGY4NDU4YjY1Nzc2NzA1NTBmYjIzZTI5YzQxZTAyZjZhMjZlZmM3MWNkYjI1ZjdmNjkyIiwidGFnIjoiIn0%3D; expires=Thu, 06 Oct 2022 17:55:07 GMT; Max-Age=720000; path=/; httponly; samesite=lax"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "[\n    {\n        \"from\": \"AUH\",\n        \"to\": \"CAI\",\n        \"Date\": \"2017-10-06\",\n        \"Time\": \"15:00:00\",\n        \"FlightNumbers\": [\n            [\n                \"115\"\n            ]\n        ],\n        \"Price\": 2513,\n        \"Stops\": 0\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "createTickets",
+			"id": "bd21dbac-37d1-4d40-98b9-1b47e9f2d44f",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"passengers\":[{\"firstName\": \"Name\", \"lastName\": \"Surname\", \"passport\": 1234234, \"country\": \"Albania\", \"phone\": \"+79803755716\"},\r\n{\"firstName\": \"Name\", \"lastName\": \"Surname\", \"passport\": 1234456, \"country\": \"Albania\", \"phone\": \"+79803755716\"}],\r\n\"flights\": [{\"flightNumber\":115, \"date\": \"2017-10-06\"}],\r\n    \"cabinType\": \"First Class\"}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/createTickets",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"createTickets"
+					]
+				},
+				"description": "Выпускает на переданные в массиве flights билеты. Passengers - массив пассажиров на которые необходимо выпустить билеты. **ВНИМАНИЕ: ОТПРАВЛЯТЬ СЮДА ЗАПРОС ТОЛЬКО ПОСЛЕ ТОГО, КАК ЗАШЕЛ ПОД КАКИМ-НИБУДЬ ПОЛЬЗОВАТЕЛЕМ ЧЕРЕЗ** _**login,**_ **ИНАЧЕ ПОЛУЧАЕШЬ 500**"
+			},
+			"response": [
+				{
+					"id": "be0cd912-9cd2-445e-9074-6ae732cf31f5",
+					"name": "createTickets",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"passengers\":[{\"firstName\": \"Name\", \"lastName\": \"Surname\", \"passport\": 1234234, \"country\": \"Albania\", \"phone\": \"+79803755716\"},\r\n{\"firstName\": \"Name\", \"lastName\": \"Surname\", \"passport\": 1234456, \"country\": \"Albania\", \"phone\": \"+79803755716\"}],\r\n\"flights\": [{\"flightNumber\":115, \"date\": \"2017-10-06\"}],\r\n    \"cabinType\": \"First Class\"}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/createTickets",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"createTickets"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 28 Sep 2022 11:19:22 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 28 Sep 2022 11:19:22 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.10"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html; charset=UTF-8"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "laravel_session=eyJpdiI6IkNwYkFYMGs4VUNvTFFIOXphdHF1VkE9PSIsInZhbHVlIjoiNVJHbzMvOElTbTVlNVNnY09wQzg4aURWb1hVaHNjaVhQOUI5bThPMDNkR2ZnNEY3OHBOTjNhTzROclpSU2w0NVNwMExvUFlac0RBTkZ3dzNrLzJWc05ySFAwdFc2VHR0UWxjanQ2OXVTS3NJY1RWY21KS1A2Z3M5OERuckc0VlIiLCJtYWMiOiIxOGFmZTg1Y2E2NGE1NWZhZmJiZDk3Y2M0NWVlZjNmMDI4ZjcyNjU3YTA2MjQ4NjBmMjNhZTRmMDZhN2E1MGE3IiwidGFnIjoiIn0%3D; expires=Thu, 06 Oct 2022 19:19:22 GMT; Max-Age=720000; path=/; httponly; samesite=lax"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "6532"
+				}
+			]
+		},
+		{
+			"name": "New Request",
+			"id": "691088f9-f443-49ed-8065-8de19a8608cd",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -499,7 +2726,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "9fbe49cc-df86-4d01-ae31-c8f92255a2c7",
+				"id": "250e2183-fc90-4d50-a945-79882c9afc48",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -509,7 +2736,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "c2818f97-4455-4bb0-bd07-3f03bc68809b",
+				"id": "37ef299d-0f80-4ecc-9ac5-9fd086e4e36c",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -519,9 +2746,9 @@
 	],
 	"variable": [
 		{
-			"id": "90f96fa6-09b1-4a68-87b7-7da54df9e5f7",
+			"id": "f9d0dec7-df2c-41dc-8c50-9725d861520e",
 			"key": "baseUrl",
-			"value": "http://127.0.0.1:8000",
+			"value": "https://0ec3-188-66-38-95.eu.ngrok.io",
 			"type": "string"
 		}
 	]
