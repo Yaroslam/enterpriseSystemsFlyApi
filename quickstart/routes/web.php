@@ -47,6 +47,7 @@ Route::post('/loadFromFile', [ScheduleController::class, 'loadFromFile']);
 Route::get('/getCabinTypes', [CabinTypesController::class, 'getCabinTypes']);
 
 Route::post('/checkBooking', [BookingController::class, 'checkBooking']);
+Route::post('/createTickets', [BookingController::class, 'createTickets']);
 Route::get('/getFlightsForBooking', [BookingController::class, 'getFlightsForBooking']);
 
 

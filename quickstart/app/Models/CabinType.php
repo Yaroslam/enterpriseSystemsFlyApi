@@ -13,4 +13,8 @@ class CabinType extends Model
     public static function getAllCabins(){
         return self::all()->toArray();
     }
+
+    public static function getCabinByName($name){
+        return self::where("Name", $name)->get()->toArray()[0];
+    }
 }

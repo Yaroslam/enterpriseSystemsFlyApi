@@ -84,16 +84,6 @@ class Schedule extends Model
 
     public static function getFlightsForBooking($from, $to, $outbound, $advanced){
         $schedule = self::orderBy('Date')->orderBy('Time')->get();
-//        if($from){
-//            $aiport = Airport::getAirportByCode($from);
-//            $route = Route::getRouteByDeparture($aiport["ID"]);
-//            $schedule = $schedule->where("RouteID", $route["ID"]);
-//        }
-//        if($to){
-//            $aiport = Airport::getAirportByCode($to);
-//            $route = Route::getRouteByArrival($aiport["ID"]);
-//            $schedule = $schedule->where("RouteID", $route["ID"]);
-//        }
         if($advanced){
             $outbound = strtotime($outbound);
             $date1 = date("Y-m-d", $outbound + 3*24*60*60);

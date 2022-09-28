@@ -34,6 +34,10 @@ class User extends Model
         return self::where("Email", $email)->firstOrFail();
     }
 
+    public static function getUserByEmailArrayFormat($email){
+        return self::where("Email", $email)->get()->toArray();
+    }
+
     public function getUserRoleName()
     {
         return Role::getRoleNameById($this->ID);

@@ -11,6 +11,7 @@ use App\Models\Schedule;
 use App\Models\Ticket;
 use App\Servisec\Classes\Graph;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class BookingController extends Controller
 {
@@ -119,7 +120,22 @@ class BookingController extends Controller
     }
 
     public function createTickets(Request $request){
+        $cabins = [
+            "Economy" => 1,
+            "Business" => 1.35,
+            "First Class" => 1.30
+        ];
 
+        $flights = $request['flights'];
+        $passengers = $request['passengers'];
+        $price = 0;
+        foreach ($flights as $flight){
+            foreach ($passengers as $passenger){
+//                session("email")
+                $price += (int)(Ticket::createTicket("j.doe@amonic.com", $flight, $request['cabinType'], $passenger) * $cabins[$request['cabinType']]);
+            }
+        }
+        return $price;
     }
 
 }
