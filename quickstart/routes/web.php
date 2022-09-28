@@ -6,6 +6,7 @@ use App\Http\Controllers\CabinTypesController;
 use App\Http\Controllers\OfficeController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\SummaryController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -49,5 +50,7 @@ Route::get('/getCabinTypes', [CabinTypesController::class, 'getCabinTypes']);
 Route::post('/checkBooking', [BookingController::class, 'checkBooking']);
 Route::post('/createTickets', [BookingController::class, 'createTickets']);
 Route::get('/getFlightsForBooking', [BookingController::class, 'getFlightsForBooking']);
+
+Route::post('/loadSummaryFromFile', [SummaryController::class, 'loadSummaryFromFile']);
 
 
