@@ -13,6 +13,8 @@ class Schedule extends Model
 
     public static function getSchedule($from, $to, $outbound, $flight, $sort){
         $schedule = self::all();
+        // TODO
+//          1) переделать под множественные руты
         if($from){
             $aiport = Airport::getAirportByCode($from);
             $route = Route::getRouteByDeparture($aiport["ID"]);
@@ -82,16 +84,16 @@ class Schedule extends Model
 
     public static function getFlightsForBooking($from, $to, $outbound, $advanced){
         $schedule = self::orderBy('Date')->orderBy('Time')->get();
-        if($from){
-            $aiport = Airport::getAirportByCode($from);
-            $route = Route::getRouteByDeparture($aiport["ID"]);
-            $schedule = $schedule->where("RouteID", $route["ID"]);
-        }
-        if($to){
-            $aiport = Airport::getAirportByCode($to);
-            $route = Route::getRouteByArrival($aiport["ID"]);
-            $schedule = $schedule->where("RouteID", $route["ID"]);
-        }
+//        if($from){
+//            $aiport = Airport::getAirportByCode($from);
+//            $route = Route::getRouteByDeparture($aiport["ID"]);
+//            $schedule = $schedule->where("RouteID", $route["ID"]);
+//        }
+//        if($to){
+//            $aiport = Airport::getAirportByCode($to);
+//            $route = Route::getRouteByArrival($aiport["ID"]);
+//            $schedule = $schedule->where("RouteID", $route["ID"]);
+//        }
         if($advanced){
             $outbound = strtotime($outbound);
             $date1 = date("Y-m-d", $outbound + 3*24*60*60);
@@ -108,6 +110,9 @@ class Schedule extends Model
 
     public static function getScheduleByDateAndFlightNumber($flightNumber, $date){
         return self::where("Date", $date)->where("FlightNumber", $flightNumber)->get()->toArray();
+    }
+    public static function getScheduleByDate($date){
+        return self::where("Date", $date)->get()->toArray();
     }
 
     public static function loadFromFile($data){

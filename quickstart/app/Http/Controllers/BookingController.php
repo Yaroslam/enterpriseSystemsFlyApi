@@ -25,19 +25,49 @@ class BookingController extends Controller
         return $graph;
     }
 
+
     public function getFlightsForBooking(Request $request){
-        $schedule = Schedule::getFlightsBetweenDates($request['date']);
+        $res = [];
+        $mult = [
+            "Economy" => 1,
+            "Business" => 1.35,
+            "First Class" => 1.30
+        ];
+        if($request["advanced"]) {
+            $schedule = Schedule::getFlightsBetweenDates($request['date']);
+        } else {
+            $schedule = Schedule::getScheduleByDate($request['date']);
+        }
         $varRoutes = [];
         foreach ($schedule as $s){
             $r = Route::getRouteById($s["RouteID"]);
             $varRoutes[] = [Airport::getAirportCode($r["DepartureAirportID"]), Airport::getAirportCode($r["ArrivalAirportID"])];
         }
-        return createGraph($varRoutes);
-//        $graph = $this->makeGraph(createGraph($varRoutes));
-//        $s = "AUH";
-//        $d = "ADE";
-//        $graph->printAllPathsInGrapg($s, $d);
-//        return $graph->pathes;
+
+        $graph = $this->makeGraph(createGraph($varRoutes));
+        $s = $request['from'];
+        $d = $request['to'];
+        $graph->printAllPathsInGrapg($s, $d);
+        $flights = getFlightsFromGraph($schedule ,$graph->pathes);
+        foreach ($flights as $flight){
+            $flightNumbers = [];
+            $price = 0;
+            foreach ($flight as $f){
+                $flightNumbers[] = [$f["FlightNumber"]];
+                $price+= $f["EconomyPrice"];
+            }
+            $flightRes = [
+                "from" => $request['from'],
+                "to" => $request['to'],
+                "Date" => $flight[0]["Date"],
+                "Time" => $flight[0]["Time"],
+                "FlightNumbers" =>  $flightNumbers,
+                "Price" => (int)($price * $mult[$request['cabinType']]),
+                "Stops" => count($flightNumbers)-1,
+            ];
+            $res[] = $flightRes;
+        }
+        return $res;
     }
 
     public function checkBooking(Request $request){
@@ -88,14 +118,8 @@ class BookingController extends Controller
         return Response($response, 200);
     }
 
-//    TODO:
-//      1)взять полеты между датами
-//      2)взять только те полеты, которые удовлетворяют по аэропортам
-//
-//
-//
-//
-//
-//
-//
+    public function createTickets(Request $request){
+
+    }
+
 }

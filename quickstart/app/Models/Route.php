@@ -24,6 +24,20 @@ class Route extends Model
     }
 
     public static function getRouteByArrivalAndDeparture($arrival, $departure){
-        return self::where("DepartureAirportID", $departure)->where("ArrivalAirportID", $arrival)->get()->toArray()[0];
+        $res = self::where("DepartureAirportID", $departure)->where("ArrivalAirportID", $arrival)->get()->toArray();
+        if(count($res) > 0){
+            return $res[0];
+        } else {
+            return 0;
+        }
+    }
+
+    public static function getRouteByArrivalAndDepartureAll($arrival, $departure){
+        $res = self::where("DepartureAirportID", $departure)->where("ArrivalAirportID", $arrival)->get()->toArray();
+        if(count($res) > 0){
+            return $res;
+        } else {
+            return 0;
+        }
     }
 }
