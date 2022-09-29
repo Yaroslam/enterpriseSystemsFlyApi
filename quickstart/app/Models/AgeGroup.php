@@ -13,4 +13,8 @@ class AgeGroup extends Model
     public static function getGroups(){
         return self::all()->toArray();
     }
+
+    public static function getAgeGroupByScope($scope){
+        return self::where("scope", $scope)->get()->toArray();
+    }
 }

@@ -13,4 +13,8 @@ class Gender extends Model
     public static function getGenders(){
         return self::all()->toArray();
     }
+
+    public static function getGenderByName($name){
+        return self::where('name', $name)->get()->toArray();
+    }
 }
