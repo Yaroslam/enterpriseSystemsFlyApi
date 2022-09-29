@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\AgeGroup;
+use App\Models\Airport;
+use App\Models\CabinType;
+use App\Models\Gender;
 use App\Models\Summary;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -20,7 +24,6 @@ class SummaryController extends Controller
         $csvFile = file($request->file('file'));
         echo "1";
         foreach ($csvFile as $line) {
-            var_dump(str_getcsv($line));
             if(str_getcsv($line)[0] === "Departure"){
                 continue;
             }
@@ -30,8 +33,16 @@ class SummaryController extends Controller
         }
         return Response([],200);
     }
+
+    public function getDefaultSummary(){
+        $genders = Gender::getGenders();
+        $ages = AgeGroup::getGroups();
+        $cabins = CabinType::getAllCabins();
+        $airports = Airport::getAllAirports();
+
+
+    }
 // TODO
-//  4)запись ответов опрошенных
 //  5)вывод информации
 
 

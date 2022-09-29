@@ -72,4 +72,25 @@ class Summary extends Model
             'q4' => $q4,
         ]);
     }
+
+    public static function getByGender($gender){
+        return self::where('gender', $gender)->get()->toArray();
+    }
+
+    public static function getByCabin($cabin){
+        return self::where('cabinType', $cabin)->get()->toArray();
+    }
+
+    public static function getByAge($age){
+        return self::where('ageGroup', $age)->get()->toArray();
+    }
+
+    public static function getByArrivalAirport($airport){
+        return self::where('arrival', $airport)->get()->toArray();
+    }
+
+    public static function getByDepartureAirport($airport){
+        return self::where('departure', $airport)->get()->toArray();
+    }
+
 }
