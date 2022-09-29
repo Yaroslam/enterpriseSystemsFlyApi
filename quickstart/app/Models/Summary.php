@@ -46,9 +46,12 @@ class Summary extends Model
             $gender = Gender::getGenderByName($gender)[0]['id'];
         }
 
-        if($cabinType == ''){
+        if($cabinType == '') {
             $cabinType = null;
-        } else {
+        } else if ($cabinType == 'First') {
+            $cabinType = CabinType::getCabinByName("First Class")["ID"];
+        }
+        else {
             $cabinType = CabinType::getCabinByName($cabinType)["ID"];
         }
 
