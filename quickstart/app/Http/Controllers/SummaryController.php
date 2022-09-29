@@ -29,18 +29,46 @@ class SummaryController extends Controller
             }
             $data = str_getcsv($line);
             Summary::loadFromFile($data[0], $data[1], $data[2], $data[3], $data[4],  $data[5],
-                $data[6], $data[7], $data[8]);
+                $data[6], $data[7], $data[8], $request['date']);
         }
         return Response([],200);
     }
 
     public function getDefaultSummary(){
+        $resGender = [];
+        $resAirport = [];
+        $resAge = [];
+        $resCabin = [];
+
         $genders = Gender::getGenders();
         $ages = AgeGroup::getGroups();
         $cabins = CabinType::getAllCabins();
         $airports = Airport::getAllAirports();
 
+        foreach ($genders as $gender){
+            $resGender[$gender["name"]] = count(Summary::getByGender($gender["id"]));
+        }
 
+        foreach ($ages as $age){
+            $resAge[$age["scope"]] = count(Summary::getByAge($age["id"]));
+        }
+
+        foreach ($cabins as $cabin){
+            $resCabin[$cabin["Name"]] = count(Summary::getByCabin($cabin["ID"]));
+        }
+
+        foreach ($airports as $airport){
+            $resAirport[$airport["IATACode"]] = count(Summary::getByArrivalAirport($airport["ID"]));
+        }
+
+        $res = [
+            "genders" => $resGender,
+            "ages" => $resAge,
+            "cabins" => $resCabin,
+            "airports" => $resAirport,
+            "count" => Summary::count()
+        ];
+        return Response($res, 200);
     }
 // TODO
 //  5)вывод информации

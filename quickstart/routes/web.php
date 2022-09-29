@@ -54,6 +54,7 @@ Route::post('/createTickets', [BookingController::class, 'createTickets']);
 Route::get('/getFlightsForBooking', [BookingController::class, 'getFlightsForBooking']);
 
 Route::post('/loadSummaryFromFile', [SummaryController::class, 'loadSummaryFromFile']);
+Route::get('/getDefaultSummary', [SummaryController::class, 'getDefaultSummary']);
 
 Route::get('/getAllAgeGroup', [AgeGroupController::class, 'getAllAgeGroup']);
 

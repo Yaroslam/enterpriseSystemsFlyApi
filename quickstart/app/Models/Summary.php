@@ -21,7 +21,7 @@ class Summary extends Model
     ];
 
 
-    public static function loadFromFile($departure, $arrival, $age, $gender, $cabinType, $q1, $q2, $q3, $q4){
+    public static function loadFromFile($departure, $arrival, $age, $gender, $cabinType, $q1, $q2, $q3, $q4, $date){
         if($departure == ''){
             $departure = null;
         } else {
@@ -70,6 +70,7 @@ class Summary extends Model
             'q2' => $q2,
             'q3' => $q3,
             'q4' => $q4,
+            "date" => $date
         ]);
     }
 
@@ -91,6 +92,10 @@ class Summary extends Model
 
     public static function getByDepartureAirport($airport){
         return self::where('departure', $airport)->get()->toArray();
+    }
+
+    public static function count(){
+        return self::all()->count();
     }
 
 }
