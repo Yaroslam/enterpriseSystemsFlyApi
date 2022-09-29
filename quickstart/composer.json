@@ -33,7 +33,8 @@
             "app/Servisec/RoleServices.php",
             "app/Servisec/OfficeHandler.php",
             "app/Servisec/ScheduleService.php",
-            "app/Servisec/GraphServisec.php"
+            "app/Servisec/GraphServisec.php",
+            "app/Servisec/AgeService.php"
         ]
     },
     "autoload-dev": {

@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\AgeGroupController;
 use App\Http\Controllers\AirportController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\CabinTypesController;
+use App\Http\Controllers\GenderController;
 use App\Http\Controllers\OfficeController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ScheduleController;
@@ -52,5 +54,9 @@ Route::post('/createTickets', [BookingController::class, 'createTickets']);
 Route::get('/getFlightsForBooking', [BookingController::class, 'getFlightsForBooking']);
 
 Route::post('/loadSummaryFromFile', [SummaryController::class, 'loadSummaryFromFile']);
+
+Route::get('/getAllAgeGroup', [AgeGroupController::class, 'getAllAgeGroup']);
+
+Route::get('/getAllGenders', [GenderController::class, 'getAllGenders']);
 
 
