@@ -196,7 +196,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"email\": \".doe@amonic.com\",\r\n\"password\": 122}",
+							"raw": "{\"email\": \".doe@amonic.com\",\r\n\"password\": 123}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1041,8 +1041,7 @@
 							"query": [
 								{
 									"key": "offices",
-									"value": "all",
-									"type": "text"
+									"value": "all"
 								}
 							]
 						}
@@ -1445,7 +1444,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{baseUrl}}/getSchedule?from=AUH&to=BAH&outbound=&flight=&sort=Confirmed",
+					"raw": "{{baseUrl}}/getSchedule?from=&to=&outbound=&flight=&sort=",
 					"host": [
 						"{{baseUrl}}"
 					],
@@ -1455,11 +1454,11 @@
 					"query": [
 						{
 							"key": "from",
-							"value": "AUH"
+							"value": ""
 						},
 						{
 							"key": "to",
-							"value": "BAH"
+							"value": ""
 						},
 						{
 							"key": "outbound",
@@ -1471,7 +1470,7 @@
 						},
 						{
 							"key": "sort",
-							"value": "Confirmed"
+							"value": ""
 						}
 					]
 				},
@@ -1880,14 +1879,23 @@
 			"name": "loadFromFile",
 			"id": "c916d653-7cc1-4261-ae80-b0796ad8483b",
 			"protocolProfileBehavior": {
-				"disableBodyPruning": true
+				"disableBodyPruning": true,
+				"disabledSystemHeaders": {
+					"accept": true
+				}
 			},
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"action\": \"ADD\",\r\n    \"date\": \"2017-10-04\",\r\n    \"time\": \"6:25\",\r\n    \"flight\": 75,\r\n    \"from\": \"AUH\",\r\n    \"to\": \"RUH\",\r\n    \"aircraft\":1,\r\n    \"price\": 983,\r\n    \"status\": \"CANCELED\"\r\n}",
+					"raw": "{\r\n    \"action\": \"EDIT\",\r\n    \"date\": \"2017-10-04\",\r\n    \"time\": \"06:25\",\r\n    \"flight\": 7533224,\r\n    \"from\": \"AUH\",\r\n    \"to\": \"RUH\",\r\n    \"aircraft\":1,\r\n    \"price\": 123131321321,\r\n    \"status\": \"CANCELED\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -1895,10 +1903,15 @@
 					}
 				},
 				"url": {
-					"raw": "{{baseUrl}}/loadFromFile",
+					"raw": "http://127.0.0.1:8000/loadFromFile",
+					"protocol": "http",
 					"host": [
-						"{{baseUrl}}"
+						"127",
+						"0",
+						"0",
+						"1"
 					],
+					"port": "8000",
 					"path": [
 						"loadFromFile"
 					]
@@ -2225,6 +2238,15 @@
 			"request": {
 				"method": "GET",
 				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/getCabinTypes",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"getCabinTypes"
+					]
+				},
 				"description": "Получение всех типов посадок"
 			},
 			"response": [
@@ -2306,11 +2328,10 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8000/checkBooking",
+					"raw": "{{baseUrl}}/checkBooking",
 					"host": [
-						"localhost"
+						"{{baseUrl}}"
 					],
-					"port": "8000",
 					"path": [
 						"checkBooking"
 					]
@@ -2397,11 +2418,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8000/getFlightsForBooking?date=2017-10-06&from=AUH&to=CAI&advanced=&cabinType=Economy",
+					"raw": "{{baseUrl}}/getFlightsForBooking?date=2017-10-06&from=AUH&to=CAI&advanced=&cabinType=Economy",
 					"host": [
-						"localhost"
+						"{{baseUrl}}"
 					],
-					"port": "8000",
 					"path": [
 						"getFlightsForBooking"
 					],
@@ -2412,23 +2432,19 @@
 						},
 						{
 							"key": "from",
-							"value": "AUH",
-							"type": "text"
+							"value": "AUH"
 						},
 						{
 							"key": "to",
-							"value": "CAI",
-							"type": "text"
+							"value": "CAI"
 						},
 						{
 							"key": "advanced",
-							"value": "",
-							"type": "text"
+							"value": ""
 						},
 						{
 							"key": "cabinType",
-							"value": "Economy",
-							"type": "text"
+							"value": "Economy"
 						}
 					]
 				},
@@ -2437,16 +2453,15 @@
 			"response": [
 				{
 					"id": "38a4c420-ed9e-4188-b303-607c122616b3",
-					"name": "c advanced",
+					"name": "New Request",
 					"originalRequest": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8000/getFlightsForBooking?date=2017-10-09&from=AUH&to=CAI&advanced=True&cabinType=Economy",
+							"raw": "{{baseUrl}}/getFlightsForBooking?date=2017-10-09&from=AUH&to=CAI&advanced=True&cabinType=Economy",
 							"host": [
-								"localhost"
+								"{{baseUrl}}"
 							],
-							"port": "8000",
 							"path": [
 								"getFlightsForBooking"
 							],
@@ -2457,23 +2472,19 @@
 								},
 								{
 									"key": "from",
-									"value": "AUH",
-									"type": "text"
+									"value": "AUH"
 								},
 								{
 									"key": "to",
-									"value": "CAI",
-									"type": "text"
+									"value": "CAI"
 								},
 								{
 									"key": "advanced",
-									"value": "True",
-									"type": "text"
+									"value": "True"
 								},
 								{
 									"key": "cabinType",
-									"value": "Economy",
-									"type": "text"
+									"value": "Economy"
 								}
 							]
 						}
@@ -2526,11 +2537,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8000/getFlightsForBooking?date=2017-10-06&from=AUH&to=CAI&advanced=&cabinType=Economy",
+							"raw": "{{baseUrl}}/getFlightsForBooking?date=2017-10-06&from=AUH&to=CAI&advanced=&cabinType=Economy",
 							"host": [
-								"localhost"
+								"{{baseUrl}}"
 							],
-							"port": "8000",
 							"path": [
 								"getFlightsForBooking"
 							],
@@ -2620,15 +2630,10 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/createTickets",
-					"protocol": "http",
+					"raw": "{{baseUrl}}/createTickets",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"{{baseUrl}}"
 					],
-					"port": "8000",
 					"path": [
 						"createTickets"
 					]
@@ -2652,15 +2657,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/createTickets",
-							"protocol": "http",
+							"raw": "{{baseUrl}}/createTickets",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"{{baseUrl}}"
 							],
-							"port": "8000",
 							"path": [
 								"createTickets"
 							]
@@ -2729,7 +2729,10 @@
 					]
 				},
 				"url": {
-					"raw": "/getAllAgeGroup",
+					"raw": "{{baseUrl}}/getAllAgeGroup",
+					"host": [
+						"{{baseUrl}}"
+					],
 					"path": [
 						"getAllAgeGroup"
 					]
@@ -2810,7 +2813,16 @@
 			},
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/getAllGenders",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"getAllGenders"
+					]
+				}
 			},
 			"response": [
 				{
@@ -2881,6 +2893,16 @@
 			"request": {
 				"method": "POST",
 				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/Yaroslam/PycharmProjects/pythonProject/main.py"
+						}
+					]
+				},
 				"url": {
 					"raw": "localhost:8000/loadSummaryFromFile",
 					"host": [
@@ -2891,7 +2913,7 @@
 						"loadSummaryFromFile"
 					]
 				},
-				"description": "Получает на вход file - файл с данными опроса, возвращает пустой массив и код 200 в случае успеха (на пример ответа не смотри, второй раз ждать 18 минут впадлу), в случае есил передан не csv файл выдает ошибку . Обработка 500+строк занимает от 18 минут, так что грузи лоадер в процессе обработки."
+				"description": "ДЛЯ СЛУЖЕБНОГО ПОЛЬЗОВАНИЯ, ЗАПРОСЫ СЮДА ОТПРАВЛЯТЬ С ФРОНТА НЕ НУЖНО\n\nПолучает на вход file - файл с данными опроса, возвращает пустой массив и код 200 в случае успеха (на пример ответа не смотри, второй раз ждать 18 минут впадлу), в случае есил передан не csv файл выдает ошибку ."
 			},
 			"response": [
 				{
@@ -3019,6 +3041,87 @@
 					"body": "{\n    \"file\": [\n        \"The file must be a file of type: csv.\"\n    ]\n}"
 				}
 			]
+		},
+		{
+			"name": "getDefaultSummary",
+			"id": "86b62200-e18f-45c5-9b76-406c189cb4a3",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/getDefaultSummary",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"getDefaultSummary"
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "8749b7a7-9aec-4b0a-952a-619a951d737f",
+					"name": "успех",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/getDefaultSummary",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"getDefaultSummary"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "localhost:8000"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 29 Sep 2022 16:12:25 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 29 Sep 2022 16:12:25 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.10"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "laravel_session=eyJpdiI6Ik5WNXRXMDlsM1dncEdZaFRlSFllb2c9PSIsInZhbHVlIjoiOWU4RSs0c0VqWWsvZFFaaVgycUxQT1B5MGl4ODZ5dUUzUm05STVZWVpSL2ovU3hVRzRUNG5LL2JXb0JGc1VZcDM5Z1pKekU4dlc3eXpNbGxrN3JxcG52OW5GRzNHOGNXOGtSbGRKcjlka2RybEptWFNXQllxc0xjRWhnYXZDLzIiLCJtYWMiOiI3NTljMmMxNDFiZjE0OWQ5MzI2YjI3YjU2NjBkNTY5NDVlMWVmNTc2ZWVmYzliNTIyYjA4MzU0YTE1MjQ0ZWZmIiwidGFnIjoiIn0%3D; expires=Sat, 08 Oct 2022 00:12:25 GMT; Max-Age=720000; path=/; httponly; samesite=lax"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "{\n    \"genders\": {\n        \"M\": 336,\n        \"F\": 275\n    },\n    \"ages\": {\n        \"18-24\": 71,\n        \"25-39\": 186,\n        \"40-59\": 246,\n        \"60+\": 107\n    },\n    \"cabins\": {\n        \"Economy\": 512,\n        \"Business\": 38,\n        \"First Class\": 72\n    },\n    \"airports\": {\n        \"AUH\": 94,\n        \"CAI\": 136,\n        \"BAH\": 235,\n        \"ADE\": 0,\n        \"DOH\": 100,\n        \"RUH\": 57\n    }\n}"
+				}
+			]
 		}
 	],
 	"event": [
@@ -3045,7 +3148,7 @@
 	],
 	"variable": [
 		{
-			"id": "f21d7a06-7802-4b45-b066-6f906fe3787d",
+			"id": "b18b5911-9c2d-4152-a688-fc6948e848a3",
 			"key": "baseUrl",
 			"value": "https://b99e-188-66-38-93.eu.ngrok.io",
 			"type": "string"
