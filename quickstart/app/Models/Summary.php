@@ -94,6 +94,30 @@ class Summary extends Model
         return self::where('departure', $airport)->get()->toArray();
     }
 
+    public static function getTimePeriod(){
+        $res = [];
+        $dates = self::select('date')->distinct()->get()->toArray();
+        foreach ($dates as $date){
+            $res[] = $date['date'];
+        }
+        return $res;
+    }
+//предаю сюда айдишники
+    public static function getAdvancedSummary($timePeriod, $gender, $age){
+        $summary = Summary::all();
+        if($timePeriod != "all"){
+            $summary = $summary->where('date', $timePeriod);
+        }
+        if($gender != "all"){
+            $summary = $summary->where('gender', $gender);
+        }
+        if($age != "all"){
+            $summary = $summary->where('ageGroup', $age);
+        }
+        return $summary;
+    }
+
+
     public static function count(){
         return self::all()->count();
     }

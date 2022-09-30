@@ -37,6 +37,7 @@ class Ticket extends Model
         $ticket = self::getTicketByReference($reference);
         $i = 0;
         while(count($ticket) != 0){
+            // перенести вышеы
             $i++;
             $reference = $person["firstName"][0].$person["lastName"][0].$person['country'][0].chr(65+$i).substr($person['phone'], 3, 2);
             $ticket = self::getTicketByReference($reference);

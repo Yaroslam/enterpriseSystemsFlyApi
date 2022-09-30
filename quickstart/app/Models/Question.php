@@ -9,4 +9,9 @@ class Question extends Model
 {
     use HasFactory;
     protected $table = "questions";
+
+    public static function getAllQuestoins(){
+        return self::all()->toArray();
+    }
+
 }

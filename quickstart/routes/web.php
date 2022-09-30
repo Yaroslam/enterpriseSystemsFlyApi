@@ -55,6 +55,8 @@ Route::get('/getFlightsForBooking', [BookingController::class, 'getFlightsForBoo
 
 Route::post('/loadSummaryFromFile', [SummaryController::class, 'loadSummaryFromFile']);
 Route::get('/getDefaultSummary', [SummaryController::class, 'getDefaultSummary']);
+Route::get('/getSummaryTimePeriods', [SummaryController::class, 'getSummaryTimePeriods']);
+Route::get('/getAdvancedInformation', [SummaryController::class, 'getAdvancedInformation']);
 
 
 Route::get('/getAllAgeGroup', [AgeGroupController::class, 'getAllAgeGroup']);
