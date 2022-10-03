@@ -130,17 +130,16 @@ class BookingController extends Controller
         $flights = $request['flights'];
         $passengers = $request['passengers'];
         $price = 0;
-        foreach ($flights as $flight){
-            foreach ($passengers as $passenger){
-                $reference = $passenger["firstName"][0].$passenger["lastName"][0].$passenger['country'][0].substr($passenger['phone'], 3, 3);
+        foreach ($passengers as $passenger){
+            $reference = $passenger["firstName"][0].$passenger["lastName"][0].$passenger['country'][0].substr($passenger['phone'], 3, 3);
+            $ticket = Ticket::getTicketByReference($reference);
+            $i = 0;
+            while(count($ticket) != 0){
+                $i++;
+                $reference = $passenger["firstName"][0].$passenger["lastName"][0].$passenger['country'][0].chr(65+$i).substr($passenger['phone'], 3, 2);
                 $ticket = Ticket::getTicketByReference($reference);
-                $i = 0;
-                while(count($ticket) != 0){
-                    $i++;
-                    $reference = $passenger["firstName"][0].$passenger["lastName"][0].$passenger['country'][0].chr(65+$i).substr($passenger['phone'], 3, 2);
-                    $ticket = Ticket::getTicketByReference($reference);
-                }
-//                slkdfjslkdfjsflkjslkdfkjsfkl
+            }
+            foreach ($flights as $flight){
                 $price += (int)(Ticket::createTicket(session("email"), $flight, $request['cabinType'], $passenger, $reference) * $cabins[$request['cabinType']]);
             }
         }

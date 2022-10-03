@@ -18,6 +18,16 @@ class AmentitesController extends Controller
         $amentitires = [];
         $ticket = Ticket::where("ID", $request['id'])->get()->toArray();
         $flight = Schedule::getScheduleById($ticket[0]['ScheduleID']);
+        $today = strtotime(date("Y-m-d"));
+
+        if($today + 24*60*60 > strtotime($flight[0]['Date'])){
+            return Response(['amenity edit lock'], 403);
+        }
+        if($today > strtotime($flight[0]['Date'])){
+            return Response(['amenity edit lock'], 403);
+        }
+
+
 
         $allAmentites = Amentite::getAll();
         $ticketAmentites = DB::table('amenitiestickets')->where("TicketID", $ticket[0]['ID'])->get()->toArray();

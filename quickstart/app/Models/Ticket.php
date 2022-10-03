@@ -47,7 +47,6 @@ class Ticket extends Model
             "CabinTypeID" => CabinType::getCabinByName($cabinType)["ID"],
             "FirstName" => $person["firstName"],
             "LastName" => $person["lastName"],
-            "Email" => null,
             "Phone" => $person['phone'],
             "PassportNumber" => $person["passport"],
             "PassportCountryID" => Country::getCountryByName($person['country'])[0]["ID"],
