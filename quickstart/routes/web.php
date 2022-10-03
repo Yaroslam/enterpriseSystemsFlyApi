@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AgeGroupController;
 use App\Http\Controllers\AirportController;
+use App\Http\Controllers\AmentitesController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\CabinTypesController;
 use App\Http\Controllers\GenderController;
@@ -52,15 +53,17 @@ Route::get('/getCabinTypes', [CabinTypesController::class, 'getCabinTypes']);
 Route::post('/checkBooking', [BookingController::class, 'checkBooking']);
 Route::post('/createTickets', [BookingController::class, 'createTickets']);
 Route::get('/getFlightsForBooking', [BookingController::class, 'getFlightsForBooking']);
+Route::get('/getTicketsByReference', [BookingController::class, 'getTicketsByReference']);
 
 Route::post('/loadSummaryFromFile', [SummaryController::class, 'loadSummaryFromFile']);
 Route::get('/getDefaultSummary', [SummaryController::class, 'getDefaultSummary']);
 Route::get('/getSummaryTimePeriods', [SummaryController::class, 'getSummaryTimePeriods']);
 Route::get('/getAdvancedInformation', [SummaryController::class, 'getAdvancedInformation']);
 
-
 Route::get('/getAllAgeGroup', [AgeGroupController::class, 'getAllAgeGroup']);
 
 Route::get('/getAllGenders', [GenderController::class, 'getAllGenders']);
+
+Route::get('/getAmetitesForTicket', [AmentitesController::class, 'getAmetitesForTicket']);
 
 

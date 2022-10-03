@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Middleware\TrustHosts;
 use App\Models\Aircraft;
 use App\Models\Airport;
+use App\Models\CabinType;
 use App\Models\Route;
 use App\Models\Schedule;
 use App\Models\Ticket;
@@ -131,10 +132,36 @@ class BookingController extends Controller
         $price = 0;
         foreach ($flights as $flight){
             foreach ($passengers as $passenger){
-                $price += (int)(Ticket::createTicket(session("email"), $flight, $request['cabinType'], $passenger) * $cabins[$request['cabinType']]);
+                $reference = $passenger["firstName"][0].$passenger["lastName"][0].$passenger['country'][0].substr($passenger['phone'], 3, 3);
+                $ticket = Ticket::getTicketByReference($reference);
+                $i = 0;
+                while(count($ticket) != 0){
+                    $i++;
+                    $reference = $passenger["firstName"][0].$passenger["lastName"][0].$passenger['country'][0].chr(65+$i).substr($passenger['phone'], 3, 2);
+                    $ticket = Ticket::getTicketByReference($reference);
+                }
+                $price += (int)(Ticket::createTicket(session("email"), $flight, $request['cabinType'], $passenger, $reference) * $cabins[$request['cabinType']]);
             }
         }
         return $price;
+    }
+
+    public function getTicketsByReference(Request $request){
+        $res = [];
+        $res["flights"] = [];
+        $tickets = Ticket::getTicketByReference($request['reference']);
+        foreach ($tickets as $ticket){
+            $flight = Schedule::where("ID", $ticket["ScheduleID"])->get()->toArray();
+            $res["flights"][] = ["flightNUmber" => $flight[0]["FlightNumber"],
+                      "date" => $flight[0]["Date"]];
+        }
+
+        $cabinType = CabinType::where("ID", $tickets[0]['CabinTypeID'])->get()->toArray();
+        $res["FullName"] = $tickets[0]['Firstname']." ".$tickets[0]['Lastname'];
+        $res["Passport"] = $tickets[0]['PassportNumber'];
+        $res["CabinType"] = $cabinType[0]["Name"];
+
+        return $res;
     }
 
 }

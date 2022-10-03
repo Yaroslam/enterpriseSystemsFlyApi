@@ -32,16 +32,15 @@ class Ticket extends Model
         return self::where("BookingReference", $reference)->get()->toArray();
     }
 
-    public static function createTicket($email, $flight, $cabinType, $person){
-        $reference = $person["firstName"][0].$person["lastName"][0].$person['country'][0].substr($person['phone'], 3, 3);
-        $ticket = self::getTicketByReference($reference);
-        $i = 0;
-        while(count($ticket) != 0){
-            // перенести вышеы
-            $i++;
-            $reference = $person["firstName"][0].$person["lastName"][0].$person['country'][0].chr(65+$i).substr($person['phone'], 3, 2);
-            $ticket = self::getTicketByReference($reference);
-        }
+    public static function createTicket($email, $flight, $cabinType, $person, $reference){
+//        $ticket = self::getTicketByReference($reference);
+//        $i = 0;
+//        while(count($ticket) != 0){
+//            // перенести вышеы
+//            $i++;
+//            $reference = $person["firstName"][0].$person["lastName"][0].$person['country'][0].chr(65+$i).substr($person['phone'], 3, 2);
+//            $ticket = self::getTicketByReference($reference);
+//        }
         self::insert([
             "UserID" => User::getUserByEmailArrayFormat($email)[0]["ID"],
             "ScheduleID" => Schedule::getScheduleByDateAndFlightNumber($flight["flightNumber"], $flight["date"])[0]["ID"],
