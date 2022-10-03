@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Amentite;
+use App\Models\AmentiteTicketModel;
+use App\Models\Schedule;
 use App\Models\Ticket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -11,11 +13,12 @@ use Illuminate\Support\Facades\DB;
 class AmentitesController extends Controller
 {
     public function getAmetitesForTicket(Request $request){
-        //добавить проверку на дату
         $res = [];
         $free = [];
         $amentitires = [];
         $ticket = Ticket::where("ID", $request['id'])->get()->toArray();
+        $flight = Schedule::getScheduleById($ticket[0]['ScheduleID']);
+
         $allAmentites = Amentite::getAll();
         $ticketAmentites = DB::table('amenitiestickets')->where("TicketID", $ticket[0]['ID'])->get()->toArray();
         $freeAmentitesForCabin = DB::table('amenitiescabintype')->where('CabinTypeID', $ticket[0]['CabinTypeID'])->get()->toArray();
@@ -51,7 +54,26 @@ class AmentitesController extends Controller
 
     }
 
-
+    public function editAmentitesToTicket(Request $request){
+        $ticket = Ticket::where("ID", $request['id'])->get()->toArray();
+        $amentites = $request['amentites'];
+        $ticketAmentites = DB::table('amenitiestickets')->where("TicketID", $ticket[0]['ID'])->get();
+        $freeAmentitesForCabin = DB::table('amenitiescabintype')->where('CabinTypeID', $ticket[0]['CabinTypeID'])->get();
+        foreach ($amentites as $amentite){
+            $namedAmentite = Amentite::getByName($amentite['name']);
+            if(count($freeAmentitesForCabin->where("AmenityID", $namedAmentite[0]['ID'])) > 0){
+                continue;
+            }  else {
+                if($amentite['buy'] == false){
+                    AmentiteTicketModel::deleteAmentity($namedAmentite[0]['ID']);
+                } else {
+                    if (count($ticketAmentites->where("AmenityID", $namedAmentite[0]['ID'])) == 0) {
+                        AmentiteTicketModel::addAmetity($namedAmentite[0]['ID'], $ticket[0]['ID'], $namedAmentite[0]['Price']);
+                    }
+                }
+            }
+        }
+    }
 
 
 }

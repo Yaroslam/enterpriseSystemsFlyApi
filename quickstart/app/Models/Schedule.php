@@ -123,4 +123,8 @@ class Schedule extends Model
         return 1;
     }
 
+    public static function getScheduleById($id){
+        return self::where('ID', $id)->get()->toArray();
+    }
+
 }

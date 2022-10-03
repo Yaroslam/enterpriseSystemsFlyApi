@@ -140,6 +140,7 @@ class BookingController extends Controller
                     $reference = $passenger["firstName"][0].$passenger["lastName"][0].$passenger['country'][0].chr(65+$i).substr($passenger['phone'], 3, 2);
                     $ticket = Ticket::getTicketByReference($reference);
                 }
+//                slkdfjslkdfjsflkjslkdfkjsfkl
                 $price += (int)(Ticket::createTicket(session("email"), $flight, $request['cabinType'], $passenger, $reference) * $cabins[$request['cabinType']]);
             }
         }
@@ -153,7 +154,8 @@ class BookingController extends Controller
         foreach ($tickets as $ticket){
             $flight = Schedule::where("ID", $ticket["ScheduleID"])->get()->toArray();
             $res["flights"][] = ["flightNUmber" => $flight[0]["FlightNumber"],
-                      "date" => $flight[0]["Date"]];
+                      "date" => $flight[0]["Date"],
+                      'ticketID' => $ticket['ID']];
         }
 
         $cabinType = CabinType::where("ID", $tickets[0]['CabinTypeID'])->get()->toArray();

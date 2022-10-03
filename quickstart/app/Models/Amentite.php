@@ -15,4 +15,9 @@ class Amentite extends Model
         return self::all()->toArray();
 
     }
+
+    public static function getByName($name){
+        return self::where('Service', $name)->get()->toArray();
+    }
+
 }

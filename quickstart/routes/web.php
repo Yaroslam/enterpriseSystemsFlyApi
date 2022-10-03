@@ -65,5 +65,6 @@ Route::get('/getAllAgeGroup', [AgeGroupController::class, 'getAllAgeGroup']);
 Route::get('/getAllGenders', [GenderController::class, 'getAllGenders']);
 
 Route::get('/getAmetitesForTicket', [AmentitesController::class, 'getAmetitesForTicket']);
+Route::post('/editAmentitesToTicket', [AmentitesController::class, 'editAmentitesToTicket']);
 
 
