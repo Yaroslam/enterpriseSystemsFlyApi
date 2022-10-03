@@ -33,14 +33,6 @@ class Ticket extends Model
     }
 
     public static function createTicket($email, $flight, $cabinType, $person, $reference){
-//        $ticket = self::getTicketByReference($reference);
-//        $i = 0;
-//        while(count($ticket) != 0){
-//            // перенести вышеы
-//            $i++;
-//            $reference = $person["firstName"][0].$person["lastName"][0].$person['country'][0].chr(65+$i).substr($person['phone'], 3, 2);
-//            $ticket = self::getTicketByReference($reference);
-//        }
         self::insert([
             "UserID" => User::getUserByEmailArrayFormat($email)[0]["ID"],
             "ScheduleID" => Schedule::getScheduleByDateAndFlightNumber($flight["flightNumber"], $flight["date"])[0]["ID"],
@@ -54,5 +46,10 @@ class Ticket extends Model
             "Confirmed" => 1
         ]);
         return Schedule::getScheduleByDateAndFlightNumber($flight["flightNumber"], $flight["date"])[0]["EconomyPrice"];
+    }
+
+    public static function getTicketsBy30Days(){
+        $date =  date("Y-m-d",strtotime(date("Y-m-d")) - 30*24*60*60);
+        return self::where("");
     }
 }
