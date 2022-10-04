@@ -23,7 +23,7 @@ class UserController extends Controller
         $todayDate = time();
 
         $validator = Validator::make($request->all(), [
-            "Email" => 'required|email|unique:users'
+            "email" => 'required|email'
         ]);
 
         if ($validator->fails()) {
