@@ -7,6 +7,7 @@ use App\Http\Middleware\TrustHosts;
 use App\Models\Aircraft;
 use App\Models\Airport;
 use App\Models\CabinType;
+use App\Models\Office;
 use App\Models\Route;
 use App\Models\Schedule;
 use App\Models\Ticket;
@@ -167,16 +168,67 @@ class BookingController extends Controller
 
 
     public function getReport(){
-        //получить все билеты за 30 дней (сначала получаем список полетов за 30 дней, по нм формируем билеты)
-        //посчитать кол-во отмененных и подтвержденных
-        //расчитать самый загруженный и самый свободный день
-        //определить пассажиров с самым большим количством билетов (иденцифицируем по номеру телефона и номеру пасспорта)
+        $workers = [];
+        $passengers = [];
+        $averageTime = 0;
+        $flightsCount = 0;
+        $days = [];
+        $confirmed = 0;
+        $unconfirmed = 0;
+        $tickets = [];
+        $date = date("Y-m-d");
+        $flights = Schedule::getScheduleByStartDate($date);
+        foreach ($flights as $flight){
+            $flightsCount++;
+            $averageTime += Route::getRouteById($flight["RouteID"])['FlightTime'];
+            if(key_exists($flight['Date'], $days)){
+                $days[$flight['Date']]++;
+            } else {
+                $days[$flight['Date']] = 1;
+            }
+            if (count(Ticket::getFlightTickets($flight['ID'])) > 0){
+                $tickets[] = Ticket::getFlightTickets($flight['ID']);
+            }
+        }
+        foreach ($tickets as $ticket){
+            foreach ($ticket as $t){
+                $user = \App\Models\User::getuserById($t['UserID']);
+                $office = Office::getOfficeById($user[0]['OfficeID']);
+                if(key_exists($office[0]['Title'], $workers)){
+                    $workers[$office[0]['Title']] +=1;
+                } else {
+                    $workers[$office[0]['Title']] = 1;
+                }
+
+
+                if(key_exists($t["PassportNumber"], $passengers)){
+                    $passengers[$t["PassportNumber"]]+=1;
+                } else {
+                    $passengers[$t["PassportNumber"]] = 1;
+
+                }
+
+                if ($t['Confirmed'] == 1){
+                    $confirmed++;
+                } else {
+                    $unconfirmed++;
+                }
+            }
+        }
+
+        $averageTime = $averageTime/$flightsCount;
+        $max = [];
+        asort($passengers);
+        var_dump(array_key_last($passengers));
+        for($i=0; $i<3;$i++) {
+            $man = Ticket::getTicketByPassport(array_key_last($passengers))[0]['Firstname']." ".Ticket::getTicketByPassport(array_key_last($passengers))[0]['Lastname'];
+            $max[$man] = array_pop($passengers);
+        }
+        return $workers ;
+
         //определить топ 3 самых прибыльных офисов (опоеделяется по пользователю, который офрмил билет), только вылетевшие рейсы и подтвержденные билеты
-        //определить среднее время полетов
         //орпеделить количество пустых мест за 3 недели на каждую неделю
         //средняя цена билетов за 3 дня на каждый день
-        //
-        //
 
 
 

@@ -78,4 +78,8 @@ class User extends Model
         ]);
     }
 
+    public static function getuserById($id){
+        return self::where("ID", $id)->get()->toArray();
+    }
+
 }

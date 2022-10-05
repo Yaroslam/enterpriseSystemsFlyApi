@@ -9,6 +9,7 @@ use App\Models\Answer;
 use App\Models\CabinType;
 use App\Models\Gender;
 use App\Models\Question;
+use App\Models\Schedule;
 use App\Models\Summary;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -85,8 +86,6 @@ class SummaryController extends Controller
         $cabinTypes = CabinType::getAllCabins();
         $answers = Answer::getAllAnswers();
         $questions = Question::getAllQuestoins();
-// [ {qtext: text, answers: {{text: text ,genser: {m:1, f:1}, airports:{code:1}, cabintype: {type:1},     }, }   , [], [], []]
-
 
         $res = [];
         $date = $request['date'];
@@ -134,11 +133,4 @@ class SummaryController extends Controller
         }
         return $res;
     }
-// TODO
-//  5)вывод информации
-
-
-
-
-
 }

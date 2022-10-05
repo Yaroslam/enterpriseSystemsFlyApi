@@ -28,6 +28,10 @@ class Ticket extends Model
         return self::where("ScheduleID", $flightId)->get()->toArray();
     }
 
+    public static function getTicketById($id){
+        return self::where('ID', $id)->get()->toArray()[0];
+    }
+
     public static function getTicketByReference($reference){
         return self::where("BookingReference", $reference)->get()->toArray();
     }
@@ -51,5 +55,9 @@ class Ticket extends Model
     public static function getTicketsBy30Days(){
         $date =  date("Y-m-d",strtotime(date("Y-m-d")) - 30*24*60*60);
         return self::where("");
+    }
+
+    public static function getTicketByPassport($passport){
+        return self::where('PassportNumber', $passport)->get()->toArray();
     }
 }
