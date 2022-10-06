@@ -181,11 +181,20 @@ class BookingController extends Controller
         foreach ($flights as $flight){
             $flightsCount++;
             $averageTime += Route::getRouteById($flight["RouteID"])['FlightTime'];
+
+            if ($flight['Confirmed'] == 1){
+                $confirmed++;
+            } else {
+                $unconfirmed++;
+            }
+
+
             if(key_exists($flight['Date'], $days)){
                 $days[$flight['Date']]++;
             } else {
                 $days[$flight['Date']] = 1;
             }
+
             if (count(Ticket::getFlightTickets($flight['ID'])) > 0){
                 $tickets[] = Ticket::getFlightTickets($flight['ID']);
             }
@@ -208,11 +217,6 @@ class BookingController extends Controller
 
                 }
 
-                if ($t['Confirmed'] == 1){
-                    $confirmed++;
-                } else {
-                    $unconfirmed++;
-                }
             }
         }
 
@@ -225,7 +229,6 @@ class BookingController extends Controller
             $max[$man] = array_pop($passengers);
         }
         return $workers ;
-
         //определить топ 3 самых прибыльных офисов (опоеделяется по пользователю, который офрмил билет), только вылетевшие рейсы и подтвержденные билеты
         //орпеделить количество пустых мест за 3 недели на каждую неделю
         //средняя цена билетов за 3 дня на каждый день
