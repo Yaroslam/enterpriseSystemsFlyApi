@@ -17,7 +17,7 @@ return [
 
     'paths' => ["*"],
 
-    'allowed_methods' => ['POST'],
+    'allowed_methods' => ['*'],
 
     'allowed_origins' => ['*'],
 
@@ -25,7 +25,7 @@ return [
 
     'allowed_headers' => ['*'],
 
-    'exposed_headers' => [],
+    'exposed_headers' => ['*'],
 
     'max_age' => 0,
 
