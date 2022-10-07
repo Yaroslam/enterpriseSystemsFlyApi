@@ -23,34 +23,32 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-header('Access-Control-Allow-Origin:  *');
-header('Access-Control-Allow-Methods:  POST, GET, OPTIONS, PUT, DELETE');
-header('Access-Control-Allow-Headers:  Content-Type, X-Auth-Token, Origin, Authorization');
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/user', [UserController::class, 'index']);
-Route::post('/login', [UserController::class, 'login']);
-Route::post('/logout', [UserController::class, 'logout']);
-Route::post('/changeBlockUser', [UserController::class, 'changeBlockUser']);
-Route::post('/crashHandler', [UserController::class, 'handleCrash']);
-Route::post('/addUser', [UserController::class, 'addUser']);
-Route::post('/changeUserRole', [UserController::class, 'changeUserRole']);
-Route::get('/getUsersByOffice', [UserController::class, 'getUsersByOffice']);
+Route::get('/user', [UserController::class, 'index'])->middleware('cors');
+Route::post('/login', [UserController::class, 'login'])->middleware('cors');
+Route::post('/logout', [UserController::class, 'logout'])->middleware('cors');
+Route::post('/changeBlockUser', [UserController::class, 'changeBlockUser'])->middleware('cors');
+Route::post('/crashHandler', [UserController::class, 'handleCrash'])->middleware('cors');
+Route::post('/addUser', [UserController::class, 'addUser'])->middleware('cors');
+Route::post('/changeUserRole', [UserController::class, 'changeUserRole'])->middleware('cors');
+Route::get('/getUsersByOffice', [UserController::class, 'getUsersByOffice'])->middleware('cors');
 
-Route::get('/getOffices', [OfficeController::class, 'getOffices']);
+Route::get('/getOffices', [OfficeController::class, 'getOffices'])->middleware('cors');
 
-Route::get('/getAllRoles', [RoleController::class, 'getAllRoles']);
+Route::get('/getAllRoles', [RoleController::class, 'getAllRoles'])->middleware('cors');
 
-Route::get('/getAirportsCodes', [AirportController::class, 'getAirportsCodes']);
+Route::get('/getAirportsCodes', [AirportController::class, 'getAirportsCodes'])->middleware('cors');
 
-Route::get('/getSchedule', [ScheduleController::class, 'getSchedule']);
-Route::post('/changeFlightConfirm', [ScheduleController::class, 'changeFlightConfirm']);
-Route::post('/updateFlight', [ScheduleController::class, 'updateFlight']);
-Route::post('/loadFromFile', [ScheduleController::class, 'loadFromFile']);
+Route::get('/getSchedule', [ScheduleController::class, 'getSchedule'])->middleware('cors');
+Route::post('/changeFlightConfirm', [ScheduleController::class, 'changeFlightConfirm'])->middleware('cors');
+Route::post('/updateFlight', [ScheduleController::class, 'updateFlight'])->middleware('cors');
+Route::post('/loadFromFile', [ScheduleController::class, 'loadFromFile'])->middleware('cors');
 
-Route::get('/getCabinTypes', [CabinTypesController::class, 'getCabinTypes']);
+Route::get('/getCabinTypes', [CabinTypesController::class, 'getCabinTypes'])->middleware('cors');
 
 Route::post('/checkBooking', [BookingController::class, 'checkBooking']);
 Route::post('/createTickets', [BookingController::class, 'createTickets']);
