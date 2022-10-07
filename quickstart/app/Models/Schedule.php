@@ -130,8 +130,21 @@ class Schedule extends Model
     public static function getScheduleByStartDate($startDate){
         $saveDate = $startDate;
         $startDate = date("Y-m-d",strtotime($startDate) - 30*24*60*60);
-        return self::where('Date', ">", $startDate)->where("Date", "<", $saveDate)->get()->toArray();
+        return self::where('Date', ">", $startDate)->where("Date", "<", $saveDate)->where("Confirmed", 1)->get()->toArray();
     }
+
+    public static function getSchedule7Day($startDate){
+        $saveDate = $startDate;
+        $startDate = date("Y-m-d",strtotime($startDate) - 7*24*60*60);
+        return self::where('Date', ">", $startDate)->where("Date", "<", $saveDate)->where("Confirmed", 1)->get()->toArray();
+    }
+
+    public static function getScheduleDay($startDate){
+        $saveDate = $startDate;
+        $startDate = date("Y-m-d",strtotime($startDate) - 24*60*60);
+        return self::where('Date', ">", $startDate)->where("Date", "<", $saveDate)->where("Confirmed", 1)->get()->toArray();
+    }
+
 
     public static function getDateses($startDate){
         $saveDate = $startDate;

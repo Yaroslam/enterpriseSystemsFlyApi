@@ -11,6 +11,7 @@ use App\Models\Office;
 use App\Models\Route;
 use App\Models\Schedule;
 use App\Models\Ticket;
+use App\Models\User;
 use App\Servisec\Classes\Graph;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -166,42 +167,15 @@ class BookingController extends Controller
         return $res;
     }
 
+    public function getReportPart2(Request $request){
+        $tickets = $request['tickets'];
 
-    public function getReport(){
         $workers = [];
         $passengers = [];
-        $averageTime = 0;
-        $flightsCount = 0;
-        $days = [];
-        $confirmed = 0;
-        $unconfirmed = 0;
-        $tickets = [];
-        $date = date("Y-m-d");
-        $flights = Schedule::getScheduleByStartDate($date);
-        foreach ($flights as $flight){
-            $flightsCount++;
-            $averageTime += Route::getRouteById($flight["RouteID"])['FlightTime'];
 
-            if ($flight['Confirmed'] == 1){
-                $confirmed++;
-            } else {
-                $unconfirmed++;
-            }
-
-
-            if(key_exists($flight['Date'], $days)){
-                $days[$flight['Date']]++;
-            } else {
-                $days[$flight['Date']] = 1;
-            }
-
-            if (count(Ticket::getFlightTickets($flight['ID'])) > 0){
-                $tickets[] = Ticket::getFlightTickets($flight['ID']);
-            }
-        }
         foreach ($tickets as $ticket){
             foreach ($ticket as $t){
-                $user = \App\Models\User::getuserById($t['UserID']);
+                $user = User::getuserById($t['UserID']);
                 $office = Office::getOfficeById($user[0]['OfficeID']);
                 if(key_exists($office[0]['Title'], $workers)){
                     $workers[$office[0]['Title']] +=1;
@@ -216,27 +190,150 @@ class BookingController extends Controller
                     $passengers[$t["PassportNumber"]] = 1;
 
                 }
-
             }
         }
 
-        $averageTime = $averageTime/$flightsCount;
         $max = [];
         asort($passengers);
-        var_dump(array_key_last($passengers));
         for($i=0; $i<3;$i++) {
             $man = Ticket::getTicketByPassport(array_key_last($passengers))[0]['Firstname']." ".Ticket::getTicketByPassport(array_key_last($passengers))[0]['Lastname'];
             $max[$man] = array_pop($passengers);
         }
-        return $workers ;
-        //определить топ 3 самых прибыльных офисов (опоеделяется по пользователю, который офрмил билет), только вылетевшие рейсы и подтвержденные билеты
-        //орпеделить количество пустых мест за 3 недели на каждую неделю
+        $maxWorkwers = [];
+        asort($workers);
+        for($i=0; $i<3;$i++) {
+            $maxWorkwers[array_key_last($workers)] = array_pop($passengers);
+        }
+
+        return ['offices' => $maxWorkwers, 'buyer' => $man];
+    }
+
+
+    public function getReport(){
+        $averageTime = 0;
+        $flightsCount = 0;
+        $days = [];
+        $confirmed = 0;
+        $unconfirmed = 0;
+        $tickets = [];
+        $date = date("Y-m-d");
+        $flights = Schedule::getScheduleByStartDate($date);
+
+        foreach ($flights as $flight){
+            $flightsCount++;
+            $averageTime += Route::getRouteById($flight["RouteID"])['FlightTime'];
+
+            if ($flight['Confirmed'] == 1){
+                $confirmed++;
+            } else {
+                $unconfirmed++;
+            }
+
+            if(key_exists($flight['Date'], $days)){
+                $days[$flight['Date']]++;
+            } else {
+                $days[$flight['Date']] = 1;
+            }
+
+            if (count(Ticket::getFlightsTickets($flight['ID'])) > 0){
+                $tickets[] = Ticket::getFlightsTickets($flight['ID']);
+            }
+        }
+
+        $workers = [];
+        $passengers = [];
+
+        foreach ($tickets as $ticket){
+            foreach ($ticket as $t){
+                $user = User::getuserById($t['UserID']);
+                $office = Office::getOfficeById($user[0]['OfficeID']);
+                if(key_exists($office[0]['Title'], $workers)){
+                    $workers[$office[0]['Title']] +=1;
+                } else {
+                    $workers[$office[0]['Title']] = 1;
+                }
+
+
+                if(key_exists($t["PassportNumber"], $passengers)){
+                    $passengers[$t["PassportNumber"]]+=1;
+                } else {
+                    $passengers[$t["PassportNumber"]] = 1;
+
+                }
+            }
+        }
+
+        $max = [];
+        asort($passengers);
+        for($i=0; $i<3;$i++) {
+            $man = Ticket::getTicketByPassport(array_key_last($passengers))[0]['Firstname']." ".Ticket::getTicketByPassport(array_key_last($passengers))[0]['Lastname'];
+            $max[$man] = array_pop($passengers);
+        }
+
+        $maxWorkwers = [];
+        asort($workers);
+        for($i=0; $i<3;$i++) {
+            $maxWorkwers[array_key_last($workers)] = array_pop($workers);
+        }
+
+        $averageTime = $averageTime/$flightsCount;
+
+        return Response(["averageTime" => $averageTime,
+            "bestWorkers" => $maxWorkwers,
+            "bestBuyers" => $max,
+            "confirmed" => $confirmed,
+            "unconfirmed" => $unconfirmed], 200);
         //средняя цена билетов за 3 дня на каждый день
+    }
 
+    public function getFreeSeats(){
+        $freeSeats = [];
+        $date = date("Y-m-d");
+        $tickets = [];
 
+        for($i=0; $i<3; $i++){
+            $flights = Schedule::getSchedule7Day(date("Y-m-d",strtotime($date)));
+            $date = date("Y-m-d",strtotime($date) - 7*24*60*60);
+            $seats = 0;
+            $tickets = 0;
+            foreach ($flights as $flight){
+                $seats += Aircraft::getAircraftById($flight['AircraftID'])['TotalSeats'];
+                $tickets += count(Ticket::getFlightsTickets($flight['ID']));
+            }
+            var_dump($tickets);
+            $freeSeats['week'.$i] = $seats;
+        }
+        return $freeSeats;
+    }
 
+    public function getAverageSeatsPrice(){
+        $days= [];
+        $date = date("Y-m-d");
+        $tickets = [];
 
-
+        for($i=0; $i<3; $i++){
+            $flights = Schedule::getScheduleDay(date("Y-m-d",strtotime($date)));
+            $price = 0;
+            foreach ($flights as $flight){
+                $tickets = Ticket::getFlightsTickets($flight['ID']);
+                if(count($tickets) > 0){
+                    $defaultPrice = $flight['EconomyPrice'];
+                    foreach ($tickets as $ticket){
+                        $multiplay = 1;
+                        if($ticket['CabinTypeID'] == 2){
+                            $multiplay = 1.35;
+                        }
+                        if ($ticket['CabinTypeID'] == 3){
+                            $multiplay = 1.30;
+                        }
+                        $price += $defaultPrice*$multiplay;
+                    }
+                }
+            }
+            $days[$date] = $price;
+            $date = date("Y-m-d",strtotime($date) - 24*60*60);
+        }
+        return $days;
     }
 
 }

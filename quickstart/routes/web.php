@@ -55,6 +55,8 @@ Route::post('/createTickets', [BookingController::class, 'createTickets']);
 Route::get('/getFlightsForBooking', [BookingController::class, 'getFlightsForBooking']);
 Route::get('/getTicketsByReference', [BookingController::class, 'getTicketsByReference']);
 Route::get('/getReport', [BookingController::class, 'getReport']);
+Route::get('/getFreeSeats', [BookingController::class, 'getFreeSeats']);
+Route::get('/getAverageSeatsPrice', [BookingController::class, 'getAverageSeatsPrice']);
 
 Route::post('/loadSummaryFromFile', [SummaryController::class, 'loadSummaryFromFile']);
 Route::get('/getDefaultSummary', [SummaryController::class, 'getDefaultSummary']);

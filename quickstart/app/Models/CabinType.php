@@ -14,6 +14,10 @@ class CabinType extends Model
         return self::all()->toArray();
     }
 
+    public static function getCabinById($id){
+        return self::where("ID", $id)->get()->toArray();
+    }
+
     public static function getCabinByName($name){
         return self::where("Name", $name)->get()->toArray()[0];
     }

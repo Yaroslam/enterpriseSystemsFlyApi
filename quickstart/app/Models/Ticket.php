@@ -28,6 +28,10 @@ class Ticket extends Model
         return self::where("ScheduleID", $flightId)->get()->toArray();
     }
 
+    public static function getFlightsTickets($flightId){
+        return self::where("ScheduleID", $flightId)->where('Confirmed', 1)->get()->toArray();
+    }
+
     public static function getTicketById($id){
         return self::where('ID', $id)->get()->toArray()[0];
     }
