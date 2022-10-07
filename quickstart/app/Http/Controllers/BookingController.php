@@ -300,7 +300,6 @@ class BookingController extends Controller
                 $seats += Aircraft::getAircraftById($flight['AircraftID'])['TotalSeats'];
                 $tickets += count(Ticket::getFlightsTickets($flight['ID']));
             }
-            var_dump($tickets);
             $freeSeats['week'.$i] = $seats;
         }
         return $freeSeats;
