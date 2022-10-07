@@ -278,7 +278,7 @@ class BookingController extends Controller
 
         $averageTime = $averageTime/$flightsCount;
 
-        return Response(["averageTime" => $averageTime,
+        return Response(["averageTime" => $averageTime/60,
             "bestWorkers" => $maxWorkwers,
             "bestBuyers" => $max,
             "confirmed" => $confirmed,
@@ -313,8 +313,10 @@ class BookingController extends Controller
         for($i=0; $i<3; $i++){
             $flights = Schedule::getScheduleDay(date("Y-m-d",strtotime($date)));
             $price = 0;
+            $count = 1;
             foreach ($flights as $flight){
                 $tickets = Ticket::getFlightsTickets($flight['ID']);
+                $count = count($tickets);
                 if(count($tickets) > 0){
                     $defaultPrice = $flight['EconomyPrice'];
                     foreach ($tickets as $ticket){
@@ -329,7 +331,7 @@ class BookingController extends Controller
                     }
                 }
             }
-            $days[$date] = $price;
+            $days[$date] = $price/$count;
             $date = date("Y-m-d",strtotime($date) - 24*60*60);
         }
         return $days;
