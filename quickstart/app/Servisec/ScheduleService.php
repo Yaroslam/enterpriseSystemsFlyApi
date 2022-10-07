@@ -1,7 +1,8 @@
 <?php
 
 function sortSchedule($schedule, $sortBy){
-    return $schedule->orderBy($sortBy);
+    $schedule = $schedule->sortBy($sortBy);
+    return $schedule;
 }
 
 function kama_parse_csv_file( $file_path, $file_encodings = ['cp1251','UTF-8'], $col_delimiter = '', $row_delimiter = '' ){

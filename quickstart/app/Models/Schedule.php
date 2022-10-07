@@ -13,8 +13,7 @@ class Schedule extends Model
 
     public static function getSchedule($from, $to, $outbound, $flight, $sort){
         $schedule = self::all();
-        // TODO
-//          1) переделать под множественные руты
+
         if($from){
             $aiport = Airport::getAirportByCode($from);
             $route = Route::getRouteByDeparture($aiport["ID"]);
@@ -34,7 +33,7 @@ class Schedule extends Model
         if($sort){
             $schedule = sortSchedule($schedule, $sort);
         } else{
-            $schedule->orderBy('Date')->orderBy('Time')->get();
+            $schedule = $schedule->sortBy('Date')->sortBy('Time');
         }
         return $schedule->toArray();
     }
