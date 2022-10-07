@@ -28,46 +28,46 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('/user', [UserController::class, 'index']);
+Route::get('/user', [UserController::class, 'index']);
 Route::post('/login', [UserController::class, 'login']);
 Route::post('/logout', [UserController::class, 'logout']);
 Route::post('/changeBlockUser', [UserController::class, 'changeBlockUser']);
 Route::post('/crashHandler', [UserController::class, 'handleCrash']);
 Route::post('/addUser', [UserController::class, 'addUser']);
 Route::post('/changeUserRole', [UserController::class, 'changeUserRole']);
-Route::post('/getUsersByOffice', [UserController::class, 'getUsersByOffice']);
+Route::get('/getUsersByOffice', [UserController::class, 'getUsersByOffice']);
 
-Route::post('/getOffices', [OfficeController::class, 'getOffices']);
+Route::get('/getOffices', [OfficeController::class, 'getOffices']);
 
-Route::post('/getAllRoles', [RoleController::class, 'getAllRoles']);
+Route::get('/getAllRoles', [RoleController::class, 'getAllRoles']);
 
-Route::post('/getAirportsCodes', [AirportController::class, 'getAirportsCodes']);
+Route::get('/getAirportsCodes', [AirportController::class, 'getAirportsCodes']);
 
-Route::post('/getSchedule', [ScheduleController::class, 'getSchedule']);
+Route::get('/getSchedule', [ScheduleController::class, 'getSchedule']);
 Route::post('/changeFlightConfirm', [ScheduleController::class, 'changeFlightConfirm']);
 Route::post('/updateFlight', [ScheduleController::class, 'updateFlight']);
 Route::post('/loadFromFile', [ScheduleController::class, 'loadFromFile']);
 
-Route::post('/getCabinTypes', [CabinTypesController::class, 'getCabinTypes']);
+Route::get('/getCabinTypes', [CabinTypesController::class, 'getCabinTypes']);
 
 Route::post('/checkBooking', [BookingController::class, 'checkBooking']);
 Route::post('/createTickets', [BookingController::class, 'createTickets']);
-Route::post('/getFlightsForBooking', [BookingController::class, 'getFlightsForBooking']);
-Route::post('/getTicketsByReference', [BookingController::class, 'getTicketsByReference']);
-Route::post('/getReport', [BookingController::class, 'getReport']);
-Route::post('/getFreeSeats', [BookingController::class, 'getFreeSeats']);
-Route::post('/getAverageSeatsPrice', [BookingController::class, 'getAverageSeatsPrice']);
+Route::get('/getFlightsForBooking', [BookingController::class, 'getFlightsForBooking']);
+Route::get('/getTicketsByReference', [BookingController::class, 'getTicketsByReference']);
+Route::get('/getReport', [BookingController::class, 'getReport']);
+Route::get('/getFreeSeats', [BookingController::class, 'getFreeSeats']);
+Route::get('/getAverageSeatsPrice', [BookingController::class, 'getAverageSeatsPrice']);
 
 Route::post('/loadSummaryFromFile', [SummaryController::class, 'loadSummaryFromFile']);
-Route::post('/getDefaultSummary', [SummaryController::class, 'getDefaultSummary']);
-Route::post('/getSummaryTimePeriods', [SummaryController::class, 'getSummaryTimePeriods']);
-Route::post('/getAdvancedInformation', [SummaryController::class, 'getAdvancedInformation']);
+Route::get('/getDefaultSummary', [SummaryController::class, 'getDefaultSummary']);
+Route::get('/getSummaryTimePeriods', [SummaryController::class, 'getSummaryTimePeriods']);
+Route::get('/getAdvancedInformation', [SummaryController::class, 'getAdvancedInformation']);
 
-Route::post('/getAllAgeGroup', [AgeGroupController::class, 'getAllAgeGroup']);
+Route::get('/getAllAgeGroup', [AgeGroupController::class, 'getAllAgeGroup']);
 
-Route::post('/getAllGenders', [GenderController::class, 'getAllGenders']);
+Route::get('/getAllGenders', [GenderController::class, 'getAllGenders']);
 
-Route::post('/getAmetitesForTicket', [AmentitesController::class, 'getAmetitesForTicket']);
+Route::get('/getAmetitesForTicket', [AmentitesController::class, 'getAmetitesForTicket']);
 Route::post('/editAmentitesToTicket', [AmentitesController::class, 'editAmentitesToTicket']);
 
 
