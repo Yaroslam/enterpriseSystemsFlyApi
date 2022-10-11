@@ -5,52 +5,49 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Client extends Model
+class Realtor extends Model
 {
     use HasFactory;
-    protected $table = 'clients';
+    protected $table = 'realtors';
     protected $fillable = [
         'name',
-        'email',
         'surname',
         'secondName',
-        'telephoneNumber'
+        'part'
     ];
     public $timestamps = false;
 
 
 
-    public static function addClient($name, $surname, $secondName, $phoneNumber, $email){
+    public static function addRealtor($name, $surname, $secondName, $part){
         self::insert([
             'name' => $name,
             'surname' => $surname,
             'secondName' => $secondName,
-            'email' => $email,
-            'telephoneNumber' => $phoneNumber
+            'part' => $part,
         ]);
     }
 
-    public static function deleteClient($id){
+    public static function deleteRealtor($id){
         self::where("id", $id)->delete();
     }
 
-    public static function updateClient($id ,$name, $surname, $secondName, $phoneNumber, $email){
+    public static function updateRealtor($id ,$name, $surname, $secondName, $part){
         self::where("id", $id)->update(
             [
                 'name' => $name,
                 'surname' => $surname,
                 'secondName' => $secondName,
-                'email' => $email,
-                'telephoneNumber' => $phoneNumber
+                'part' => $part
             ]
         );
     }
 
-    public static function getAllClients(){
+    public static function getAllRealtors(){
         return self::all()->toArray();
     }
 
-    public static function findClient($name, $surname, $secondName){
+    public static function findRealtor($name, $surname, $secondName){
         $res = [];
         $realtors = self::all()->toArray();
         foreach ($realtors as $realtor){
@@ -60,6 +57,4 @@ class Client extends Model
         }
         return $res;
     }
-
-
 }

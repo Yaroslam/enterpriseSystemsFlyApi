@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Validator;
 
 class ClientController extends Controller
 {
-    public function addClient($request){
+    public function addClient(Request $request){
         if ($request['email'] == "" && $request['phoneNumber'] == ""){
             return Response(['error' => "enter phoneNumber or email"]);
         }
@@ -27,18 +27,22 @@ class ClientController extends Controller
         return Response([], 200);
     }
 
-    public function deleteClient($request){
+    public function deleteClient(Request $request){
         Client::deleteClient($request['id']);
         return Response([], 200);
     }
 
-    public function editClient($request){
+    public function editClient(Request $request){
         Client::updateClient($request['id'], $request['name'], $request['surname'], $request['secondName'], $request['phoneNumber'], $request['email']);
         return Response([], 200);
     }
 
     public function getAllClients(){
         return Client::getAllClients();
+    }
+
+    public function findClient(Request $request){
+        return Client::findRealtor($request['name'], $request['surname'], $request['secondName']);
     }
 
 }
