@@ -283,7 +283,6 @@ class BookingController extends Controller
             "bestBuyers" => $max,
             "confirmed" => $confirmed,
             "unconfirmed" => $unconfirmed], 200);
-        //средняя цена билетов за 3 дня на каждый день
     }
 
     public function getFreeSeats(){

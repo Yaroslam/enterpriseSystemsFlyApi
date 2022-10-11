@@ -5,6 +5,7 @@ use App\Http\Controllers\AirportController;
 use App\Http\Controllers\AmentitesController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\CabinTypesController;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\GenderController;
 use App\Http\Controllers\OfficeController;
 use App\Http\Controllers\RoleController;
@@ -69,5 +70,14 @@ Route::post('/getAllGenders', [GenderController::class, 'getAllGenders']);
 
 Route::post('/getAmetitesForTicket', [AmentitesController::class, 'getAmetitesForTicket']);
 Route::post('/editAmentitesToTicket', [AmentitesController::class, 'editAmentitesToTicket']);
+
+
+
+Route::post('/addClient', [ClientController::class, 'addClient']);
+Route::post('/getAllClients', [ClientController::class, 'getAllClients']);
+Route::post('/editClient', [ClientController::class, 'editClient']);
+Route::post('/deleteClient', [ClientController::class, 'deleteClient']);
+
+
 
 
