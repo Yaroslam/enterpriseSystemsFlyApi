@@ -265,15 +265,25 @@ class BookingController extends Controller
 
         $max = [];
         asort($passengers);
-        for($i=0; $i<3;$i++) {
-            $man = Ticket::getTicketByPassport(array_key_last($passengers))[0]['Firstname']." ".Ticket::getTicketByPassport(array_key_last($passengers))[0]['Lastname'];
-            $max[$man] = array_pop($passengers);
+        if (count($passengers) > 0) {
+            for ($i = 0; $i < 3; $i++) {
+                $man = Ticket::getTicketByPassport(
+                        array_key_last($passengers)
+                    )[0]['Firstname']." ".Ticket::getTicketByPassport(
+                        array_key_last($passengers)
+                    )[0]['Lastname'];
+                $max[$man] = array_pop($passengers);
+            }
         }
 
         $maxWorkwers = [];
         asort($workers);
         for($i=0; $i<3;$i++) {
             $maxWorkwers[array_key_last($workers)] = array_pop($workers);
+        }
+
+        if($flightsCount == 0){
+            $flightsCount++;
         }
 
         $averageTime = $averageTime/$flightsCount;
