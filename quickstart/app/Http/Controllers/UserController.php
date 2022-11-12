@@ -63,7 +63,7 @@ class UserController extends Controller
             $response['numberOfCrashes'] = countCrashes($sessions);
             $response['curSessionTime'] = $sessionTime;
             $response['sessions'] = $sessions;
-            session(['email' => $user->Email, 'sessionStart' => $todayDate, 'spendTime' => $sessionTime])->save();
+            session(['email' => $user->Email, 'sessionStart' => $todayDate, 'spendTime' => $sessionTime]);
             inSystem::addUser($user->ID, date("Y-m-d H:i:s", $todayDate));
         }
         return Response($response, $codeStatus);
