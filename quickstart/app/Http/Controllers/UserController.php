@@ -63,9 +63,11 @@ class UserController extends Controller
             $response['numberOfCrashes'] = countCrashes($sessions);
             $response['curSessionTime'] = $sessionTime;
             $response['sessions'] = $sessions;
-            session(['email' => $user->Email, 'sessionStart' => $todayDate, 'spendTime' => $sessionTime]);
-            inSystem::addUser($user->ID, date("Y-m-d H:i:s", $todayDate));
+            $response['id'] = $user->ID;
+//            session(['email' => $user->Email, 'sessionStart' => $todayDate, 'spendTime' => $sessionTime]);
+            inSystem::addUser($user->ID, date("Y-m-d H:i:s", $todayDate), $sessionTime);
         }
+//        session(['email' => $user->Email, 'sessionStart' => $todayDate, 'spendTime' => $sessionTime]);
         return Response($response, $codeStatus);
     }
 
@@ -79,14 +81,13 @@ class UserController extends Controller
     }
 
     public function logout(request $request) {
-        $user = User::getUserByEmail(session('email'));
+        $userData = inSystem::getUser($request['id'])[0];
         $logoutTime = time();
         $sessionTime = $logoutTime - session('sessionStart');
         $monthSessionTime = session('spendTime') + $sessionTime;
-        UserSession::addSession($user->ID, date("Y-m-d H:i:s", session('sessionStart')), date("Y-m-d H:i:s", $logoutTime), True);
-        MonthSession::updateUserSessionTime($user->ID, $monthSessionTime);
-        inSystem::deleteUser($user->ID);
-        session()->flush();
+        UserSession::addSession($request['id'], date("Y-m-d H:i:s", inSystem::getUserTime($request['id'])), date("Y-m-d H:i:s", $logoutTime), True);
+        MonthSession::updateUserSessionTime($request['id'], $monthSessionTime);
+        inSystem::deleteUser($request['id']);
     }
 
     public function changeBlockUser(Request $request){

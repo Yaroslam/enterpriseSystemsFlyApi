@@ -25,11 +25,15 @@ class inSystem extends Model
         self::where('UserId', $id)->delete();
     }
 
-    public static function addUser($id, $loginTime){
-        self::insert(['UserId' => $id, "loginTime" => $loginTime]);
+    public static function addUser($id, $loginTime, $sessionTime){
+        self::insert(['UserId' => $id, "loginTime" => $loginTime, "spendTIme" => $sessionTime]);
     }
 
     public static function getUser($id){
         return self::where('UserId', $id)->get()->toArray();
+    }
+
+    public static function getUserTime($id){
+        return self::where("UserId", $id)->get()->toArray()[0]['spendTIme'];
     }
 }
