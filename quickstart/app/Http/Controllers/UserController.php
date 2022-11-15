@@ -81,7 +81,6 @@ class UserController extends Controller
     }
 
     public function logout(request $request) {
-        $userData = inSystem::getUser($request['id'])[0];
         $logoutTime = time();
         $sessionTime = $logoutTime - session('sessionStart');
         $monthSessionTime = session('spendTime') + $sessionTime;

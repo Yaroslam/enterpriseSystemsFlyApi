@@ -142,7 +142,7 @@ class BookingController extends Controller
                 $ticket = Ticket::getTicketByReference($reference);
             }
             foreach ($flights as $flight){
-                $price += (int)(Ticket::createTicket(session("email"), $flight, $request['cabinType'], $passenger, $reference) * $cabins[$request['cabinType']]);
+                $price += (int)(Ticket::createTicket($request["email"], $flight, $request['cabinType'], $passenger, $reference) * $cabins[$request['cabinType']]);
             }
         }
         return $price;
