@@ -64,6 +64,7 @@ class UserController extends Controller
             $response['curSessionTime'] = $sessionTime;
             $response['sessions'] = $sessions;
             $response['id'] = $user->ID;
+            $response['email'] = $user->Email;
 //            session(['email' => $user->Email, 'sessionStart' => $todayDate, 'spendTime' => $sessionTime]);
             inSystem::addUser($user->ID, date("Y-m-d H:i:s", $todayDate), $sessionTime);
         }
