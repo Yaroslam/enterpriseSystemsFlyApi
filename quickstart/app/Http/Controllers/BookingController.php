@@ -288,7 +288,8 @@ class BookingController extends Controller
 
         $averageTime = $averageTime/$flightsCount;
 
-        return Response(["averageTime" => $averageTime/60,
+        return Response(["days" => $days,
+            "averageTime" => $averageTime/60,
             "bestWorkers" => $maxWorkwers,
             "bestBuyers" => $max,
             "confirmed" => $confirmed,

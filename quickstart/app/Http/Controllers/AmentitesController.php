@@ -86,4 +86,11 @@ class AmentitesController extends Controller
     }
 
 
+    public function getAmentitesReport(Request $request){
+
+
+
+    }
+
+
 }
