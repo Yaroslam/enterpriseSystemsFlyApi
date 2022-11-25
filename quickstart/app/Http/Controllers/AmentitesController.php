@@ -73,7 +73,7 @@ class AmentitesController extends Controller
         foreach ($amentites as $amentite){
             $namedAmentite = Amentite::getByName($amentite['name']);
             if(count($freeAmentitesForCabin->where("AmenityID", $namedAmentite[0]['ID'])) > 0){
-                continue;
+                AmentiteTicketModel::addAmetity($namedAmentite[0]['ID'], $ticket[0]['ID'], $namedAmentite[0]['Price']);
             }  else {
                 if($amentite['buy'] == false){
                     AmentiteTicketModel::deleteAmentity($namedAmentite[0]['ID']);
