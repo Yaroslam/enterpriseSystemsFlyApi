@@ -6,9 +6,9 @@ use App\Http\Controllers\AmentitesController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\CabinTypesController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\CountryController;
 use App\Http\Controllers\GenderController;
 use App\Http\Controllers\OfficeController;
-use App\Http\Controllers\RealtorController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\SummaryController;
@@ -80,12 +80,7 @@ Route::post('/editClient', [ClientController::class, 'editClient']);
 Route::post('/deleteClient', [ClientController::class, 'deleteClient']);
 Route::post('/findClient', [ClientController::class, 'findClient']);
 
-Route::post('/addRealtor', [RealtorController::class, 'addRealtor']);
-Route::post('/getAllRealtors', [RealtorController::class, 'getAllRealtors']);
-Route::post('/editRealtor', [RealtorController::class, 'editRealtor']);
-Route::post('/editRealtor', [RealtorController::class, 'editRealtor']);
-Route::post('/findRealtor', [RealtorController::class, 'findRealtor']);
-
+Route::post('/getCountries', [CountryController::class, 'getAllCountries']);
 
 
 
