@@ -104,6 +104,10 @@ class Schedule extends Model
         return self::where("Date", $date)->get()->toArray();
     }
 
+    public static function getScheduleBetweenTwoDates($from, $to){
+        return self::orderBy('Date')->orderBy('Time')->whereBetween('Date', [$from, $to])->get()->toArray();
+    }
+
     public static function loadFromFile($data){
         if(count(self::where("Date", $data["date"])->where("FlightNumber", $data["flight"])->get()->toArray()) > 0){
             return 0;

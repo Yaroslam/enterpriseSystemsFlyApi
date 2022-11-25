@@ -18,6 +18,15 @@ class AmentiteTicketModel extends Model
         self::where('AmenityID', $amintityID)->delete();
     }
 
+    public static function findAmentiteForTicket($ticketId){
+        $amnetites = [];
+        $a = self::where('TicketID', $ticketId)->get()->toArray();
+        foreach ($a as $amen){
+            $amnetites[] = Amentite::getById($amen['AmenityID'])[0]['Service'];
+        }
+        return $amnetites;
+    }
+
 
 
 

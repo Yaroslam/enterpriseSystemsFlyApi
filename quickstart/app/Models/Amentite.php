@@ -20,4 +20,8 @@ class Amentite extends Model
         return self::where('Service', $name)->get()->toArray();
     }
 
+    public static function getById($id){
+        return self::where("ID", $id)->get()->toArray();
+    }
+
 }

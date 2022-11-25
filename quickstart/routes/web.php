@@ -70,6 +70,7 @@ Route::post('/getAllAgeGroup', [AgeGroupController::class, 'getAllAgeGroup']);
 Route::post('/getAllGenders', [GenderController::class, 'getAllGenders']);
 
 Route::post('/getAmetitesForTicket', [AmentitesController::class, 'getAmetitesForTicket']);
+Route::post('/getAmentitesReport', [AmentitesController::class, 'getAmentitesReport']);
 Route::post('/editAmentitesToTicket', [AmentitesController::class, 'editAmentitesToTicket']);
 
 

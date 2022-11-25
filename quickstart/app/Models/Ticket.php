@@ -64,4 +64,5 @@ class Ticket extends Model
     public static function getTicketByPassport($passport){
         return self::where('PassportNumber', $passport)->get()->toArray();
     }
+
 }

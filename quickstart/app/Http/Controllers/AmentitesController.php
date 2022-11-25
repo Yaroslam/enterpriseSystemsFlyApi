@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Amentite;
 use App\Models\AmentiteTicketModel;
+use App\Models\CabinType;
 use App\Models\Schedule;
 use App\Models\Ticket;
 use Illuminate\Http\Request;
@@ -87,9 +88,32 @@ class AmentitesController extends Controller
 
 
     public function getAmentitesReport(Request $request){
+        $tickets = [];
+        $res = ["Economy" => [], "Business" => [], "First Class" => []];
+        if($request['FlightId']){
+            $flights = Schedule::getScheduleByDateAndFlightNumber($request['FlightId'], $request['From']);
+            $tickets[] = Ticket::getFlightTickets($flights[0]['ID']);
+        } else {
+            $flights = Schedule::getScheduleBetweenTwoDates($request['From'], $request['To']);
+            foreach ($flights as $flight){
+                $tickets[] = Ticket::getFlightTickets($flight['ID']);
+            }
+        }
 
-
-
+        foreach ($tickets as $ticket){
+            foreach ($ticket as $t){
+                $cabinType = CabinType::getCabinById($t['CabinTypeID'])[0]['Name'];
+                $amentites = AmentiteTicketModel::findAmentiteForTicket($t['ID']);
+                foreach ($amentites as $amen){
+                    if(array_key_exists($amen, $res[$cabinType])){
+                        $res[$cabinType][$amen]+=1;
+                    } else {
+                        $res[$cabinType][$amen] = 1;
+                    }
+                }
+            }
+        }
+        return $res;
     }
 
 
